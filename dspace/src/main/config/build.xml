@@ -133,6 +133,8 @@ Common usage:
         <echo message="" />
         <echo message="update          --> Update ${dspace.dir} config, etc, lib and web applications without " />
         <echo message="                    touching your data" />
+        <echo message="update_local    --> Update ${dspace.dir} config, etc, lib and web applications without " />
+        <echo message="                    touching your data (no backups)" />
     	<echo message="update_configs  --> Update your configs directory with new configuration files"/>
     	<echo message="update_geolite  --> Dowload and install GeoCity database into ${dspace.dir}/config" />
         <echo message="update_code     --> Update compiled code (bin, lib, and etc directories)" />
@@ -187,7 +189,12 @@ Common usage:
     <!-- ============================================================= -->
 
     <target name="update" depends="update_configs,update_code,update_webapps,update_solr_indexes" description="Update installed code and web applications (without clobbering data/config)">
+        <property name="backup" value="true"/>
     </target>
+
+    <target name="update_local" depends="update_configs,update_code,update_webapps,update_solr_indexes" description="Update installed code and web applications without backups (without clobbering data/config)">
+    </target>
+
 
     <!-- ============================================================= -->
     <!-- Update the config dir, only adds files, if a file is altered  -->
@@ -542,15 +549,35 @@ Common usage:
 
     <target name="update_code" description="Update installed code (without clobbering data/config)">
 
+        <antcall target="backup_code" />
+
+        <copy todir="${dspace.dir}/bin" preservelastmodified="true">
+            <fileset dir="bin" />
+        </copy>
+
+        <chmod dir="${dspace.dir}/bin" perm="u+x" includes="**/*" />
+
+        <copy todir="${dspace.dir}/lib" preservelastmodified="true">
+            <fileset dir="lib" />
+        </copy>
+
+        <copy todir="${dspace.dir}/etc" preservelastmodified="true">
+            <fileset dir="etc" />
+        </copy>
+
+        <copy todir="${dspace.dir}/solr" preservelastmodified="true">
+             <fileset dir="solr"/>
+        </copy>
+
+
+    </target>
+
+    <target name="backup_code" if="backup">
         <move todir="${dspace.dir}/bin.bak-${build.date}" failonerror="no">
             <fileset dir="${dspace.dir}/bin">
                 <include name="**/*" />
             </fileset>
         </move>
-
-        <copy todir="${dspace.dir}/bin" preservelastmodified="true">
-            <fileset dir="bin" />
-        </copy>
 
         <chmod dir="${dspace.dir}/bin" perm="u+x" includes="**/*" />
 
@@ -560,23 +587,11 @@ Common usage:
             </fileset>
         </move>
 
-        <copy todir="${dspace.dir}/lib" preservelastmodified="true">
-            <fileset dir="lib" />
-        </copy>
-
         <move todir="${dspace.dir}/etc.bak-${build.date}" failonerror="no">
             <fileset dir="${dspace.dir}/etc">
                 <include name="**/*" />
             </fileset>
         </move>
-
-        <copy todir="${dspace.dir}/etc" preservelastmodified="true">
-            <fileset dir="etc" />
-        </copy>
-
-    	<copy todir="${dspace.dir}/solr" preservelastmodified="true">
-    	     <fileset dir="solr"/>
-    	</copy>
 
         <echo>
 ====================================================================
@@ -595,7 +610,6 @@ Common usage:
  Please review these directories and delete if no longer needed.
 ====================================================================
         </echo>
-
     </target>
 
 
@@ -605,21 +619,7 @@ Common usage:
 
     <target name="update_webapps" description="Update Web Applications (without clobbering data/config)">
 
-        <move todir="${dspace.dir}/webapps.bak-${build.date}" failonerror="no">
-            <fileset dir="${dspace.dir}/webapps">
-                <include name="**/*" />
-            </fileset>
-        </move>
-
-        <echo>
-====================================================================
- ${dspace.dir}/webapps was backed up to
-
- ${dspace.dir}/webapps.bak-${build.date}
-
- Please review this directory and delete it if it's no longer needed.
-====================================================================
-        </echo>
+        <antcall target="backup_webapps" />
 
         <antcall target="copy_webapps" />
 
@@ -648,6 +648,26 @@ Common usage:
         </echo>
 
     </target>
+
+    <target name="backup_webapps" if="backup">
+
+        <move todir="${dspace.dir}/webapps.bak-${build.date}" failonerror="no">
+            <fileset dir="${dspace.dir}/webapps">
+                <include name="**/*" />
+            </fileset>
+        </move>
+
+        <echo>
+====================================================================
+ ${dspace.dir}/webapps was backed up to
+
+ ${dspace.dir}/webapps.bak-${build.date}
+
+ Please review this directory and delete it if it's no longer needed.
+====================================================================
+        </echo>
+
+	</target>
 
 
     <!-- ============================================================= -->
@@ -840,9 +860,9 @@ Common usage:
             <fileset dir="etc" />
         </copy>
 
-    	<copy todir="${dspace.dir}/solr" preservelastmodified="true">
-    	    <fileset dir="solr" />
-    	</copy>
+        <copy todir="${dspace.dir}/solr" preservelastmodified="true">
+            <fileset dir="solr" />
+        </copy>
 
         <echo>
 ====================================================================

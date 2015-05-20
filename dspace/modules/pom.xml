@@ -62,9 +62,10 @@
         <profile>
             <id>dspace-jspui</id>
             <activation>
-                <file>
-                    <exists>jspui/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>jspui</module>
@@ -73,9 +74,10 @@
         <profile>
             <id>dspace-rdf</id>
             <activation>
-                <file>
-                    <exists>rdf/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>rdf</module>
@@ -84,9 +86,10 @@
         <profile>
             <id>dspace-rest</id>
             <activation>
-                <file>
-                    <exists>rest/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>rest</module>
@@ -95,9 +98,10 @@
         <profile>
             <id>dspace-sword</id>
             <activation>
-                <file>
-                    <exists>sword/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>sword</module>
@@ -106,9 +110,10 @@
         <profile>
             <id>dspace-swordv2</id>
             <activation>
-                <file>
-                    <exists>swordv2/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>swordv2</module>
@@ -128,9 +133,10 @@
         <profile>
             <id>dspace-oai</id>
             <activation>
-                <file>
-                    <exists>oai/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>oai</module>
@@ -138,18 +144,37 @@
         </profile>
 
         <profile>
-            <!--Activates mirage2 on the presence of the property mirage2.on with any value e.g. mvn clean package -Dmirage2.on=on
-                Note the absence of activeByDefault. This module is optional. Also activeByDefault only works when no other profiles are active.
+            <!-- Activate mirage2 by default. Deactivate on the presence of the property mirage2.off with any value e.g. mvn clean package -Dmirage2.off=true
             -->
             <id>mirage2</id>
             <activation>
                 <property>
-                    <name>mirage2.on</name>
+                    <name>!mirage2.off</name>
                 </property>
             </activation>
             <modules>
                 <module>xmlui-mirage2</module>
             </modules>
         </profile>
+
+        <profile>
+            <id>all-modules</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>lni</module>
+                <module>jspui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>sword</module>
+                <module>swordv2</module>
+                <module>solr</module>
+                <module>oai</module>
+                <module>xmlui-mirage2</module>
+            </modules>
+        </profile>
     </profiles>
+
 </project>

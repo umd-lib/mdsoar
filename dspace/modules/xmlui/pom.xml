@@ -49,7 +49,7 @@
             <id>default-war</id>
             <activation>
                 <property>
-                    <name>!mirage2.on</name>
+                    <name>mirage2.off</name>
                 </property>
             </activation>
             <build>
@@ -112,7 +112,7 @@
             <id>mirage2-war</id>
             <activation>
                 <property>
-                    <name>mirage2.on</name>
+                    <name>!mirage2.off</name>
                 </property>
             </activation>
             <build>

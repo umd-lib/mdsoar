@@ -18,6 +18,8 @@ Mirage 2 has been integrated into the standard maven build as an optional featur
     mvn package -Dmirage2.on=true
 ```
 
+**NOTE**: mdsoar has `mirage2` enabled by default. Please see ***mdsoar build instructions*** for instructions to disable mirage2.
+
 All extra tools in the Mirage 2 build process run on either Node.js or Ruby, so you'll need both to be able to build the theme. By default, the maven build will assume you don't have either installed and install them in a temporary sandbox every time you build the project. That's convenient, but also quite a bit slower than installing them natively. So we recommend you only use that feature to try out the theme. Afterwards, install the prerequisites and build DSpace with the `mirage2.deps.included` property set to `false`:
 
 ```bash

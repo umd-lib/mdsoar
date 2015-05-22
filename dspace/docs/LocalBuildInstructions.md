@@ -28,7 +28,7 @@ mvn package -Denv=local
 ## Build profiles
 
 ### Default Profile
-The default profile for the local development environment `-Denv=local` is configured to only build the modules the are being actively developed or their dependencies.
+The default profile for the local development environment `-Denv=local` is configured to only build the modules that are necessary to deploy and bring up the actively developed webapps.
 
 ```
 DSpace Addon Modules
@@ -36,6 +36,9 @@ DSpace Kernel :: Additions and Local Customizations
 DSpace XML-UI (Manakin) :: Local Customizations
 DSpace SOLR :: Local Customizations
 DSpace XML-UI Mirage2 Theme :: Local Customisations
+DSpace REST :: Local Customisations
+DSpace RDF :: Local Customisations
+DSpace OAI-PMH :: Local Customisations
 DSpace Assembly and Configuration
 ```
 
@@ -43,6 +46,15 @@ In contrast, the default profile on the server environments (for example: `-Denv
 
 ### All modules profile
 To build all modules, the `all-modules` profile can be used. 
+
+```
+mvn package -Denv=local -P all-modules
+```
+
+### xmlui-plus profile
+To build only xmlui and mirage2 theme the `xmlui-plus` profile can be used. 
+
+**NOTE:** if `mvn clean` is executed, you need to build the default profile atleast once before running the `xmlui-plus` profile in order for the other webapps depended by xmlui to be included in ant update.
 
 ```
 mvn package -Denv=local -P all-modules

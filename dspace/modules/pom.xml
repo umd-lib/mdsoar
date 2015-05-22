@@ -39,11 +39,6 @@
     <profiles>
         <profile>
             <id>dspace-xmlui</id>
-            <activation>
-                <file>
-                    <exists>xmlui/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>xmlui</module>
             </modules>
@@ -61,77 +56,71 @@
         </profile>
         <profile>
             <id>dspace-jspui</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
-            </activation>
             <modules>
                 <module>jspui</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-rdf</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
-            </activation>
             <modules>
                 <module>rdf</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-rest</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
-            </activation>
             <modules>
                 <module>rest</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-sword</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
-            </activation>
             <modules>
                 <module>sword</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-swordv2</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
-            </activation>
             <modules>
                 <module>swordv2</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-solr</id>
-            <activation>
-                <file>
-                    <exists>solr/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>solr</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-oai</id>
+            <modules>
+                <module>oai</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>mirage2</id>
+            <modules>
+                <module>xmlui-mirage2</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>solr</module>
+                <module>oai</module>
+                <module>xmlui-mirage2</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>server</id>
             <activation>
                 <property>
                     <name>env</name>
@@ -139,20 +128,25 @@
                 </property>
             </activation>
             <modules>
+                <module>xmlui</module>
+                <module>jspui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>sword</module>
+                <module>swordv2</module>
+                <module>solr</module>
                 <module>oai</module>
+                <module>xmlui-mirage2</module>
             </modules>
         </profile>
 
         <profile>
-            <!-- Activate mirage2 by default. Deactivate on the presence of the property mirage2.off with any value e.g. mvn clean package -Dmirage2.off=true
-            -->
-            <id>mirage2</id>
+            <id>xmlui-plus</id>
             <activation>
-                <property>
-                    <name>!mirage2.off</name>
-                </property>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
+                <module>xmlui</module>
                 <module>xmlui-mirage2</module>
             </modules>
         </profile>

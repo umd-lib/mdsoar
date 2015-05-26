@@ -3,10 +3,10 @@
     <groupId>org.dspace.modules</groupId>
     <artifactId>xmlui-mirage2-communities</artifactId>
     <packaging>war</packaging>
-    <name>DSpace XML-UI Mirage2 Theme :: Local Customisations</name>
+    <name>DSpace XML-UI Mirage2 Themes for Communities</name>
     <description>
-        This project allows you to overlay your own local Mirage2 Theme customizations
-        on top of the default Mirage2 Theme provided with DSpace.
+    	This project allows you to overlay your Mirage2 Communities Theme customizations 
+   		on top of the Mirage2 Local Customization Theme module.
     </description>
 
     <parent>
@@ -63,6 +63,22 @@
                             </excludes>
                             <includeArtifactIds>
                                 dspace-xmlui-mirage2
+                            </includeArtifactIds>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-dependencies-global-mirage</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/mirage2-global-extracted</outputDirectory>
+                            <excludes>
+                                WEB-INF/**,META-INF/**
+                            </excludes>
+                            <includeArtifactIds>
+                                xmlui-mirage2
                             </includeArtifactIds>
                         </configuration>
                     </execution>
@@ -173,8 +189,8 @@
                            next. the order is unpredictable.
                         -->
                         <overlay>
-                            <groupId>org.dspace</groupId>
-                            <artifactId>dspace-xmlui-mirage2</artifactId>
+                            <groupId>org.dspace.modules</groupId>
+                            <artifactId>xmlui-mirage2</artifactId>
                             <type>war</type>
                             <excludes>
                                 <exclude>**</exclude>
@@ -399,6 +415,18 @@
                                                 <overwrite>false</overwrite>
                                                 <resources>
                                                     <resource>
+                                                        <directory>${project.build.directory}/mirage2-global-extracted/themes/Mirage2</directory>
+                                                        <filtering>false</filtering>
+                                                        <includes>
+                                                            <include>images</include>
+                                                            <include>scripts</include>
+                                                            <include>styles</include>
+                                                            <include>templates</include>
+                                                            <include>vendor</include>
+                                                            <include>xsl</include>
+                                                        </includes>
+                                                    </resource>
+                                                    <resource>
                                                         <directory>${project.build.directory}/mirage2-source-extracted</directory>
                                                         <filtering>false</filtering>
                                                         <excludes>
@@ -505,6 +533,13 @@
     </profiles>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.dspace.modules</groupId>
+            <artifactId>xmlui-mirage2</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
 
         <dependency>
             <groupId>org.dspace</groupId>

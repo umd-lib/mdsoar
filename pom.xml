@@ -530,10 +530,9 @@
         <profile>
             <id>dspace-oai</id>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                 <file>
+                    <exists>dspace-oai/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-oai</module>
@@ -562,10 +561,9 @@
         <profile>
             <id>dspace-rdf</id>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                 <file>
+                    <exists>dspace-rdf/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-rdf</module>
@@ -576,10 +574,9 @@
        <profile>
            <id>dspace-rest</id>
            <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                <file>
+                    <exists>dspace-rest/pom.xml</exists>
+                </file>
            </activation>
            <modules>
                <module>dspace-rest</module>

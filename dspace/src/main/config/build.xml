@@ -189,10 +189,12 @@ Common usage:
     <!-- ============================================================= -->
 
     <target name="update" depends="update_configs,update_code,update_webapps,update_solr_indexes" description="Update installed code and web applications (without clobbering data/config)">
-        <property name="backup" value="true"/>
     </target>
 
-    <target name="update_local" depends="update_configs,update_code,update_webapps,update_solr_indexes" description="Update installed code and web applications without backups (without clobbering data/config)">
+    <target name="update_local" description="Update installed code and web applications without backups (without clobbering data/config)">
+        <antcall target="update">
+            <param name="disable_backup" value="true" />
+        </antcall>
     </target>
 
 
@@ -547,9 +549,7 @@ Common usage:
     <!-- Update core code only (no webapps or configs)                 -->
     <!-- ============================================================= -->
 
-    <target name="update_code" description="Update installed code (without clobbering data/config)">
-
-        <antcall target="backup_code" />
+    <target name="update_code" depends="backup_code,remove_old_code" description="Update installed code (without clobbering data/config)">
 
         <copy todir="${dspace.dir}/bin" preservelastmodified="true">
             <fileset dir="bin" />
@@ -572,7 +572,7 @@ Common usage:
 
     </target>
 
-    <target name="backup_code" if="backup">
+    <target name="backup_code" unless="disable_backup">
         <move todir="${dspace.dir}/bin.bak-${build.date}" failonerror="no">
             <fileset dir="${dspace.dir}/bin">
                 <include name="**/*" />
@@ -612,14 +612,31 @@ Common usage:
         </echo>
     </target>
 
+    <target name="remove_old_code" if="disable_backup">
+        <delete failonerror="no" dir="${dspace.dir}/bin" />
+
+        <delete failonerror="no" dir="${dspace.dir}/lib" />
+
+        <delete failonerror="no" dir="${dspace.dir}/etc" />
+
+        <echo>
+====================================================================
+ ${dspace.dir}/bin was deleted
+
+ ${dspace.dir}/lib was deleted
+
+ ${dspace.dir}/etc was deleted
+
+====================================================================
+        </echo>
+    </target>
+
 
     <!-- ============================================================= -->
     <!-- Update Web Applications only                                  -->
     <!-- ============================================================= -->
 
-    <target name="update_webapps" description="Update Web Applications (without clobbering data/config)">
-
-        <antcall target="backup_webapps" />
+    <target name="update_webapps" depends="backup_webapps,remove_old_webapps" description="Update Web Applications (without clobbering data/config)">
 
         <antcall target="copy_webapps" />
 
@@ -649,7 +666,7 @@ Common usage:
 
     </target>
 
-    <target name="backup_webapps" if="backup">
+    <target name="backup_webapps" unless="disable_backup">
 
         <move todir="${dspace.dir}/webapps.bak-${build.date}" failonerror="no">
             <fileset dir="${dspace.dir}/webapps">
@@ -667,7 +684,19 @@ Common usage:
 ====================================================================
         </echo>
 
-	</target>
+    </target>
+
+    <target name="remove_old_webapps" if="disable_backup">
+
+        <delete failonerror="no" dir="${dspace.dir}/webapps" />
+
+        <echo>
+====================================================================
+ ${dspace.dir}/webapps was deleted
+====================================================================
+        </echo>
+
+    </target>
 
 
     <!-- ============================================================= -->

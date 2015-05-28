@@ -32,6 +32,11 @@
                 xmlns:confman="org.dspace.core.ConfigurationManager"
                 exclude-result-prefixes="i18n dri mets xlink xsl dim xhtml mods dc confman">
 
+    <!-- The trails contains the breadcrumbs fot the site navigation -->
+    <xsl:import href="../trail.xsl"/>
+    <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
+    <xsl:import href="../footer.xsl"/>
+
     <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 
     <!--
@@ -477,114 +482,6 @@
 
     </xsl:template>
 
-
-    <!-- The header (distinct from the HTML head element) contains the title, subtitle, login box and various
-        placeholders for header images -->
-    <xsl:template name="buildTrail">
-        <div class="trail-wrapper hidden-print">
-            <div class="container">
-                <div class="row">
-                    <!--TODO-->
-                    <div class="col-xs-12">
-                        <xsl:choose>
-                            <xsl:when test="count(/dri:document/dri:meta/dri:pageMeta/dri:trail) > 1">
-                                <div class="breadcrumb dropdown visible-xs">
-                                    <a id="trail-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
-                                       data-toggle="dropdown">
-                                        <xsl:variable name="last-node"
-                                                      select="/dri:document/dri:meta/dri:pageMeta/dri:trail[last()]"/>
-                                        <xsl:choose>
-                                            <xsl:when test="$last-node/i18n:*">
-                                                <xsl:apply-templates select="$last-node/*"/>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <xsl:apply-templates select="$last-node/text()"/>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                        <xsl:text>&#160;</xsl:text>
-                                        <b class="caret"/>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="trail-dropdown-toggle">
-                                        <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"
-                                                             mode="dropdown"/>
-                                    </ul>
-                                </div>
-                                <ul class="breadcrumb hidden-xs">
-                                    <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
-                                </ul>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <ul class="breadcrumb">
-                                    <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>
-                                </ul>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </xsl:template>
-
-    <!--The Trail-->
-    <xsl:template match="dri:trail">
-        <!--put an arrow between the parts of the trail-->
-        <li>
-            <xsl:if test="position()=1">
-                <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
-            </xsl:if>
-            <!-- Determine whether we are dealing with a link or plain text trail link -->
-            <xsl:choose>
-                <xsl:when test="./@target">
-                    <a>
-                        <xsl:attribute name="href">
-                            <xsl:value-of select="./@target"/>
-                        </xsl:attribute>
-                        <xsl:apply-templates />
-                    </a>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="class">active</xsl:attribute>
-                    <xsl:apply-templates />
-                </xsl:otherwise>
-            </xsl:choose>
-        </li>
-    </xsl:template>
-
-    <xsl:template match="dri:trail" mode="dropdown">
-        <!--put an arrow between the parts of the trail-->
-        <li role="presentation">
-            <!-- Determine whether we are dealing with a link or plain text trail link -->
-            <xsl:choose>
-                <xsl:when test="./@target">
-                    <a role="menuitem">
-                        <xsl:attribute name="href">
-                            <xsl:value-of select="./@target"/>
-                        </xsl:attribute>
-                        <xsl:if test="position()=1">
-                            <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
-                        </xsl:if>
-                        <xsl:apply-templates />
-                    </a>
-                </xsl:when>
-                <xsl:when test="position() > 1 and position() = last()">
-                    <xsl:attribute name="class">disabled</xsl:attribute>
-                    <a role="menuitem" href="#">
-                        <xsl:apply-templates />
-                    </a>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="class">active</xsl:attribute>
-                    <xsl:if test="position()=1">
-                        <i class="glyphicon glyphicon-home" aria-hidden="true"/>&#160;
-                    </xsl:if>
-                    <xsl:apply-templates />
-                </xsl:otherwise>
-            </xsl:choose>
-        </li>
-    </xsl:template>
-
     <!--The License-->
     <xsl:template name="cc-license">
         <xsl:param name="metadataURL"/>
@@ -687,13 +584,6 @@
                  <xsl:value-of select="$ccLicenseName"/>
              </xsl:attribute>
         </img>
-    </xsl:template>
-
-    <!-- Like the header, the footer contains various miscellaneous text, links, and image placeholders -->
-    <xsl:template name="buildFooter">
-        <footer>
-                
-        </footer>
     </xsl:template>
 
 

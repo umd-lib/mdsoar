@@ -105,6 +105,13 @@
         </profile>
 
         <profile>
+            <id>mirage2-communities</id>
+            <modules>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
+
+        <profile>
             <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -116,6 +123,7 @@
                 <module>solr</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
             </modules>
         </profile>
 
@@ -137,6 +145,7 @@
                 <module>solr</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
             </modules>
         </profile>
 
@@ -148,6 +157,7 @@
             <modules>
                 <module>xmlui</module>
                 <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
             </modules>
         </profile>
 
@@ -167,6 +177,7 @@
                 <module>solr</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
             </modules>
         </profile>
     </profiles>

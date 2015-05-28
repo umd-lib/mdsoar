@@ -181,6 +181,9 @@
         <!-- <theme name="Test Theme 1" handle="123456789/1" path="theme1/"/>    -->
         <!-- <theme name="Test Theme 2" regex="community-list" path="theme2/"/> -->
 
+	<!-- Community Themes -->
+        <theme name="Frostburg Community Theme" handle="11603/1" path="FrostburgStateUniversity/"/>    
+	
         <!-- Mirage theme, @mire contributed theme, default since DSpace 3.0 -->
         <theme name="Mirage 2" regex=".*" path="Mirage2/" />
 

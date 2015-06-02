@@ -31,7 +31,7 @@
         <footer>
         	 <div class="row">
                     <hr/>
-                    <div class="col-xs-7 col-sm-8">
+                    <div class="col-xs-12 col-sm-12 community_footer">
                         <div>
                             Lewis J. Ort Library<br/>
                             Frostburg State University<br/>
@@ -42,12 +42,6 @@
                             E-mail: acklose@frostburg.edu<br/>
                             Phone: 301-687-4252
                         </div>
-                    </div>
-                    <div class="col-xs-5 col-sm-4 hidden-print">
-                        <div class="pull-right">
-                            
-                        </div>
-
                     </div>
                 </div>
                 <!--Invisible link to HTML sitemap (for search engines) -->

@@ -183,7 +183,8 @@
 
 	<!-- Community Themes -->
         <theme name="Frostburg Community Theme" handle="11603/1" path="FrostburgStateUniversity/"/>    
-	
+        <theme name="Goucher College Theme" handle="11603/2" path="GoucherCollege/"/>    
+        
         <!-- Mirage theme, @mire contributed theme, default since DSpace 3.0 -->
         <theme name="Mirage 2" regex=".*" path="Mirage2/" />
 

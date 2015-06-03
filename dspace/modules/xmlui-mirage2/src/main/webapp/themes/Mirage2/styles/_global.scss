@@ -16,10 +16,10 @@ header .navbar-default .navbar-toggle > li > a, header .navbar-default .navbar-n
 { background-color: #484848; border-color: #000; color: #fff; z-index: 2; }
 
 header .navbar-brand img
-{ height: 50px; }
+{ height: 60px; }
 
 .navbar-brand
-{ padding: 5px 15px 0 }
+{ float: left; font-size: 18px; height: 60px; line-height: 20px; padding: 5px 15px 0; }
 
 a
 { color: #0678be; }

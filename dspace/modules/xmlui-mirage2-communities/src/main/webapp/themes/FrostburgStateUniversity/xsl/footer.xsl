@@ -33,14 +33,18 @@
                     <hr/>
                     <div class="col-xs-12 col-sm-12 community_footer">
                         <div>
-                            Lewis J. Ort Library<br/>
-                            Frostburg State University<br/>
-                            1 Susan Eisel Drive<br/>
-                            Frostburg, MD 21532<br/>
-                            http://www.frostburg.edu/lewis-ort-library/<br/>
-                            <br/>
-                            E-mail: acklose@frostburg.edu<br/>
-                            Phone: 301-687-4252
+                            <img src="{$theme-path}/images/community_logo.png" />
+                            <p>
+                                <br/>
+                                Lewis J. Ort Library<br/>
+                                Frostburg State University<br/>
+                                1 Susan Eisel Drive<br/>
+                                Frostburg, MD 21532<br/>
+                                http://www.frostburg.edu/lewis-ort-library/<br/>
+                                <br/>
+                                E-mail: acklose@frostburg.edu<br/>
+                                Phone: 301-687-4252
+                            </p>
                         </div>
                     </div>
                 </div>

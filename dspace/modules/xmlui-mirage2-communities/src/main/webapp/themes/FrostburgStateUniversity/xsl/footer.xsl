@@ -40,7 +40,7 @@
                                 Frostburg State University<br/>
                                 1 Susan Eisel Drive<br/>
                                 Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
+                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/</a><br/>
                                 <br/>
                                 E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
                                 Phone: <a href="tel:3016874252">301-687-4252</a>

@@ -36,14 +36,16 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
+                                Salisbury University<br/>
+                                Blackwell Library<br/>
+                                1101 Camden Ave.<br/>
+                                Salisbury, MD 21801<br/>
                                 <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                <a href="http://www.salisbury.edu">www.salisbury.edu</a><br/>
+                                <br/>
+                                Contact Information:<br/>
+                                Email: <a href="mailto:lahanscom@salisbury.edu">lahanscom@salisbury.edu</a><br/>
+                                Phone: <a href="tel:4105436206">410.543.6206</a>
                             </p>
                         </div>
                     </div>

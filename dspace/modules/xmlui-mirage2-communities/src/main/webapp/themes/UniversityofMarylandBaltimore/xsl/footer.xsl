@@ -36,14 +36,14 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
+                                University of Maryland, Baltimore<br/>
+                                Health Sciences and Human Services Library<br/>
+                                601 West Lombard St.<br/>
+                                Baltimore, MD 20201<br/>
                                 <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                <a href="http://www.hshsl.umaryland.edu/">http://www.hshsl.umaryland.edu/</a><br/>
+                                <br/>
+                                Contact: <a href="mailto:nlin@hshsl.umaryland.edu">nlin@hshsl.umaryland.edu</a>
                             </p>
                         </div>
                     </div>

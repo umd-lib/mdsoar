@@ -36,14 +36,9 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
-                                <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                Loyola  Notre Dame Library<br/>
+                                200 Winston Avenue<br/>
+                                Baltimore, MD 21212
                             </p>
                         </div>
                     </div>

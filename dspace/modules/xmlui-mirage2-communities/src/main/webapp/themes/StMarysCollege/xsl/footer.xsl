@@ -36,14 +36,16 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
+                                St. Mary's College of Maryland Library<br/>
+                                18952 East Fisher Road<br/>
+                                St. Mary's City, MD 20686<br/>
                                 <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                <a href="http://www.smcm.edu/library">http://www.smcm.edu/library</a><br/>
+                                <br/>
+                                Email: <a href="mailto:khryner@smcm.edu">lkhryner@smcm.edu</a><br/>
+                                Phone: <a href="tel:4105436206">410.543.6206</a><br/>
+                                <br/>
+                                URL for institution MD-SOAR information: <a href="http://www.smcm.edu/library/md-soar">http://www.smcm.edu/library/md-soar</a>
                             </p>
                         </div>
                     </div>

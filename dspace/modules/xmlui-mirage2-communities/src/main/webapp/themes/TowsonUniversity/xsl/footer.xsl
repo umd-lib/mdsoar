@@ -36,14 +36,17 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/<br/>
+                                Towson University<br/>
+                                8000 York Road<br/>
+                                Towson, Maryland 21252<br/>
                                 <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                Website:<br/>
+                                <a href="http://www.towson.edu">www.towson.edu</a><br/>
+                                <br/>
+                                Contact Info:<br/>
+                                <a href="mailto:azukowski@towson.edu">azukowski@towson.edu</a><br/>
+                                <a href="tel:4107045318">410-704-5318</a><br/>
+                                <a href="http://libraries.towson.edu/md-soar">http://libraries.towson.edu/md-soar</a><br/>
                             </p>
                         </div>
                     </div>

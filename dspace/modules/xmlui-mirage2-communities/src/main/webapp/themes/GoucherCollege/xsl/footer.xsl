@@ -36,14 +36,15 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Lewis J. Ort Library<br/>
-                                Frostburg State University<br/>
-                                1 Susan Eisel Drive<br/>
-                                Frostburg, MD 21532<br/>
-                                <a href="http://www.frostburg.edu/lewis-ort-library/">http://www.frostburg.edu/lewis-ort-library/</a><br/>
+                                Goucher College<br/>
+                                1021 Dulaney Valley Road<br/>
+                                Baltimore, MD 21204<br/>
                                 <br/>
-                                E-mail: <a href="mailto:acklose@frostburg.edu">acklose@frostburg.edu</a><br/>
-                                Phone: <a href="tel:3016874252">301-687-4252</a>
+                                <a href="http://www.goucher.edu">www.goucher.edu</a><br/>
+                                <br/>
+                                Contact Information:<br/>
+                                <a href="mailto:kristen.welzenbach@goucher.edu">kristen.welzenbach@goucher.edu</a><br/>
+                                <a href="http://library.goucher.edu/md-soar">library.goucher.edu/md-soar</a>
                             </p>
                         </div>
                     </div>

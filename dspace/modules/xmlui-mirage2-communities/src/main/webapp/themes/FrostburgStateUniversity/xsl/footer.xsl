@@ -33,7 +33,7 @@
                     <hr/>
                     <div class="col-xs-12 col-sm-12 community_footer">
                         <div>
-                            <img src="{$theme-path}/images/community_logo.png" />
+                            <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
                                 Lewis J. Ort Library<br/>

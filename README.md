@@ -9,6 +9,7 @@ The original DSpace documentation:
 * [README](README)
 * [DSpace Manual](dspace/docs/pdf/DSpace-Manual.pdf)
 * [Theme Customization](dspace/docs/ThemeCustomization.md)
+* [Mirage2 Prerequisites on Server](dspace/docs/Mirage2PrerequisitesOnServer.md)
 
 ### Installation
 Instructions for installing in UMD Libraries development environments (Mac OS-X):

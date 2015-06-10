@@ -21,7 +21,7 @@
         <root.basedir>${basedir}/../../..</root.basedir>
         <grunt.environment>prod</grunt.environment>
         <grunt.color.scheme>classic_mirage_color_scheme</grunt.color.scheme>
-        <mirage2.deps.included>true</mirage2.deps.included>
+        <mirage2.deps.included>false</mirage2.deps.included>
         <!-- Versions of build dependencies to be auto-installed when "mirage2.deps.included=true" -->
         <sass.version>3.3.14</sass.version>
         <compass.version>1.0.1</compass.version>
@@ -213,6 +213,7 @@
         <profile>
             <id>mirage2-deps-preinstalled-fast</id>
             <activation>
+                <activeByDefault>true</activeByDefault>
                 <property>
                     <name>mirage2.deps.included</name>
                     <value>false</value>
@@ -337,7 +338,6 @@
         <profile>
             <id>mirage2-deps-included-slow</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
                 <property>
                     <name>mirage2.deps.included</name>
                     <value>true</value>

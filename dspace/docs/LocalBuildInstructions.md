@@ -73,3 +73,15 @@ Follow the documentation on the [mdsoar-vagrant](https://github.com/umd-lib/mdso
 
 ### Ant local build option
 Use the `ant update_local` option to do updates without creating backups of the previous deployment files. This would cut down on the time taken create the backups.
+
+## Mirage2 Prerequisites
+Follow the [instructions](../../dspace-xmlui-mirage2/readme.md#prerequisites-for-osx--linux) from the main dspace-xmlui-mirage2 project to install the prerequisites on your workstation. 
+
+Until the prerequisites are installed you need to add `-Dmirage2.deps.included=true` maven build parameter to include the prerequisites using maven:
+
+```
+mvn package -Denv=local -Dmirage2.deps.included=true
+```
+
+See [Mirage2PrerequisitesOnServer.md](./Mirage2PrerequisitesOnServer.md) for installing the prequisites on servers.
+

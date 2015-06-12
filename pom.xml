@@ -607,9 +607,7 @@
         <profile>
             <id>dspace-solr</id>
             <activation>
-                <file>
-                    <exists>dspace-solr/pom.xml</exists>
-                </file>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>dspace-solr</module>

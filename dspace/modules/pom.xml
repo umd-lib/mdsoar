@@ -85,6 +85,9 @@
             </modules>
         </profile>
         <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <id>dspace-solr</id>
             <modules>
                 <module>solr</module>
@@ -120,7 +123,6 @@
                 <module>xmlui</module>
                 <module>rdf</module>
                 <module>rest</module>
-                <module>solr</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>
                 <module>xmlui-mirage2-communities</module>
@@ -142,7 +144,6 @@
                 <module>rest</module>
                 <module>sword</module>
                 <module>swordv2</module>
-                <module>solr</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>
                 <module>xmlui-mirage2-communities</module>

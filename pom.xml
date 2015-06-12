@@ -530,7 +530,7 @@
         <profile>
             <id>dspace-oai</id>
             <activation>
-                <file>
+                 <file>
                     <exists>dspace-oai/pom.xml</exists>
                 </file>
             </activation>
@@ -545,9 +545,10 @@
         <profile>
             <id>dspace-jspui</id>
             <activation>
-                <file>
-                    <exists>dspace-jspui/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>dspace-jspui</module>
@@ -560,7 +561,7 @@
         <profile>
             <id>dspace-rdf</id>
             <activation>
-                <file>
+                 <file>
                     <exists>dspace-rdf/pom.xml</exists>
                 </file>
             </activation>
@@ -573,9 +574,9 @@
        <profile>
            <id>dspace-rest</id>
            <activation>
-               <file>
-                   <exists>dspace-rest/pom.xml</exists>
-               </file>
+                <file>
+                    <exists>dspace-rest/pom.xml</exists>
+                </file>
            </activation>
            <modules>
                <module>dspace-rest</module>
@@ -589,9 +590,10 @@
         <profile>
             <id>dspace-sword</id>
             <activation>
-                <file>
-                    <exists>dspace-sword/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>dspace-sword</module>
@@ -605,9 +607,7 @@
         <profile>
             <id>dspace-solr</id>
             <activation>
-                <file>
-                    <exists>dspace-solr/pom.xml</exists>
-                </file>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>dspace-solr</module>
@@ -620,9 +620,10 @@
         <profile>
             <id>dspace-swordv2</id>
             <activation>
-                <file>
-                    <exists>dspace-swordv2/pom.xml</exists>
-                </file>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
             </activation>
             <modules>
                 <module>dspace-swordv2</module>
@@ -675,6 +676,28 @@
             </modules>
         </profile>
 
+      <profile>
+         <id>all-modules</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <modules>
+             <module>dspace</module>
+             <module>dspace-api</module>
+             <module>dspace-jspui</module>
+             <module>dspace-lni</module>
+             <module>dspace-oai</module>
+             <module>dspace-rdf</module>
+             <module>dspace-rest</module>
+             <module>dspace-services</module>
+             <module>dspace-solr</module>
+             <module>dspace-sword</module>
+             <module>dspace-swordv2</module>
+             <module>dspace-xmlui-mirage2</module>
+             <module>dspace-xmlui</module>
+             <module>dspace</module>
+         </modules>
+      </profile>
 
       <!--
          The 'release' profile is used by the 'maven-release-plugin' (see above)

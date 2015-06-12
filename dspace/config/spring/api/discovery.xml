@@ -365,7 +365,36 @@
         <property name="indexFieldName" value="title"/>
         <property name="metadataFields">
             <list>
+                <value>dc.description.tableofcontents</value>
+                <value>dc.relation.hasversion</value>
+                <value>dc.relation.isbasedon</value>
+                <value>dc.relation.isformatof</value>
+                <value>dc.relation.ispartof</value>
+                <value>dc.relation.ispartofseries</value>
+                <value>dc.relation.isreferencedby</value>
+                <value>dc.relation.isreplacedby</value>
+                <value>dc.relation.isversionof</value>
+                <value>dc.relation.replaces</value>
+                <value>dc.relation.requires</value>
+                <value>dc.relation</value>
+                <value>dc.title.alternative</value>
                 <value>dc.title</value>
+                <value>dcterms.alternative</value>
+                <value>dcterms.hasFormat</value>
+                <value>dcterms.hasPart</value>
+                <value>dcterms.hasVersion</value>
+                <value>dcterms.isFormatOf</value>
+                <value>dcterms.isPartOf</value>
+                <value>dcterms.isReferencedBy</value>
+                <value>dcterms.isReplacedBy</value>
+                <value>dcterms.isRequiredBy</value>
+                <value>dcterms.isVersionOf</value>
+                <value>dcterms.references</value>
+                <value>dcterms.relation</value>
+                <value>dcterms.replaces</value>
+                <value>dcterms.requires</value>
+                <value>dcterms.tableOfContents</value>
+                <value>dcterms.title</value>
             </list>
         </property>
     </bean>
@@ -376,6 +405,7 @@
             <list>
                 <value>dc.contributor.author</value>
                 <value>dc.creator</value>
+                <value>dcterms.creator</value>
             </list>
         </property>
         <property name="facetLimit" value="10"/>
@@ -386,7 +416,20 @@
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
-                <value>dc.subject.*</value>
+                <value>dc.coverage.spatial</value>
+                <value>dc.coverage.temporal</value>
+                <value>dc.coverage</value>
+                <value>dc.subject.classification</value>
+                <value>dc.subject.ddc</value>
+                <value>dc.subject.lcc</value>
+                <value>dc.subject.lcsh</value>
+                <value>dc.subject.mesh</value>
+                <value>dc.subject.other</value>
+                <value>dc.subject</value>
+                <value>dcterms.temporal</value>
+                <value>dcterms.subject</value>
+                <value>dcterms.spatial</value>
+                <value>dcterms.coverage</value>
             </list>
         </property>
         <property name="facetLimit" value="10"/>
@@ -398,7 +441,16 @@
         <property name="indexFieldName" value="dateIssued"/>
         <property name="metadataFields">
             <list>
+                <value>dc.date.available</value>
+                <value>dc.date.copyright</value>
+                <value>dc.date.created</value>
                 <value>dc.date.issued</value>
+                <value>dc.date</value>
+                <value>dcterms.issued</value>
+                <value>dcterms.dateCopyrighted</value>
+                <value>dcterms.date</value>
+                <value>dcterms.created</value>
+                <value>dcterms.available</value>
             </list>
         </property>
         <property name="type" value="date"/>

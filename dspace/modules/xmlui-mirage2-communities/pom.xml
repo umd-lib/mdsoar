@@ -254,10 +254,28 @@
                                                 <overwrite>false</overwrite>
                                                 <resources>
                                                     <resource>
+                                                        <directory>${project.build.directory}/mirage2-global-extracted/themes/Mirage2</directory>
+                                                        <filtering>false</filtering>
+                                                        <includes>
+                                                            <include>images/**/*</include>
+                                                            <include>scripts/**/*</include>
+                                                            <include>styles/**/*</include>
+                                                            <include>templates/**/*</include>
+                                                            <include>vendor/**/*</include>
+                                                            <include>xsl/**/*</include>
+                                                        </includes>
+                                                    </resource>
+                                                    <resource>
                                                         <directory>${project.build.directory}/mirage2-source-extracted</directory>
                                                         <filtering>false</filtering>
                                                         <excludes>
                                                             <exclude>sitemap.xmap</exclude>
+                                                            <exclude>images</exclude>
+                                                            <exclude>scripts</exclude>
+                                                            <exclude>styles</exclude>
+                                                            <exclude>templates</exclude>
+                                                            <exclude>vendor</exclude>
+                                                            <exclude>xsl</exclude>
                                                         </excludes>
                                                     </resource>
                                                 </resources>

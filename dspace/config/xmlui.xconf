@@ -181,8 +181,21 @@
         <!-- <theme name="Test Theme 1" handle="123456789/1" path="theme1/"/>    -->
         <!-- <theme name="Test Theme 2" regex="community-list" path="theme2/"/> -->
 
+	    <!-- Community Themes -->
+        <theme name="Frostburg Community Theme" handle="11603/1" path="FrostburgStateUniversity/"/>    
+        <theme name="Goucher College Theme" handle="11603/2" path="GoucherCollege/"/>    
+        <theme name="Loyola Notre Dame Library Theme" handle="11603/6" path="LoyolaNotreDameLibrary/"/>    
+        <theme name="Maryland Institute College of Art Theme" handle="11603/7" path="MarylandInstituteCollegeofArt/"/>
+        <theme name="Morgan State University Theme" handle="11603/8" path="MorganStateUniversity/"/>
+        <theme name="Salisbury University Theme" handle="11603/9" path="SalisburyUniversity/"/>
+        <theme name="ScholarWorks@UMBC Theme" handle="11603/14" path="ScholarWorks@UMBC/"/>
+        <theme name="St. Mary's College Theme" handle="11603/10" path="StMarysCollege/"/>
+        <theme name="Towson University Theme" handle="11603/11" path="TowsonUniversity/"/>
+        <theme name="University of Baltimore Theme" handle="11603/12" path="UniversityofBaltimore/"/>
+        <theme name="University of Maryland Baltimore Theme" handle="11603/13" path="UniversityofMarylandBaltimore/"/>
+        
         <!-- Mirage theme, @mire contributed theme, default since DSpace 3.0 -->
-        <theme name="Atmire Mirage Theme" regex=".*" path="Mirage/" />
+        <theme name="Mirage 2" regex=".*" path="Mirage2/" />
 
         <!-- Reference theme, the default Manakin XMLUI layout up to DSpace 1.8 -->
         <!-- <theme name="Default Reference Theme" regex=".*" path="Reference/" /> -->

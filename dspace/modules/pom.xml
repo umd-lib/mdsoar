@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.dspace</groupId>
 		<artifactId>dspace-parent</artifactId>
-		<version>5.1</version>
+		<version>5.1-mdsoar-0</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
@@ -39,11 +39,6 @@
     <profiles>
         <profile>
             <id>dspace-xmlui</id>
-            <activation>
-                <file>
-                    <exists>xmlui/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>xmlui</module>
             </modules>
@@ -61,95 +56,131 @@
         </profile>
         <profile>
             <id>dspace-jspui</id>
-            <activation>
-                <file>
-                    <exists>jspui/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>jspui</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-rdf</id>
-            <activation>
-                <file>
-                    <exists>rdf/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>rdf</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-rest</id>
-            <activation>
-                <file>
-                    <exists>rest/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>rest</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-sword</id>
-            <activation>
-                <file>
-                    <exists>sword/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>sword</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-swordv2</id>
-            <activation>
-                <file>
-                    <exists>swordv2/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>swordv2</module>
             </modules>
         </profile>
         <profile>
-            <id>dspace-solr</id>
             <activation>
-                <file>
-                    <exists>solr/pom.xml</exists>
-                </file>
+                <activeByDefault>false</activeByDefault>
             </activation>
+            <id>dspace-solr</id>
             <modules>
                 <module>solr</module>
             </modules>
         </profile>
         <profile>
             <id>dspace-oai</id>
-            <activation>
-                <file>
-                    <exists>oai/pom.xml</exists>
-                </file>
-            </activation>
             <modules>
                 <module>oai</module>
             </modules>
         </profile>
 
         <profile>
-            <!--Activates mirage2 on the presence of the property mirage2.on with any value e.g. mvn clean package -Dmirage2.on=on
-                Note the absence of activeByDefault. This module is optional. Also activeByDefault only works when no other profiles are active.
-            -->
             <id>mirage2</id>
-            <activation>
-                <property>
-                    <name>mirage2.on</name>
-                </property>
-            </activation>
             <modules>
                 <module>xmlui-mirage2</module>
             </modules>
         </profile>
+
+        <profile>
+            <id>mirage2-communities</id>
+            <modules>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>oai</module>
+                <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>server</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>!local</value>
+                </property>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>jspui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>sword</module>
+                <module>swordv2</module>
+                <module>oai</module>
+                <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>xmlui-plus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>all-modules</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>xmlui</module>
+                <module>lni</module>
+                <module>jspui</module>
+                <module>rdf</module>
+                <module>rest</module>
+                <module>sword</module>
+                <module>swordv2</module>
+                <module>solr</module>
+                <module>oai</module>
+                <module>xmlui-mirage2</module>
+                <module>xmlui-mirage2-communities</module>
+            </modules>
+        </profile>
     </profiles>
+
 </project>

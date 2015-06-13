@@ -17,7 +17,14 @@
     ::selection { @content; }
 }
 
-@include selection {
-    color: white;
-    background: hotpink;
-}
+
+// global mirage 2 custom css includes
+@import 'global';
+
+/***********************
+
+WARNING: Any styles added in this file will not be included in the
+community themes. Use the _global.scss file to add any changes that
+needs to be included in the community themes.
+
+************************/

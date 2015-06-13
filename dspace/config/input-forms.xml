@@ -81,7 +81,7 @@
          <hint>Please give the date of previous publication or public distribution.
                         You can leave out the day and/or month if they aren't
                         applicable.</hint>
-         <required>You must enter at least the year.</required>
+         <required></required>
        </field>
 
        <field>
@@ -134,11 +134,11 @@ it, please enter the types and the actual numbers or codes.</hint>
          <dc-schema>dc</dc-schema>
          <dc-element>type</dc-element>
          <dc-qualifier></dc-qualifier>
-         <repeatable>true</repeatable>
+         <repeatable>false</repeatable>
          <label>Type</label>
          <input-type value-pairs-name="common_types">dropdown</input-type>
-         <hint>Select the type(s) of content of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
-         <required></required>
+         <hint>Select the type of content of the item.</hint>
+         <required>You must choose a type for this item.</required>
        </field>
 
        <field>
@@ -262,92 +262,40 @@ it, please enter the types and the actual numbers or codes.</hint>
 
    <value-pairs value-pairs-name="common_types" dc-term="type">
      <pair>
-       <displayed-value>Animation</displayed-value>
-       <stored-value>Animation</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Article</displayed-value>
-       <stored-value>Article</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Book</displayed-value>
-       <stored-value>Book</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Book chapter</displayed-value>
-       <stored-value>Book chapter</stored-value>
+       <displayed-value>Collection</displayed-value>
+       <stored-value>Collection</stored-value>
      </pair>
      <pair>
        <displayed-value>Dataset</displayed-value>
        <stored-value>Dataset</stored-value>
      </pair>
      <pair>
-       <displayed-value>Learning Object</displayed-value>
-       <stored-value>Learning Object</stored-value>
+       <displayed-value>Event</displayed-value>
+       <stored-value>Event</stored-value>
      </pair>
      <pair>
        <displayed-value>Image</displayed-value>
        <stored-value>Image</stored-value>
      </pair>
      <pair>
-       <displayed-value>Image, 3-D</displayed-value>
-       <stored-value>Image, 3-D</stored-value>
+       <displayed-value>Interactive Resource</displayed-value>
+       <stored-value>InteractiveResource</stored-value>
      </pair>
      <pair>
-       <displayed-value>Map</displayed-value>
-       <stored-value>Map</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Musical Score</displayed-value>
-       <stored-value>Musical Score</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Plan or blueprint</displayed-value>
-       <stored-value>Plan or blueprint</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Preprint</displayed-value>
-       <stored-value>Preprint</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Presentation</displayed-value>
-       <stored-value>Presentation</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Recording, acoustical</displayed-value>
-       <stored-value>Recording, acoustical</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Recording, musical</displayed-value>
-       <stored-value>Recording, musical</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Recording, oral</displayed-value>
-       <stored-value>Recording, oral</stored-value>
+       <displayed-value>Service</displayed-value>
+       <stored-value>Service</stored-value>
      </pair>
      <pair>
        <displayed-value>Software</displayed-value>
        <stored-value>Software</stored-value>
      </pair>
      <pair>
-       <displayed-value>Technical Report</displayed-value>
-       <stored-value>Technical Report</stored-value>
+       <displayed-value>Sound</displayed-value>
+       <stored-value>Sound</stored-value>
      </pair>
      <pair>
-       <displayed-value>Thesis</displayed-value>
-       <stored-value>Thesis</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Video</displayed-value>
-       <stored-value>Video</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Working Paper</displayed-value>
-       <stored-value>Working Paper</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Other</displayed-value>
-       <stored-value>Other</stored-value>
+       <displayed-value>Text</displayed-value>
+       <stored-value>Text</stored-value>
      </pair>
    </value-pairs>
 

@@ -1,0 +1,25 @@
+// Global Mirage2 CSS Includes and Overrides
+
+header .navbar-default
+{ background-color: #000; }
+
+header .navbar-default .navbar-toggle > li > a, header .navbar-default .navbar-nav > li > a
+{ color: #fdc948; }
+
+.trail-wrapper
+{ background-color: #fff; border-bottom: 2px solid #960000; }
+
+.btn-primary
+{ background-color: #333; border-color: #111; color: #fdc948; }
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus
+{ background-color: #484848; border-color: #000; color: #fff; z-index: 2; }
+
+header .navbar-brand img
+{ height: 60px; }
+
+.navbar-brand
+{ float: left; font-size: 18px; height: 60px; line-height: 20px; padding: 5px 15px 0; }
+
+a
+{ color: #0678be; }

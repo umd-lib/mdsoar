@@ -36,12 +36,15 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Institution address: 1000 Hilltop Circle, Baltimore, MD 21250<br/>
-                                Institution website URL: <a href="http://aok.lib.umbc.edu">aok.lib.umbc.edu</a><br/>
-                                Email: <a href="mailto:digitalrepository@lists.umbc.edu">digitalrepository@lists.umbc.edu</a><br/>
-                                Phone number: <a href="tel:4104553021">410-455-3021</a><br/>
-                                URL for form submission: <a href="http://aok.lib.umbc.edu/md-soar/submission">aok.lib.umbc.edu/md-soar/submission</a><br/>
-                                URL for per institution MD-SOAR information: <a href="http://aok.lib.umbc.edu/md-soar/information">aok.lib.umbc.edu/md-soar/information</a>
+                                Albin O. Kuhn Library & Gallery<br/>
+                                University of Maryland, Baltimore County<br/>
+                                1000 Hilltop Circle<br/>
+                                Baltimore, MD 21250<br/>
+                                <a href="http://aok.lib.umbc.edu/md-soar/information">aok.lib.umbc.edu/md-soar/information</a><br/><br/>
+
+                                Contact information:<br/>
+                                Email: <a href="mailto:scholarworks-group@umbc.edu">scholarworks-group@umbc.edu</a><br/>
+                                Phone: <a href="tel:4104553021">410-455-3021</a><br/>
                             </p>
                         </div>
                     </div>

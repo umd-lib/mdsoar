@@ -61,6 +61,9 @@
                     <xsl:when test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
                         <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
                     </xsl:when>
+                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='creator']">
+                        <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='creator']" />
+                    </xsl:when>
                     <xsl:otherwise>
                         <creator>
                             <creatorName>(:unkn) unknown</creatorName>

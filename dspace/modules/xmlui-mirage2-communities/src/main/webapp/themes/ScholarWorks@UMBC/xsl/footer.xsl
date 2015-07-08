@@ -36,7 +36,7 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Albin O. Kuhn Library & Gallery<br/>
+                                Albin O. Kuhn Library &amp; Gallery<br/>
                                 University of Maryland, Baltimore County<br/>
                                 1000 Hilltop Circle<br/>
                                 Baltimore, MD 21250<br/>

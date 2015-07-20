@@ -58,8 +58,13 @@
             -->
             <creators>
                 <xsl:choose>
-                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
-                        <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                    <xsl:when test="(//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']) or (//dspace:field[@mdschema='dc' and @element='creator'])">
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                        </xsl:if>
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='creator']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='creator']" />
+                        </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
                         <creator>
@@ -148,6 +153,13 @@
     
     <!-- DataCite (2) :: Creator -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+        <creator>
+            <creatorName>
+                <xsl:value-of select="." />
+            </creatorName>
+        </creator>
+    </xsl:template>
+    <xsl:template match="//dspace:field[@mdschema='dc' and @element='creator']">
         <creator>
             <creatorName>
                 <xsl:value-of select="." />

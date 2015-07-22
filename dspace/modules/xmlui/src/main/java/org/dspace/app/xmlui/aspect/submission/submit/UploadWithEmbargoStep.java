@@ -98,7 +98,10 @@ public class UploadWithEmbargoStep extends UploadStep
         message("xmlui.Submission.submit.UploadWithEmbargoStep.checksum");
     protected static final Message T_submit_remove = 
         message("xmlui.Submission.submit.UploadWithEmbargoStep.submit_remove");
-
+    /** is the upload required? */
+    protected boolean fileRequired = 
+    		ConfigurationManager.getBooleanProperty("webui.submit.upload.required", true);
+    
     /**
      * Global reference to edit file page
      * (this is used when a user requests to edit a bitstream)
@@ -212,7 +215,9 @@ public class UploadWithEmbargoStep extends UploadStep
 	        File file = upload.addItem().addFile("file");
 	        file.setLabel(T_file);
 	        file.setHelp(T_file_help);
-	        file.setRequired();
+	        if(fileRequired){
+            	file.setRequired();
+            }
 	        
 	        // if no files found error was thrown by processing class, display it!
 	        if (this.errorFlag==org.dspace.submit.step.UploadWithEmbargoStep.STATUS_NO_FILES_ERROR)

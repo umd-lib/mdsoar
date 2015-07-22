@@ -140,6 +140,9 @@ public class UploadStep extends AbstractSubmissionStep
     protected static final Message T_sherpa_more =
             message("xmlui.aspect.sherpa.submission.more");
 
+    /** is the upload required? */
+    protected boolean fileRequired = 
+    		ConfigurationManager.getBooleanProperty("webui.submit.upload.required", true);
     /**
      * Global reference to edit file page
      * (this is used when a user requests to edit a bitstream)
@@ -217,8 +220,10 @@ public class UploadStep extends AbstractSubmissionStep
             File file = upload.addItem().addFile("file");
             file.setLabel(T_file);
             file.setHelp(T_file_help);
-            file.setRequired();
-
+            if(fileRequired){
+            	file.setRequired();
+            }
+            
             // if no files found error was thrown by processing class, display it!
             if (this.errorFlag==org.dspace.submit.step.UploadStep.STATUS_NO_FILES_ERROR)
             {

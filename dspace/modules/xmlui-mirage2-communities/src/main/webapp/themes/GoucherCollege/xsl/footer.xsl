@@ -30,7 +30,6 @@
     <xsl:template name="buildFooter">
         <footer>
         	 <div class="row">
-                    <hr/>
                     <div class="col-xs-12 col-sm-12 community_footer">
                         <div>
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
@@ -45,6 +44,11 @@
                                 Contact Information:<br/>
                                 <a href="mailto:kristen.welzenbach@goucher.edu">kristen.welzenbach@goucher.edu</a><br/>
                                 <a href="http://library.goucher.edu/md-soar">library.goucher.edu/md-soar</a>
+                            </p>
+                            <hr/>
+                            <p>
+                                If you wish to submit a copyright complaint or withdrawal request, please email 
+                                <a href="mailto:mdsoar-help@umd.edu?subject=Takedown%20Request&amp;body=In%20your%20request,%20please%20include%20a%20link%20to%20the%20resource">mdsoar-help@umd.edu</a>.
                             </p>
                         </div>
                     </div>

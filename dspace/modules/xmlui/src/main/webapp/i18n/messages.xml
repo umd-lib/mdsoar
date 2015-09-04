@@ -185,6 +185,10 @@
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.item.dateaccessioned">Browsing {0} by Submit Date {1}</message>
 	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.item.dateaccessioned">Browsing {0} by Submit Date</message>
 
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.type.column_heading">Type</message>
+
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.title.metadata.type">Browsing {0} by Type {1}</message>
+	<message key="xmlui.ArtifactBrowser.ConfigurableBrowse.trail.metadata.type">Browsing {0} by Type </message>
 
 	<!-- org.dspace.app.xmlui.administrative.WithdrawnItems.java -->
 	<message key="xmlui.Administrative.WithdrawnItems.title.item.title">Withdrawn Items by Title</message>
@@ -281,6 +285,7 @@
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_dateaccessioned">By Submit Date</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.head_this_collection">This Collection</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.head_this_community">This Community</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.browse_type">Type</message>
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.SimpleSearch.java -->
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.title">Search</message>
@@ -288,6 +293,15 @@
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.head">Search</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.search_scope">Search Scope</message>
 	<message key="xmlui.ArtifactBrowser.SimpleSearch.full_text_search">Full Text Search</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.type">Type</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.identifier">Identifier</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.language">Language</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.publisher">Publisher</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.advisor">Advisor</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.department">Department</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.illustrator">Illustrator</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.editor">Editor</message>
+	<message key="xmlui.ArtifactBrowser.SimpleSearch.filter.description">Description</message>
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.RestrictedItem.java -->
 	<message key="xmlui.ArtifactBrowser.RestrictedItem.title">This resource is restricted</message>

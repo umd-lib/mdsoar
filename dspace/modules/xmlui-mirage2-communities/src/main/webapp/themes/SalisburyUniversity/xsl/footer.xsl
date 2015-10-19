@@ -43,7 +43,7 @@
                                 <a href="http://www.salisbury.edu">www.salisbury.edu</a><br/>
                                 <br/>
                                 Contact Information:<br/>
-                                Email: <a href="mailto:lahanscom@salisbury.edu">lahanscom@salisbury.edu</a><br/>
+                                Email: <a href="mailto:SOAR@salisbury.edu">SOAR@salisbury.edu</a><br/>
                                 Phone: <a href="tel:4105436206">410.543.6206</a>
                             </p>
                             <hr/>

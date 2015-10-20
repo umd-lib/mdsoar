@@ -2223,13 +2223,18 @@
 
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Preview</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Title</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-author">Author</message>
+        <message key="xmlui.dri2xhtml.METS-1.0.item-author">Author/Creator</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract">Abstract</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-description">Description</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">URI</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">Permanent Link</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Date</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subjects</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-type">Type of Work</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-department">Department</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-program">Program</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-citation">Citation of Original Publication</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-rights">Rights</message>
 
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-head">Files in this item</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-file">Files</message>

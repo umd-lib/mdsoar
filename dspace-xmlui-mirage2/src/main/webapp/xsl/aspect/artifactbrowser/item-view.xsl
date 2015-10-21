@@ -451,7 +451,10 @@
         <xsl:call-template name="itemSummaryView-DIM-title"/>
         <div class="ds-table-responsive">
             <table class="ds-includeSet-table detailtable table table-striped table-hover">
-                <xsl:apply-templates mode="itemDetailView-DIM"/>
+                <xsl:apply-templates mode="itemDetailView-DIM">
+                    <xsl:sort select="@element"/>
+                    <xsl:sort select="@qualifier"/>
+                </xsl:apply-templates>
             </table>
         </div>
 

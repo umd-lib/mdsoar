@@ -117,6 +117,7 @@
                         </div>
                     </div>
                     <!-- TODO: files/links to files? -->
+                    <xsl:call-template name="itemSummaryView-DIM-file-links"/>
                     <xsl:call-template name="itemSummaryView-DIM-URI"/>
                     <xsl:call-template name="itemSummaryView-collections"/>
                     <xsl:if test="$ds_item_view_toggle_url != ''">

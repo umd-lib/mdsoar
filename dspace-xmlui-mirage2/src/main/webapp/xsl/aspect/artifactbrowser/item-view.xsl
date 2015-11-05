@@ -235,31 +235,26 @@
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors">
-        <xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">
-            <div class="simple-item-view-authors item-page-field-wrapper table">
-                <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h5>
-                <xsl:choose>
-                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author']">
-                        <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='creator']">
-                        <xsl:for-each select="dim:field[@element='creator']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='contributor']">
-                        <xsl:for-each select="dim:field[@element='contributor']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </div>
-        </xsl:if>
+      <div class="simple-item-view-authors item-page-field-wrapper table">
+      <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h5>
+      <xsl:choose>
+        <xsl:when test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()]">
+          <xsl:if test="dim:field[@element='contributor'][@qualifier='author']">
+            <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
+              <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+            </xsl:for-each>
+          </xsl:if>
+          <xsl:if test="dim:field[@element='creator']">
+            <xsl:for-each select="dim:field[@element='creator']">
+              <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+            </xsl:for-each>
+          </xsl:if>
+        </xsl:when>
+          <xsl:otherwise>
+            <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">

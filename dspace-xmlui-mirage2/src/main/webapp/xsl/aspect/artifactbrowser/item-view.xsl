@@ -107,7 +107,7 @@
         <div class="item-summary-view-metadata">
             <xsl:call-template name="itemSummaryView-DIM-title"/>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4 breakword">
                     <div class="row">
                         <div class="col-xs-6 col-sm-12">
                             <xsl:call-template name="itemSummaryView-DIM-thumbnail"/>

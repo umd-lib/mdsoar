@@ -26,3 +26,13 @@ a
 
 footer hr
 { display: block; border-top: 1px solid #D2D2D2; }
+
+.col-sm-4.breakword a {
+    word-wrap: break-word;
+}
+
+h5, .h5 {
+   font-size: 14px;
+   font-weight: 800;
+}
+

@@ -107,7 +107,7 @@
         <div class="item-summary-view-metadata">
             <xsl:call-template name="itemSummaryView-DIM-title"/>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-4 breakword">
                     <div class="row">
                         <div class="col-xs-6 col-sm-12">
                             <xsl:call-template name="itemSummaryView-DIM-thumbnail"/>
@@ -117,6 +117,7 @@
                         </div>
                     </div>
                     <!-- TODO: files/links to files? -->
+                    <xsl:call-template name="itemSummaryView-DIM-file-links"/>
                     <xsl:call-template name="itemSummaryView-DIM-URI"/>
                     <xsl:call-template name="itemSummaryView-collections"/>
                     <xsl:if test="$ds_item_view_toggle_url != ''">
@@ -234,31 +235,26 @@
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors">
-        <xsl:if test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()] or dim:field[@element='contributor' and descendant::text()]">
-            <div class="simple-item-view-authors item-page-field-wrapper table">
-                <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h5>
-                <xsl:choose>
-                    <xsl:when test="dim:field[@element='contributor'][@qualifier='author']">
-                        <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='creator']">
-                        <xsl:for-each select="dim:field[@element='creator']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:when test="dim:field[@element='contributor']">
-                        <xsl:for-each select="dim:field[@element='contributor']">
-                            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
-                        </xsl:for-each>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </div>
-        </xsl:if>
+      <div class="simple-item-view-authors item-page-field-wrapper table">
+      <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author</i18n:text></h5>
+      <xsl:choose>
+        <xsl:when test="dim:field[@element='contributor'][@qualifier='author' and descendant::text()] or dim:field[@element='creator' and descendant::text()]">
+          <xsl:if test="dim:field[@element='contributor'][@qualifier='author']">
+            <xsl:for-each select="dim:field[@element='contributor'][@qualifier='author']">
+              <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+            </xsl:for-each>
+          </xsl:if>
+          <xsl:if test="dim:field[@element='creator']">
+            <xsl:for-each select="dim:field[@element='creator']">
+              <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+            </xsl:for-each>
+          </xsl:if>
+        </xsl:when>
+          <xsl:otherwise>
+            <i18n:text>xmlui.dri2xhtml.METS-1.0.no-author</i18n:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-authors-entry">
@@ -313,12 +309,12 @@
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-date">
-        <xsl:if test="dim:field[(@element='date' or @element='created' or @element='dateAccepted' or @element='dateCopyrighted') and descendant::text()]">
+        <xsl:if test="dim:field[((@element='date' and @qualifier!='accessioned' and @qualifier!='available') or @element='created' or @element='dateAccepted' or @element='dateCopyrighted') and descendant::text()]">
             <div class="simple-item-view-date word-break item-page-field-wrapper table">
                 <h5>
                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-date</i18n:text>
                 </h5>
-                <xsl:for-each select="dim:field[@element='date' or @element='created' or @element='dateAccepted' or @element='dateCopyrighted']">
+                <xsl:for-each select="dim:field[(@element='date' and @qualifier!='accessioned' and @qualifier!='available') or @element='created' or @element='dateAccepted' or @element='dateCopyrighted']">
                     <xsl:copy-of select="substring(./node(),1,10)"/>
                     <xsl:if test="count(following-sibling::dim:field[@element='date' or @element='created' or @element='dateAccepted' or @element='dateCopyrighted']) != 0">
                         <br/>

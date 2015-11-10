@@ -410,12 +410,50 @@
                 <h5>
                     <i18n:text>xmlui.dri2xhtml.METS-1.0.item-subject</i18n:text>
                 </h5>
-                <xsl:for-each select="dim:field[@element='subject' or @element='coverage']">
+                <xsl:if test="dim:field[@element='subject' and not(@qualifier)]">
+                  <xsl:for-each select="dim:field[@element='subject' and not(@qualifier)]">
                     <xsl:copy-of select="./node()"/>
-                    <xsl:if test="count(following-sibling::dim:field[@element='subject' or @element='coverage']) != 0">
+                    <xsl:if test="count(following-sibling::dim:field[@element='subject' and not(@qualifier)]) != 0">
                         <br/>
                     </xsl:if>
-                </xsl:for-each>
+                  </xsl:for-each>
+                  <br/>
+                </xsl:if>
+                <xsl:if test="dim:field[@element='subject' and @qualifier='lcsh']">
+                  <xsl:for-each select="dim:field[@element='subject' and @qualifier='lcsh']">
+                    <xsl:copy-of select="./node()"/>
+                    <xsl:if test="count(following-sibling::dim:field[@element='subject' and @qualifier='lcsh']) != 0">
+                        <br/>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <br/>
+                </xsl:if>
+                <xsl:if test="dim:field[@element='subject' and @qualifier='mesh']">
+                  <xsl:for-each select="dim:field[@element='subject' and @qualifier='mesh']">
+                    <xsl:copy-of select="./node()"/>
+                    <xsl:if test="count(following-sibling::dim:field[@element='subject' and @qualifier='mesh']) != 0">
+                        <br/>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <br/>
+                </xsl:if>
+                <xsl:if test="dim:field[@element='coverage' and @qualifier='temporal']">
+                  <xsl:for-each select="dim:field[@element='coverage' and @qualifier='temporal']">
+                    <xsl:copy-of select="./node()"/>
+                    <xsl:if test="count(following-sibling::dim:field[@element='coverage' and @qualifier='temporal']) != 0">
+                        <br/>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <br/>
+                </xsl:if>
+                <xsl:if test="dim:field[@element='coverage' and @qualifier='spatial']">
+                  <xsl:for-each select="dim:field[@element='coverage' and @qualifier='spatial']">
+                    <xsl:copy-of select="./node()"/>
+                    <xsl:if test="count(following-sibling::dim:field[@element='coverage' and @qualifier='spatial']) != 0">
+                        <br/>
+                    </xsl:if>
+                  </xsl:for-each>
+                </xsl:if>
             </div>
         </xsl:if>
     </xsl:template>

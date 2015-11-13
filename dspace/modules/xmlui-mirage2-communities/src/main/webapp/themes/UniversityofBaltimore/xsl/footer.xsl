@@ -35,11 +35,13 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
+                                ScholarlyWorks Team<br/>
+                                Langsdale Library<br/>
                                 University of Baltimore<br/>
                                 1415 Maryland Ave.<br/>
                                 Baltimore, MD 21201<br/>
-                                <br/>
-                                Website: <a href="http://ubalt.edu">ubalt.edu</a>
+                                Email: <a href="mailto:scholarlyworks@ubalt.edu">scholarlyworks@ubalt.edu</a><br/>
+                                Website: <a href="http://ubalt.libguides.com/ubscholarlyworks">http://ubalt.libguides.com/ubscholarlyworks</a>
                             </p>
                             <hr/>
                             <p>

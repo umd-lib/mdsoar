@@ -282,6 +282,14 @@ it, please enter the types and the actual numbers or codes.</hint>
        <stored-value>InteractiveResource</stored-value>
      </pair>
      <pair>
+       <displayed-value>Moving Image</displayed-value>
+       <stored-value>MovingImage</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Physical Object</displayed-value>
+       <stored-value>PhysicalObject</stored-value>
+     </pair>
+     <pair>
        <displayed-value>Service</displayed-value>
        <stored-value>Service</stored-value>
      </pair>
@@ -292,6 +300,10 @@ it, please enter the types and the actual numbers or codes.</hint>
      <pair>
        <displayed-value>Sound</displayed-value>
        <stored-value>Sound</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Still Image</displayed-value>
+       <stored-value>StillImage</stored-value>
      </pair>
      <pair>
        <displayed-value>Text</displayed-value>

@@ -242,7 +242,6 @@
          <input-type>twobox</input-type>
          <hint>Enter appropriate subject keywords or phrases to describe the nature of the content of the item. For multiple subject keywords, enter one term or phrase at a time and then click “Add.”</hint>
          <required></required>
-         <vocabulary>srsc</vocabulary>
        </field>
 
        <field>

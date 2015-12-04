@@ -56,7 +56,7 @@
          <repeatable>true</repeatable>
          <label>Contributor(s)</label>
          <input-type>name</input-type>
-         <hint>Enter the names of any other contributors to the item (e.g. editors, illustrators, narrators, etc.)</hint>
+         <hint>Enter the name(s) of any other contributors to the item (e.g. editors, illustrators, narrators, etc.)</hint>
          <required></required>
        </field>
 
@@ -171,7 +171,7 @@
          <repeatable>true</repeatable>
          <label>Identifiers</label>
          <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-         <hint>If the item has any standard identification numbers or codes associated with it, select the type of identifier and enter the number or code..</hint>
+         <hint>If the item has any standard identification numbers or codes associated with it, select the type of identifier and enter the number or code.</hint>
          <required></required>
        </field>
 
@@ -251,7 +251,7 @@
          <repeatable>false</repeatable>
          <label>Abstract</label>
          <input-type>textarea</input-type>
-         <hint>Enter the abstract of the item. </hint>
+         <hint>Enter the abstract for the item.</hint>
          <required></required>
        </field>
 
@@ -417,12 +417,20 @@
        <stored-value>de</stored-value>
      </pair>
      <pair>
+       <displayed-value>Dutch</displayed-value>
+       <stored-value>nl</stored-value>
+     </pair>
+     <pair>
        <displayed-value>French</displayed-value>
        <stored-value>fr</stored-value>
      </pair>
      <pair>
        <displayed-value>Italian</displayed-value>
        <stored-value>it</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Latin</displayed-value>
+       <stored-value>la</stored-value>
      </pair>
      <pair>
        <displayed-value>Japanese</displayed-value>
@@ -435,6 +443,10 @@
      <pair>
        <displayed-value>Turkish</displayed-value>
        <stored-value>tr</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Hebrew</displayed-value>
+       <stored-value>he</stored-value>
      </pair>
      <pair>
        <displayed-value>(Other)</displayed-value>

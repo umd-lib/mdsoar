@@ -584,7 +584,7 @@
 	<!-- org.dspace.app.xmlui.eperson.RegistrationFinished.java -->
 	<message key="xmlui.EPerson.RegistrationFinished.title">Registration finished</message>
 	<message key="xmlui.EPerson.RegistrationFinished.head">Registration Finished</message>
-	<message key="xmlui.EPerson.RegistrationFinished.para1">You're now registered to use the MD-SOAR system.  You can subscribe to collections to receive email updates about new items.</message>
+	<message key="xmlui.EPerson.RegistrationFinished.para1"><p>You are now registered as a member within the MD-SOAR system. If you registered with an email address from a participating university, you will be contacted by a local community representative with instructions on how to upload your content in the very near future.</p> <p>To subscribe to any collections in your community to receive email updates about new items, login and go to "Subscriptions" in your "My Account Profile."</p></message>
 
 	<!-- org.dspace.app.xmlui.eperson.ResetPassword.java -->
 	<message key="xmlui.EPerson.ResetPassword.title">Reset password</message>

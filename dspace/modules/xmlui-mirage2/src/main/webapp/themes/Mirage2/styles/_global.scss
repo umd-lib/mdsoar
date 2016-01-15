@@ -41,3 +41,15 @@ h5, .h5 {
    font-weight: 800;
 }
 
+p, li {
+    font-size: 18px;
+}
+
+.pagination {
+    width: auto;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #428bca;
+}
+

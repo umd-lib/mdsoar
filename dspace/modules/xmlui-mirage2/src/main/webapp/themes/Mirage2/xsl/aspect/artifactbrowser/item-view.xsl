@@ -871,7 +871,19 @@
 
     <!-- Generate the license information from the file section -->
     <xsl:template match="mets:fileGrp[@USE='CC-LICENSE']" mode="simple">
-        <li><a href="{mets:file/mets:FLocat[@xlink:title='license_text']/@xlink:href}"><i18n:text>xmlui.dri2xhtml.structural.link_cc</i18n:text></a></li>
+        <!-- UMD Customization for LIBCIR-111 -->
+        <xsl:variable name="license_text_url" select="mets:file/mets:FLocat[@xlink:title='license_text']/@xlink:href" />
+        <li>
+            <xsl:choose>
+                <xsl:when test="$license_text_url != ''">
+                     <a href="{$license_text_url}"><i18n:text>xmlui.dri2xhtml.structural.link_cc</i18n:text></a>
+                </xsl:when>
+                <xsl:otherwise>
+                    <i18n:text>xmlui.dri2xhtml.structural.link_cc</i18n:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </li>
+        <!-- End UMD Customization for LIBCIR-111 -->
     </xsl:template>
 
     <!-- Generate the license information from the file section -->

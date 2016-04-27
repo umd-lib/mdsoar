@@ -711,6 +711,18 @@
                   ga('send', 'pageview');
            </xsl:text></script>
         </xsl:if>
+
+        <!-- Add a google tag manager code if the key is present - UMD Customization (LIBCIR-108) -->
+        <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='tm-container-id']">
+            <xsl:variable name="containerID" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='tm-container-id']" />
+            <noscript><iframe src="//www.googletagmanager.com/ns.html?id={$containerID}"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                  <script><xsl:text>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'</xsl:text><![CDATA[&]]><xsl:text>l='+l:'';j.async=true;j.src=
+                  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','</xsl:text><xsl:value-of select="$containerID" /><xsl:text>');</xsl:text></script>
+        </xsl:if>
     </xsl:template>
 
     <!--The Language Selection-->

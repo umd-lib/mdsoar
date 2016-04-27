@@ -186,7 +186,15 @@ public class Navigation extends AbstractDSpaceTransformer implements CacheablePr
                 analyticsKey = analyticsKey.trim();
                 pageMeta.addMetadata("google","analytics").addContent(analyticsKey);
         }
-        
+       
+        // UMD Customization (LIBCIR-108) 
+        String tagManagerContainerID = ConfigurationManager.getProperty("xmlui.google.tagmanager.container.id");
+        if (tagManagerContainerID != null && tagManagerContainerID.length() > 0)
+        {
+                tagManagerContainerID = tagManagerContainerID.trim();
+                pageMeta.addMetadata("google","tm-container-id").addContent(tagManagerContainerID);
+        }
+ 
         // add metadata for OpenSearch auto-discovery links if enabled
         if (ConfigurationManager.getBooleanProperty("websvc.opensearch.autolink"))
         {

@@ -53,3 +53,9 @@ h5, .h5 {
     color: #428bca;
 }
 
+/* Do not break words in item full record view. */
+#aspect_artifactbrowser_ItemViewer_div_item-view > div.ds-table-responsive > table > tbody > tr > td.word-break { 
+    word-break: normal; 
+    -moz-hyphens: none;
+}
+

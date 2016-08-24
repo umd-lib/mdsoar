@@ -36,15 +36,13 @@
                             <p>
                                 <br/>
                                 St. Mary's College of Maryland Library<br/>
-                                18952 East Fisher Road<br/>
+                                47645 College Drive<br/>
                                 St. Mary's City, MD 20686<br/>
                                 <br/>
                                 <a href="http://www.smcm.edu/library">http://www.smcm.edu/library</a><br/>
                                 <br/>
-                                Email: <a href="mailto:khryner@smcm.edu">lkhryner@smcm.edu</a><br/>
-                                Phone: <a href="tel:4105436206">410.543.6206</a><br/>
-                                <br/>
-                                URL for institution MD-SOAR information: <a href="http://www.smcm.edu/library/md-soar">http://www.smcm.edu/library/md-soar</a>
+                                Email: <a href="mailto:khryner@smcm.edu">khryner@smcm.edu</a><br/>
+                                Phone: <a href="tel:2408954260">240-895-4260</a><br/>
                             </p>
                             <hr/>
                             <p>

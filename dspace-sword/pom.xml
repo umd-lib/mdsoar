@@ -15,7 +15,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>dspace-parent</artifactId>
-      <version>5.5-mdsoar-1</version>
+      <version>5.5-mdsoar-2-SNASPSHOT</version>
       <relativePath>..</relativePath>
    </parent>
 

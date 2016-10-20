@@ -36,7 +36,7 @@
                             <p>
                                 <br/>
                                 Salisbury University<br/>
-                                Blackwell Library<br/>
+                                Guerrieri Academic Commons<br/>
                                 1101 Camden Ave.<br/>
                                 Salisbury, MD 21801<br/>
                                 <br/>

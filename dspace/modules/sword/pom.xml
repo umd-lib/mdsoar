@@ -16,11 +16,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>modules</artifactId>
-<<<<<<< HEAD
       <version>5.6-mdsoar-0-SNAPSHOT</version>
-=======
-      <version>5.6</version>
->>>>>>> dspace-5.6
       <relativePath>..</relativePath>
    </parent>
 

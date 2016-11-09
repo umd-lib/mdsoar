@@ -405,6 +405,15 @@
                                                     <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
                                                 </a>
                                             </li>
+                                            
+                                            <xsl:comment>Customization for LIBCIR-145</xsl:comment> 
+                                            <li>
+                                                <a href="/submissions">
+                                                    <i18n:text>xmlui.Submission.Navigation.submissions</i18n:text>
+                                                </a>
+                                            </li>
+                                            <xsl:comment>End Customization</xsl:comment>
+                                            
                                             <li>
                                                 <a href="{/dri:document/dri:meta/dri:userMeta/
                             dri:metadata[@element='identifier' and @qualifier='logoutURL']}">
@@ -457,6 +466,13 @@
                                                     <i18n:text>xmlui.EPerson.Navigation.profile</i18n:text>
                                                 </a>
                                             </li>
+                                            <xsl:comment>Customization for LIBCIR-145</xsl:comment> 
+                                            <li>
+                                                <a href="/submissions">
+                                                    <i18n:text>xmlui.Submission.Navigation.submissions</i18n:text>
+                                                </a>
+                                            </li>
+                                            <xsl:comment>End Customization</xsl:comment>
                                             <li>
                                                 <a href="{/dri:document/dri:meta/dri:userMeta/
                             dri:metadata[@element='identifier' and @qualifier='logoutURL']}">

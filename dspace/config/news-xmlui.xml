@@ -5,18 +5,18 @@
 		<head>Maryland Shared Open Access Repository</head>
 		<p>MD-SOAR is a shared digital repository platform for eleven colleges and universities in Maryland. It currently is funded entirely by the University System of Maryland and Affiliated Institutions (USMAI) Library Consortium (<xref target="http://usmai.org">usmai.org</xref>) but also includes other collaborating partner institutions. MD-SOAR is jointly governed by all participating libraries, who have agreed to share policies and practices that are necessary and appropriate for the shared platform. Within this broad framework, each library provides customized repository services and collections that meet local institutional needs. Please follow the links below to learn more about each library's repository services and collections.</p>
 		</div>
-		<head>Browse</head>			
+		<head>Browse</head>
 			<ul style="display:inline-block;">
-			<li><xref target="https://mdsoar.org/community-list">Communities and Collections </xref>|</li>
-			<li><xref target="https://mdsoar.org/browse?type=dateissued">By Issue Date </xref>|</li>
-			<li><xref target="https://mdsoar.org/browse?type=author">Authors </xref>|</li>
-			<li><xref target="https://mdsoar.org/browse?type=title">Titles </xref>|</li>
-			<li><xref target="https://mdsoar.org/browse?type=subject">Subjects </xref>|</li>
-			<li><xref target="https://mdsoar.org/browse?type=type">Type </xref></li>
+			<li><xref target="/community-list">Communities and Collections </xref>|</li>
+			<li><xref target="/browse?type=dateissued">By Issue Date </xref>|</li>
+			<li><xref target="/browse?type=author">Authors </xref>|</li>
+			<li><xref target="/browse?type=title">Titles </xref>|</li>
+			<li><xref target="/browse?type=subject">Subjects </xref>|</li>
+			<li><xref target="/browse?type=type">Type </xref></li>
 			</ul>
 		<br/>	
 		<br/><head>Submit</head>
-			<xref target="https://mdsoar.org/submit">Submit item to MD-SOAR</xref><br/><br/>			
+			<xref target="/submit">Submit item to MD-SOAR</xref><br/><br/>			
 	    <head>Institutions in MD-SOAR</head>
 	    <p>Select a community to browse its collections.</p><br/>	   
 		<div rend="community-browser-wrapper" id="aspect.artifactbrowser.CommunityBrowser.referenceSet.community-browser">

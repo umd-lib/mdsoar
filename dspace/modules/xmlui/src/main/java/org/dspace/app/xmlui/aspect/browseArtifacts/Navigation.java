@@ -111,23 +111,27 @@ public class Navigation extends AbstractDSpaceTransformer implements CacheablePr
         /* Create skeleton menu structure to ensure consistent order between aspects,
          * even if they are never used
          */
-        List browse = options.addList("browse");
-        options.addList("account");
+    	
+        // Customization for LIBCIR-134
+    	options.addList("account");
         options.addList("context");
         options.addList("administrative");
+        List browse = options.addList("browse");
 
 
-        browse.setHead(T_head_browse);
+        //browse.setHead(T_head_browse);
 
-        List browseGlobal = browse.addList("global");
+        //List browseGlobal = browse.addList("global");
         List browseContext = browse.addList("context");
 
-        browseGlobal.setHead(T_head_all_of_dspace);
+        //browseGlobal.setHead(T_head_all_of_dspace);
 
-        browseGlobal.addItemXref(contextPath + "/community-list",T_communities_and_collections);
+        //browseGlobal.addItemXref(contextPath + "/community-list",T_communities_and_collections);
 
         // Add the configured browse lists for 'top level' browsing
-        addBrowseOptions(browseGlobal, contextPath + "/browse");
+        //addBrowseOptions(browseGlobal, contextPath + "/browse");
+        
+        // End customization.
 
         DSpaceObject dso = HandleUtil.obtainHandle(objectModel);
         if (dso != null)
@@ -150,6 +154,10 @@ public class Navigation extends AbstractDSpaceTransformer implements CacheablePr
 
             // Add the configured browse lists for scoped browsing
             String handle = dso.getHandle();
+            
+            // Customization for LIBCIR-134
+            browse.setHead(T_head_browse);
+            // End Customization 
             addBrowseOptions(browseContext, contextPath + "/handle/" + handle + "/browse");
         }
     }

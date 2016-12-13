@@ -493,6 +493,9 @@
 	<message key="xmlui.EPerson.EditProfile.create_password_instructions">Please enter a password in the box below, and confirm it by typing it again into the second box. It should be at least six characters long.</message>
 	<message key="xmlui.EPerson.EditProfile.password">Password</message>
 	<message key="xmlui.EPerson.EditProfile.confirm_password">Retype to confirm</message>
+	<!-- Customization for LIBCIR-149 -->
+	<message key="xmlui.EPerson.EditProfile.required_field_note">* Indicates required field</message>
+	<!-- End Customization -->
 	<message key="xmlui.EPerson.EditProfile.submit_update">Complete Registration</message>
 	<message key="xmlui.EPerson.EditProfile.submit_create">Update Profile</message>
 	<message key="xmlui.EPerson.EditProfile.error_required">This field is required</message>

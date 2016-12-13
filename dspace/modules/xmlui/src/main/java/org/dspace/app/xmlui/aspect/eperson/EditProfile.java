@@ -68,8 +68,13 @@ public class EditProfile extends AbstractDSpaceTransformer
     private static Logger log = Logger.getLogger(EditProfile.class);
 
     /** Language string used: */
+    //Customization for LIBCIR-149
+    private static final Message T_required_field_note =
+        message("xmlui.EPerson.EditProfile.required_field_note");
+    //End Customization 
+   
     private static final Message T_title_create =
-        message("xmlui.EPerson.EditProfile.title_create");
+            message("xmlui.EPerson.EditProfile.title_create");
     
     private static final Message T_title_update =
         message("xmlui.EPerson.EditProfile.title_update");
@@ -425,6 +430,10 @@ public class EditProfile extends AbstractDSpaceTransformer
                passwordConfirm.addError(T_error_unconfirmed_password);
            }
        }
+      
+       //Customization for LIBCIR-149
+       form.addItem(T_required_field_note);
+       //End Customization
        
        Button submit = form.addItem().addButton("submit");
        if (registering)
@@ -437,8 +446,7 @@ public class EditProfile extends AbstractDSpaceTransformer
        }
        
        profile.addHidden("eperson-continue").setValue(knot.getId());
-       
-       
+
        
        if (!registering)
        {

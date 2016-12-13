@@ -433,6 +433,7 @@ public class EditProfile extends AbstractDSpaceTransformer
       
        //Customization for LIBCIR-149
        form.addItem(T_required_field_note);
+       form.addItem();
        //End Customization
        
        Button submit = form.addItem().addButton("submit");

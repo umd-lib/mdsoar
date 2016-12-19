@@ -649,6 +649,11 @@
                     <map:match pattern="*.html">
                         <map:read src="static/{1}.html"/>
                     </map:match>
+                    <!-- Customization for LIBCIR-144 -->
+                    <map:match pattern="*.pdf">
+                        <map:read src="static/{1}.pdf"/>
+                    </map:match>
+                    <!-- End customization --> 
                     <!-- Also, allow reference to globally static content via the /static path.
                         This will allow your globally static HTML docs to load static CSS or images. -->
                     <map:match pattern="static/*/**">

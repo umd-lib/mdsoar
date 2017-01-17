@@ -45,7 +45,10 @@
          <repeatable>true</repeatable>
          <label>Author(s)</label>
          <input-type>name</input-type>
-         <hint>Enter the name(s) of the author(s) of this item.</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>Enter the name(s) of the author(s) of this item. To add multiple authors, enter one name (last and first) at a time and then click “Add”.
+         </hint>
+		 <!-- End customization -->
          <required></required>
        </field>
 
@@ -56,7 +59,10 @@
          <repeatable>true</repeatable>
          <label>Contributor(s)</label>
          <input-type>name</input-type>
-         <hint>Enter the name(s) of any other contributors to the item (e.g. editors, illustrators, narrators, etc.)</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>Enter the name(s) of any other contributors to the item (e.g. editors, illustrators, narrators, etc.). To add multiple contributors, enter one name (last and first) at a time and then click “Add”.
+         </hint>
+		 <!-- End customization -->
          <required></required>
        </field>
 
@@ -67,7 +73,10 @@
          <repeatable>true</repeatable>
          <label>Advisor(s)</label>
          <input-type>name</input-type>
-         <hint>If applicable, enter the name(s) of the advisor(s) who oversaw the creation of this item.</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>If applicable, enter the name(s) of the advisor(s) who oversaw the creation of this item. To add multiple advisors, enter one name (last and first) at a time and then click “Add”.
+		 </hint>
+		 <!-- End customization -->
          <required></required>
        </field>
 
@@ -89,7 +98,10 @@
          <repeatable>true</repeatable>
          <label>Other Title(s)</label>
          <input-type>onebox</input-type>
-         <hint>If the item has any alternative titles, enter them here.</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>If the item has any alternative titles, enter them here. To add multiple alternative titles, enter one title at a time and then click “Add”.
+    	 </hint>
+		 <!-- End customization -->
          <required></required>
        </field>
 
@@ -137,7 +149,9 @@
          <repeatable>true</repeatable>
          <label>Series/Report</label>
          <input-type>series</input-type>
-         <hint>If the item is part of a series, enter the series name and the numbering for the item within the series.</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>If the item is part of a series, enter the series name and the numbering for the item within the series. To add multiple series, enter one series and numbering at a time and then click “Add”.</hint>
+         <!-- End customization -->
          <required></required>
        </field>
 
@@ -171,7 +185,9 @@
          <repeatable>true</repeatable>
          <label>Identifiers</label>
          <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-         <hint>If the item has any standard identification numbers or codes associated with it, select the type of identifier and enter the number or code.</hint>
+         <!-- Customization for LIBCIR-146 -->
+         <hint>If the item has any standard identification numbers or codes associated with it, select the type of identifier and enter the number or code. To add multiple identifiers, select the type of identifier and enter the number or code one at a time and then click “Add”.</hint>
+         <!--  End Customization -->
          <required></required>
        </field>
 
@@ -215,7 +231,9 @@
          <repeatable>false</repeatable>
          <label>Extent</label>
          <input-type>onebox</input-type>
-         <hint>Enter the extent of the item (e.g. pages, running time, dimensions, file size, etc.)</hint>
+         <!--  Customization for LIBCIR-146  -->
+         <hint>Enter a number (in Arabic numerals) and a unit of extent (e.g. pages, running time, dimensions, file size, etc.). A complete entry might look like “22 pages”, or “35 minutes”, or “8x10 inches”, etc.</hint>
+         <!--  End Customization -->
          <required></required>
        </field>
 
@@ -240,7 +258,9 @@
          <repeatable>true</repeatable>
          <label>Subject Keywords</label>
          <input-type>twobox</input-type>
-         <hint>Enter appropriate subject keywords or phrases to describe the nature of the content of the item. For multiple subject keywords, enter one term or phrase at a time and then click “Add.”</hint>
+         <!--  Customization for LIBCIR-146  -->
+         <hint>Enter appropriate subject keywords or phrases to describe the nature of the content of the item. To add multiple subject keywords, enter one term or phrase at a time and then click “Add”.</hint>
+         <!--  End Customization -->
          <required></required>
        </field>
 

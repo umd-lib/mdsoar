@@ -4,7 +4,7 @@
    <groupId>org.dspace</groupId>
    <artifactId>dspace-parent</artifactId>
    <packaging>pom</packaging>
-   <version>5.6-mdsoar-1</version>
+   <version>5.6-mdsoar-2</version>
    <name>DSpace Parent Project</name>
    <description>
    	DSpace open source software is a turnkey institutional repository application.

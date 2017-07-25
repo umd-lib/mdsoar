@@ -4,7 +4,7 @@
    <groupId>org.dspace</groupId>
    <artifactId>dspace-parent</artifactId>
    <packaging>pom</packaging>
-   <version>5.6-mdsoar-4</version>
+   <version>5.7-mdsoar-0</version>
    <name>DSpace Parent Project</name>
    <description>
    	DSpace open source software is a turnkey institutional repository application.
@@ -998,7 +998,7 @@
          <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2</version>
+            <version>3.2.2</version>
             <!-- <version>3.1</version> xmlui - wing -->
          </dependency>
          <dependency>
@@ -1607,7 +1607,7 @@
       <connection>scm:git:git@github.com:DSpace/DSpace.git</connection>
       <developerConnection>scm:git:git@github.com:DSpace/DSpace.git</developerConnection>
       <url>git@github.com:DSpace/DSpace.git</url>
-      <tag>dspace-5.6</tag>
+      <tag>dspace-5.7</tag>
    </scm>
 
     <!--

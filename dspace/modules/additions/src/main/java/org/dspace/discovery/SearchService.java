@@ -91,6 +91,9 @@ public interface SearchService {
 
     InputStream searchJSON(Context context, DiscoverQuery query, DSpaceObject dso, String jsonIdentifier) throws SearchServiceException;
 
+    //Customization for LIBCIR-147
+    InputStream suggestJSON(Context context, String query, String dictionary, String jsonIdentifier) throws SearchServiceException;
+    //End Customization 
 
     List<DSpaceObject> search(Context context, String query, String orderfield, boolean ascending, int offset, int max, String... filterquery);
 

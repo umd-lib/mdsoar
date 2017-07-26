@@ -1781,7 +1781,6 @@ public class SolrServiceImpl implements SearchService, IndexingService {
         return searchJSON(context, query, jsonIdentifier);
     }
 
-
     public InputStream searchJSON(Context context, DiscoverQuery discoveryQuery, String jsonIdentifier) throws SearchServiceException {
         if(getSolr() == null)
         {
@@ -2354,4 +2353,38 @@ public class SolrServiceImpl implements SearchService, IndexingService {
         // rely on special characters to separate the field from the query value)
         return ClientUtils.escapeQueryChars(query);
     }
+
+    //Customization for LIBCIR-147 
+    @Override
+    public InputStream suggestJSON(Context context, String query, String dictionary, String jsonIdentifier) throws SearchServiceException {
+        if(getSolr() == null)
+        {
+            return null;
+        }
+
+        SolrQuery solrQuery = new SolrQuery();
+        //We use json as out output type
+        solrQuery.setParam("json.nl", "map");
+        solrQuery.setParam("suggest.q", query);
+        solrQuery.setParam("suggest.dictionary", dictionary);
+        solrQuery.setParam("json.wrf", jsonIdentifier);
+        solrQuery.setParam(CommonParams.WT, "json");
+
+        StringBuilder urlBuilder = new StringBuilder();
+        urlBuilder.append(getSolr().getBaseURL()).append("/suggest?");
+        urlBuilder.append(solrQuery.toString());
+
+        try {
+            HttpGet get = new HttpGet(urlBuilder.toString());
+            HttpResponse response = new DefaultHttpClient().execute(get);
+            return response.getEntity().getContent();
+
+        } catch (Exception e)
+        {
+            log.error("Error while getting json solr result for discovery search recommendation", e);
+        }
+        return null;
+    }
+    
+    //End customization
 }

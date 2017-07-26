@@ -39,6 +39,12 @@
     <script src="scripts/vendor-extensions.js">&#160;</script>
     <script src="scripts/google-stats-dates.js">&#160;</script>
     <script src="scripts/templates.js">&#160;</script>
+    
+    <!-- Customization for LIBCIR-147 -->
+    <script src="scripts/jquery-3.2.1.js">&#160;</script>
+    <script src="scripts/jquery-ui.js">&#160;</script>
+    <script src="scripts/autocomplete.js">&#160;</script>
+    <!-- End customization -->
 
     <!-- authorLookup and its dependencies -->
     <script src="vendor/datatables/media/js/jquery.dataTables.js">&#160;</script>

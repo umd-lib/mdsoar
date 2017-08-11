@@ -193,6 +193,7 @@
         <theme name="Towson University Theme" handle="11603/11" path="TowsonUniversity/"/>
         <theme name="University of Baltimore Theme" handle="11603/12" path="UniversityofBaltimore/"/>
         <theme name="University of Maryland Baltimore Theme" handle="11603/13" path="UniversityofMarylandBaltimore/"/>
+        <theme name="Stevenson University Theme" handle="11603/4395" path="StevensonUniversity/"/>
         
         <!-- Mirage theme, @mire contributed theme, default since DSpace 3.0 -->
         <theme name="Mirage 2" regex=".*" path="Mirage2/" />

@@ -63,17 +63,61 @@ public class JSONDiscoverySuggester extends AbstractReader implements Recyclable
         Request request = ObjectModelHelper.getRequest(objectModel);
         this.response = ObjectModelHelper.getResponse(objectModel);
 
-        //Customization for LIBCIR-147 
-        String query = request.getParameter("query");
-        String field = request.getParameter("field");
+        DiscoverQuery queryArgs = new DiscoverQuery();
 
+        queryArgs.setQuery(request.getParameter("q"));
+
+
+        //Retrieve all our filter queries
+        if(request.getParameterValues("fq") != null)
+            queryArgs.addFilterQueries(request.getParameterValues("fq"));
+
+        //Retrieve our facet limit (if any)
+        int facetLimit;
+        if(request.getParameter("facet.limit") != null){
+            try{
+                facetLimit = Integer.parseInt(request.getParameter("facet.limit"));
+            }catch (Exception e){
+                //Should an invalid value be supplied use -1
+                facetLimit = -1;
+            }
+        }
+        else
+        {
+            facetLimit = -1;
+        }
+
+        //Retrieve our facet fields
+        if(request.getParameterValues("facet.field") != null){
+            for (int i = 0; i < request.getParameterValues("facet.field").length; i++) {
+                //Retrieve our sorting value
+                DiscoveryConfigurationParameters.SORT facetSort;
+                if(request.getParameter("facet.sort") == null || request.getParameter("facet.sort").equalsIgnoreCase("count")){
+                    facetSort = DiscoveryConfigurationParameters.SORT.COUNT;
+                }
+                else
+                    facetSort = DiscoveryConfigurationParameters.SORT.VALUE;
+
+
+                String facetField = request.getParameterValues("facet.field")[i];
+                queryArgs.addFacetField(new DiscoverFacetField(facetField, DiscoveryConfigurationParameters.TYPE_AC, facetLimit, facetSort));
+            }
+        }
+
+
+        //Retrieve our facet min count
+        int facetMinCount;
+        try{
+            facetMinCount = Integer.parseInt(request.getParameter("facet.mincount"));
+        }catch (Exception e){
+            facetMinCount = 1;
+        }
+        queryArgs.setFacetMinCount(facetMinCount);
         String jsonWrf = request.getParameter("json.wrf");
 
         try {
             Context context = ContextUtil.obtainContext(objectModel);
-        
-         //End Customization
-            JSONStream = getSearchService().suggestJSON(context, query, field, jsonWrf);
+            JSONStream = getSearchService().searchJSON(context, queryArgs, getScope(context, objectModel), jsonWrf);
         } catch (Exception e) {
             log.error("Error while retrieving JSON string for Discovery auto complete", e);
         }

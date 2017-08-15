@@ -33,14 +33,8 @@ $(function() {
 	                      var suggestion_response = data.suggest[suggest_component];
 	                      var suggestions = suggestion_response[suggest_query]["suggestions"];
 	                      var suggestion_terms = suggestions.map(function(suggestion) {return suggestion.term});
-                          //Remove the duplicate/repeating terms.
-	                      var distinct = [];
-	                      $.each(suggestion_terms , function(i, el){
-	                          if($.inArray(el, distinct ) == -1) 
-	                              distinct.push(el);
-	                      }); 
-	                      $(full_field_id).autocomplete({
-	                            source: distinct,
+                          $(full_field_id).autocomplete({
+	                            source: suggestion_terms  ,
 	                            select: function(event,ui){
 	                                 $(full_field_id).val(ui.item.label);
 	                            }

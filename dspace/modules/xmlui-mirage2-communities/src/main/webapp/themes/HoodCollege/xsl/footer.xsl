@@ -35,11 +35,11 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Langsdale Library<br/>
-                                University of Baltimore<br/>
-                                1415 Maryland Ave.<br/>
-                                Baltimore, MD 21201<br/>
-                                Email: <a href="mailto:knowledgeworks@ubalt.edu">knowledgeworks@ubalt.edu</a>
+                                Beneficial-Hodson Library<br/>
+                                Hood College<br/>
+                                401 Rosemont Avenue<br/>
+                                Frederick, MD 21701<br/>
+                                <a href="http://www.hood.edu">www.hood.edu</a>
                             </p>
                             <hr/>
                             <p>

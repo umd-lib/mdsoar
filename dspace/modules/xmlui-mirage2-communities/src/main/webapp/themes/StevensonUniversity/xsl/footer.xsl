@@ -35,11 +35,17 @@
                             <img src="{$theme-path}/images/community_logo.png" class="community_footer_logo" />
                             <p>
                                 <br/>
-                                Langsdale Library<br/>
-                                University of Baltimore<br/>
-                                1415 Maryland Ave.<br/>
-                                Baltimore, MD 21201<br/>
-                                Email: <a href="mailto:knowledgeworks@ubalt.edu">knowledgeworks@ubalt.edu</a>
+                                Stevenson University Library<br/>
+                                1525 Greenspring Valley Road<br/>
+                                Stevenson, MD 21153<br/>
+                                <br/>
+                                Website: 
+                                <a href="http://stevensonlibrary.org">http://stevensonlibrary.org</a><br/>
+                                <br/>
+                                Contact information:<br/>
+                                Elizabeth Fields<br/>
+                                <a href="mailto:efields2@stevenson.edu">efields2@stevenson.edu</a><br/>
+                                <a href="http://stevenson.libguides.com/sse">http://stevenson.libguides.com/sse</a><br/>
                             </p>
                             <hr/>
                             <p>

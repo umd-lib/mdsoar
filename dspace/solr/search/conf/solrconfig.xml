@@ -1269,6 +1269,44 @@
     </lst>
     -->
   </searchComponent>
+  
+<searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+         <str name="name">formatSuggest</str>
+         <str name="lookupImpl">AnalyzingInfixLookupFactory</str>
+         <str name="indexPath">format_suggester_infix_dir</str>
+         <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+         <str name="field" multiValued="true">dc.genre</str>
+         <str name="weightField">dummy_float_field_for_suggester</str>
+         <str name="suggestAnalyzerFieldType">text</str>
+         <str name="buildOnStartup">true</str>
+         <str name="buildOnCommit">true</str>
+    </lst>
+    <lst name="suggester">
+         <str name="name">subjectSuggest</str>
+         <str name="lookupImpl">AnalyzingInfixLookupFactory</str>
+         <str name="indexPath">subject_suggester_infix_dir</str>
+         <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+         <str name="field" multiValued="true">dc.subject</str>
+         <str name="weightField">dummy_float_field_for_suggester</str>
+         <str name="suggestAnalyzerFieldType">text</str>
+         <str name="buildOnStartup">true</str>
+         <str name="buildOnCommit">true</str>
+    </lst>
+</searchComponent>
+
+<requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy" >
+                          <lst name="defaults">
+                            <str name="suggest">true</str>
+                            <str name="suggest.count">15</str>
+                            <str name="suggest.dictionary">subjectSuggest</str>
+                         </lst>
+
+                        <str name="hl">false</str>
+                        <arr name="components">
+                           <str>suggest</str>
+                        </arr>
+</requestHandler>
 
   <!-- A request handler utilizing the spellcheck component.
   #############################################################################

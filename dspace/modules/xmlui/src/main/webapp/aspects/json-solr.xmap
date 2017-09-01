@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 
     The contents of this file are subject to the license and copyright
@@ -13,6 +14,16 @@
 
 	<map:components>
 
+<!-- 
+Customization for LIBCIR-147 
+--> 
+        <map:readers>
+            <map:reader name="JSONDiscoverySuggester" src="org.dspace.app.xmlui.aspect.discovery.json.JSONDiscoverySuggester"/>
+        </map:readers>
+<!--            
+End Customization
+--> 
+        
         <map:readers>
             <map:reader name="JSONDiscoverySearcher" src="org.dspace.app.xmlui.aspect.discovery.json.JSONDiscoverySearcher"/>
         </map:readers>
@@ -30,9 +41,16 @@
                 <map:match pattern="search">
                     <map:read type="JSONDiscoverySearcher" />
                 </map:match>
-
-
-
+                
+<!-- 
+Customization for LIBCIR-147 
+--> 
+                <map:match pattern="suggest">
+                    <map:read type="JSONDiscoverySuggester" />
+                </map:match>
+<!--            
+End Customization
+--> 
                 <map:serialize type="text"/>
                 <!--<map:serialize type="xml"/>-->
             </map:match>

@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>5.7-mdsoar-3-SNAPSHOT</version>
+        <version>5.8-mdsoar-0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 

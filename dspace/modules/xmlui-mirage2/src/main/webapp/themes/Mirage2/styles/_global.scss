@@ -68,11 +68,6 @@ h5, .h5 {
 
 /* End customization */
 
-@include selection {
-    color: white;
-    background: hotpink;
-}
-
 .publication-records-modal, .publication-records-modal ul {
   list-style-type: none;
   padding-left: 0px;

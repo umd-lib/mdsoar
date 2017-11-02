@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <groupId>org.dspace</groupId>
-   <artifactId>dspace-parent</artifactId>
-   <packaging>pom</packaging>
-   <version>6.2-mdsoar-0-SNAPSHOT</version>
-   <name>DSpace Parent Project</name>
-   <description>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.dspace</groupId>
+    <artifactId>dspace-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>6.2-mdsoar-0-SNAPSHOT</version>
+    <name>DSpace Parent Project</name>
+    <description>
    	DSpace open source software is a turnkey institutional repository application.
     </description>
     <url>https://github.com/dspace/DSpace</url>
@@ -607,7 +607,7 @@
         <profile>
             <id>dspace-oai</id>
             <activation>
-                 <file>
+                <file>
                     <exists>dspace-oai/pom.xml</exists>
                 </file>
             </activation>
@@ -622,10 +622,9 @@
         <profile>
             <id>dspace-jspui</id>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                <file>
+                    <exists>dspace-jspui/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-jspui</module>
@@ -638,7 +637,7 @@
         <profile>
             <id>dspace-rdf</id>
             <activation>
-                 <file>
+                <file>
                     <exists>dspace-rdf/pom.xml</exists>
                 </file>
             </activation>
@@ -651,9 +650,9 @@
        <profile>
            <id>dspace-rest</id>
            <activation>
-                <file>
-                    <exists>dspace-rest/pom.xml</exists>
-                </file>
+               <file>
+                   <exists>dspace-rest/pom.xml</exists>
+               </file>
            </activation>
            <modules>
                <module>dspace-rest</module>
@@ -667,10 +666,9 @@
         <profile>
             <id>dspace-sword</id>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                <file>
+                    <exists>dspace-sword/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-sword</module>
@@ -684,7 +682,9 @@
         <profile>
             <id>dspace-solr</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <file>
+                    <exists>dspace-solr/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-solr</module>
@@ -697,10 +697,9 @@
         <profile>
             <id>dspace-swordv2</id>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>!local</value>
-                </property>
+                <file>
+                    <exists>dspace-swordv2/pom.xml</exists>
+                </file>
             </activation>
             <modules>
                 <module>dspace-swordv2</module>
@@ -736,6 +735,29 @@
                 <module>dspace-xmlui</module>
             </modules>
         </profile>
+
+        <profile>
+         <id>all-modules</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         <modules>
+             <module>dspace</module>
+             <module>dspace-api</module>
+             <module>dspace-jspui</module>
+             <module>dspace-lni</module>
+             <module>dspace-oai</module>
+             <module>dspace-rdf</module>
+             <module>dspace-rest</module>
+             <module>dspace-services</module>
+             <module>dspace-solr</module>
+             <module>dspace-sword</module>
+             <module>dspace-swordv2</module>
+             <module>dspace-xmlui-mirage2</module>
+             <module>dspace-xmlui</module>
+             <module>dspace</module>
+         </modules>
+      </profile>
 
         <!--
          The 'release' profile is used by the 'maven-release-plugin' (see above)
@@ -828,154 +850,132 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>all-modules</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>dspace</module>
-                <module>dspace-api</module>
-                <module>dspace-jspui</module>
-                <module>dspace-lni</module>
-                <module>dspace-oai</module>
-                <module>dspace-rdf</module>
-                <module>dspace-rest</module>
-                <module>dspace-services</module>
-                <module>dspace-solr</module>
-                <module>dspace-sword</module>
-                <module>dspace-swordv2</module>
-                <module>dspace-xmlui-mirage2</module>
-                <module>dspace-xmlui</module>
-                <module>dspace</module>
-            </modules>
-        </profile>
-   </profiles>
+    </profiles>
 
-   <!--
+    <!--
       Dependency management provides a means to control which
       versions of dependency jars are used for compilation
       and packaging into the distribution.  Rather than placing
       a version in your dependencies, look here first to see if
       its already strongly defined in dspace-parent and dspace-api.
-   -->
-   <dependencyManagement>
-      <dependencies>
-         <!-- DSpace core and endorsed Addons -->
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-api</artifactId>
-            <version>${version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace.modules</groupId>
-            <artifactId>additions</artifactId>
-            <version>${version}</version>
-         </dependency>
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- DSpace core and endorsed Addons -->
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-api</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace.modules</groupId>
+                <artifactId>additions</artifactId>
+                <version>${version}</version>
+            </dependency>
 
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-sword</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-sword</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-swordv2</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-swordv2</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-jspui</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-jspui</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-oai</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-oai</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-xmlui</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-xmlui</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-services</artifactId>
-            <version>${version}</version>
-         </dependency>
-         <dependency>
-             <groupId>org.dspace</groupId>
-             <artifactId>dspace-rdf</artifactId>
-             <version>${version}</version>
-             <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-rest</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-             <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-rest</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-solr</artifactId>
-            <version>${version}</version>
-            <type>jar</type>
-            <classifier>classes</classifier>
-         </dependency>
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-solr</artifactId>
-            <version>${version}</version>
-            <type>war</type>
-            <classifier>skinny</classifier>
-         </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-sword</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-sword</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-swordv2</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-swordv2</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-jspui</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-jspui</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-oai</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-oai</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-xmlui</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-xmlui</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-services</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-rdf</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-rest</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-rest</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-solr</artifactId>
+                <version>${version}</version>
+                <type>jar</type>
+                <classifier>classes</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.dspace</groupId>
+                <artifactId>dspace-solr</artifactId>
+                <version>${version}</version>
+                <type>war</type>
+                <classifier>skinny</classifier>
+            </dependency>
 
             <!-- DSpace Localization Packages -->
             <dependency>

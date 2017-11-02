@@ -194,6 +194,14 @@
                 </xsl:attribute>
             </meta>
 
+            <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='ROBOTS'][not(@qualifier)]">
+                <meta name="ROBOTS">
+                    <xsl:attribute name="content">
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='ROBOTS']"/>
+                    </xsl:attribute>
+                </meta>
+            </xsl:if>
+
             <!-- Add stylesheets -->
 
             <!--TODO figure out a way to include these in the concat & minify-->
@@ -246,12 +254,12 @@
             <!-- The following javascript removes the default text of empty text areas when they are focused on or submitted -->
             <!-- There is also javascript to disable submitting a form when the 'enter' key is pressed. -->
             <script>
-                //Clear default text of emty text areas on focus
+                //Clear default text of empty text areas on focus
                 function tFocus(element)
                 {
                 if (element.value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){element.value='';}
                 }
-                //Clear default text of emty text areas on submit
+                //Clear default text of empty text areas on submit
                 function tSubmit(form)
                 {
                 var defaultedElements = document.getElementsByTagName("textarea");
@@ -628,7 +636,7 @@
     <xsl:template match="dri:body">
         <div>
             <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']">
-                <div class="alert">
+                <div class="alert alert-warning">
                     <button type="button" class="close" data-dismiss="alert">&#215;</button>
                     <xsl:copy-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='alert'][@qualifier='message']/node()"/>
                 </div>
@@ -667,6 +675,13 @@
 
     <xsl:template name="addJavascript">
 
+        <script type="text/javascript"><xsl:text>
+                         if(typeof window.publication === 'undefined'){
+                            window.publication={};
+                          };
+                        window.publication.contextPath= '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/><xsl:text>';</xsl:text>
+            <xsl:text>window.publication.themePath= '</xsl:text><xsl:value-of select="$theme-path"/><xsl:text>';</xsl:text>
+        </script>
         <!--TODO concat & minify!-->
 
         <script>
@@ -687,7 +702,7 @@
             <script src="{$theme-path}{@src}">&#160;</script>
         </xsl:for-each>
 
-        <!-- Add javascipt specified in DRI -->
+        <!-- Add javascript specified in DRI -->
         <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='javascript'][not(@qualifier)]">
             <script>
                 <xsl:attribute name="src">

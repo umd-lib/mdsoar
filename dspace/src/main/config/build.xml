@@ -178,7 +178,7 @@ Common usage:
     <!-- Update an installation                                        -->
     <!-- ============================================================= -->
 
-    <target name="update" depends="update_configs,update_code,update_webapps,test_database" description="Update installed code and web applications (without clobbering data/config)">
+    <target name="update" depends="update_configs,update_code,update_webapps" description="Update installed code and web applications (without clobbering data/config)">
     </target>
 
     <target name="update_local" description="Update installed code and web applications without backups (without clobbering data/config)">

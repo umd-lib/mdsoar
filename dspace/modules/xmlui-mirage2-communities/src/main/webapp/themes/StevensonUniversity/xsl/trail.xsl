@@ -36,7 +36,7 @@
                         <xsl:choose>
                             <xsl:when test="count(/dri:document/dri:meta/dri:pageMeta/dri:trail) > 1">
                                 <div class="breadcrumb dropdown visible-xs">
-                                    <a href="{$context-path}/handle/11603/11" >
+                                    <a href="{$context-path}/handle/11603/4395" >
                                         <img src="{$theme-path}/images/community_logo.png" class="community_logo" />
                                     </a>
                                     <a id="trail-dropdown-toggle" href="#" role="button" class="dropdown-toggle"
@@ -60,7 +60,7 @@
                                     </ul>
                                 </div>
                                 <ul class="breadcrumb hidden-xs">
-                                    <a href="{$context-path}/handle/11603/11" >
+                                    <a href="{$context-path}/handle/11603/4395" >
                                         <img src="{$theme-path}/images/community_logo.png" class="community_logo" />
                                     </a>
                                     <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>

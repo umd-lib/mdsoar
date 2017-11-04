@@ -60,7 +60,7 @@
                                     </ul>
                                 </div>
                                 <ul class="breadcrumb hidden-xs">
-                                    <a href="{$context-path}/handle/11603/2" >
+                                    <a href="{$context-path}/handle/11603/4380" >
                                         <img src="{$theme-path}/images/community_logo.png" class="community_logo" />
                                     </a>
                                     <xsl:apply-templates select="/dri:document/dri:meta/dri:pageMeta/dri:trail"/>

@@ -1778,6 +1778,7 @@ public class SolrServiceImpl implements SearchService, IndexingService {
         return searchJSON(context, query, jsonIdentifier);
     }
 
+    @Override
     public InputStream searchJSON(Context context, DiscoverQuery discoveryQuery, String jsonIdentifier) throws SearchServiceException {
         if(getSolr() == null)
         {

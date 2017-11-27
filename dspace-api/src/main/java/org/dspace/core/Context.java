@@ -406,36 +406,26 @@ public class Context
         // If Context is no longer open/valid, just note that it has already been closed
         if(!isValid()) {
             log.info("commit() was called on a closed Context object. No changes to commit.");
+            return;
         }
 
         if(isReadOnly()) {
             throw new UnsupportedOperationException("You cannot commit a read-only context");
         }
 
-        // Our DB Connection (Hibernate) will decide if an actual commit is required or not
-        try
-        {
-            // As long as we have a valid, writeable database connection,
-            // commit any changes made as part of the transaction
-            if (isValid())
-            {
-                // Dispatch events before committing changes to the database,
-                // as the consumers may change something too
-                dispatchEvents();
-            }
 
-        } finally {
-            if(log.isDebugEnabled()) {
-                log.debug("Cache size on commit is " + getCacheSize());
-            }
+         // As long as we have a valid, writeable database connection,
+         // commit any changes made as part of the transaction
+         if(log.isDebugEnabled()) {
+             log.debug("Cache size on commit is " + getCacheSize());
+         }
+                  //Commit our changes to database, finalizing the transaction
+                  dbConnection.commit();
+                  // Refresh any entities required to be in Context
+                  reloadContextBoundEntities();
 
-            if(dbConnection != null)
-            {
-                //Commit our changes
-                dbConnection.commit();
-                reloadContextBoundEntities();
-            }
-        }
+               // Finally, dispatch events to event consumers
+               dispatchEvents();
     }
 
 

@@ -3,7 +3,7 @@
 	<body>
 		<div id="file.news.div.news" n="news" rend="primary">
 		<head>Maryland Shared Open Access Repository</head>
-		<p>MD-SOAR is a shared digital repository platform for eleven colleges and universities in Maryland. It currently is funded entirely by the University System of Maryland and Affiliated Institutions (USMAI) Library Consortium (<xref target="http://usmai.org">usmai.org</xref>) but also includes other collaborating partner institutions. MD-SOAR is jointly governed by all participating libraries, who have agreed to share policies and practices that are necessary and appropriate for the shared platform. Within this broad framework, each library provides customized repository services and collections that meet local institutional needs. Please follow the links below to learn more about each library's repository services and collections.</p>
+		<p>MD-SOAR is a shared digital repository platform for eleven colleges and universities in Maryland. It is currently funded by the University System of Maryland and Affiliated Institutions (USMAI) Library Consortium (<xref target="http://usmai.org">usmai.org</xref>) and other participating partner institutions. MD-SOAR is jointly governed by all participating libraries, who have agreed to share policies and practices that are necessary and appropriate for the shared platform. Within this broad framework, each library provides customized repository services and collections that meet local institutional needs. Please follow the links below to learn more about each library's repository services and collections.</p>
 		</div>
 		<head>Browse</head>
 			<ul style="display:inline-block;">

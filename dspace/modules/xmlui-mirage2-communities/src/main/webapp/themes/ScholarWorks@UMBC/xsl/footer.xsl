@@ -39,8 +39,9 @@
                                 University of Maryland, Baltimore County<br/>
                                 1000 Hilltop Circle<br/>
                                 Baltimore, MD 21250<br/>
-                                <a href="http://aok.lib.umbc.edu/scholarworks/information">aok.lib.umbc.edu/scholarworks/information</a><br/><br/>
-
+                                <!-- Begin changes for ticket LIBCIR-201 -->
+                                <a href="http://www.umbc.edu/scholarworks">www.umbc.edu/scholarworks</a><br/><br/>
+                                <!-- End of LIBCIR-201 -->
                                 Contact information:<br/>
                                 Email: <a href="mailto:scholarworks-group@umbc.edu">scholarworks-group@umbc.edu</a><br/>
                                 Phone: <a href="tel:4104553021">410-455-3021</a><br/>

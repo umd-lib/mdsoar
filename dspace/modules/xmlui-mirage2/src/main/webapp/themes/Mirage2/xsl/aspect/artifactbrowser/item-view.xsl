@@ -268,7 +268,16 @@
             <xsl:if test="@authority">
                 <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
             </xsl:if>
-            <xsl:copy-of select="node()"/>
+            <!--  Customization for LIBCIR-164 -->
+            <a>
+            <xsl:attribute name="href">
+            <xsl:text>/browse?type=author&amp;value=</xsl:text>
+                	<xsl:copy-of select="node()"/>
+               	</xsl:attribute>
+                <i18n:text><xsl:copy-of select="node()"/></i18n:text>
+            </a> 
+          <!--  <xsl:copy-of select="node()"/> -->
+          <!--  End Customization LIBCIR-164 -->
         </div>
     </xsl:template>
 
@@ -418,7 +427,16 @@
                 </h5>
                 <xsl:if test="dim:field[@element='subject' and not(@qualifier)]">
                   <xsl:for-each select="dim:field[@element='subject' and not(@qualifier)]">
-                    <xsl:copy-of select="./node()"/>
+	             <!--  Begin customization for LIBCIR-164 -->      
+	             <a>
+		            <xsl:attribute name="href">
+		            <xsl:text>/browse?type=subject&amp;value=</xsl:text>
+		                	<xsl:copy-of select="./node()"/>
+		            </xsl:attribute>
+		            <i18n:text><xsl:copy-of select="./node()"/></i18n:text>
+	            </a> 
+	           <!--  End of customization -->
+               <!--    <xsl:copy-of select="./node()"/>  --> 
                     <xsl:if test="count(following-sibling::dim:field[@element='subject' and not(@qualifier)]) != 0">
                         <br/>
                     </xsl:if>

@@ -21,12 +21,12 @@ Instructions for installing in UMD Libraries development environments (Mac OS X)
 # Build the base modules and overlay modules (Slower)
 # Full build is only required after a version change (checking out a different version
 # or a local project version change)
-cd /apps/git/drum
+cd /apps/git/mdsoar
 mvn clean install -Dmirage2.deps.included=false
 
 # Build only the overlay modules (Faster)
 # Can be run only after a full build is done at least once after a version change.
-cd /apps/git/drum/dspace
+cd /apps/git/mdsoar/dspace
 mvn install -Dmirage2.deps.included=false
 ```
 
@@ -40,7 +40,7 @@ The `dspace-installer` directory that contains all the artifacts and the ant scr
 
 ```
 # Switch to the dspace directory
-cd /apps/git/drum/dspace
+cd /apps/git/mdsoar/dspace
 
 # Deploy a snapshot version to nexus
 # (use this profile if the current project version is a SNAPSHOT version)

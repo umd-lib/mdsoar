@@ -147,6 +147,111 @@
            </build>
         </profile>
 
+        <!-- An added <profile>
+            Run 'mvn -P installer-dist' to create a tarball of target/dspace-installer-${version}.tar.gz.
+            Transfer the tarball to server and un-tar it at /apps/mdsaor.
+
+            https://issues.umd.edu/browse/LIBCIR-212
+        -->
+        <profile>
+          <id>installer-dist</id>
+      	  <build>
+            <defaultGoal>validate</defaultGoal>
+            <plugins>
+              <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <tarLongFileMode>posix</tarLongFileMode>
+                    <descriptors>
+                        <descriptor>src/main/assembly/dspace-installer-distribution.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                  <execution>
+                    <id>distro-assembly</id>
+                    <phase>validate</phase>
+                    <goals>
+                      <goal>single</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+        <!-- 
+            Profile to deploy a snapshot version to UMD Nexus
+
+            https://issues.umd.edu/browse/LIBCIR-212
+        -->
+        <profile>
+          <id>deploy-snapshot</id>
+          <build>
+            <defaultGoal>install</defaultGoal>
+            <plugins>
+              <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <executions>
+                  <execution>
+                    <id>deploy-snapshot</id>
+                    <phase>install</phase>
+                    <goals>
+                      <goal>deploy-file</goal>
+                    </goals>
+                    <configuration>
+                      <file>target/dspace-installer-${project.version}.tar.gz</file>
+                      <url>https://maven.lib.umd.edu/nexus/content/repositories/snapshots</url>
+                      <repositoryId>nexus</repositoryId>
+                      <groupId>edu.umd.lib.mdsoar</groupId>
+                      <artifactId>mdsoar-installer</artifactId>
+                      <version>${project.version}</version>
+                      <packaging>tar.gz</packaging>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+
+
+        <!-- 
+            Profile to deploy a release version to UMD Nexus
+
+            https://issues.umd.edu/browse/LIBCIR-212
+        -->
+        <profile>
+          <id>deploy-release</id>
+          <build>
+            <defaultGoal>install</defaultGoal>
+            <plugins>
+              <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <executions>
+                  <execution>
+                    <id>deploy-release</id>
+                    <phase>install</phase>
+                    <goals>
+                      <goal>deploy-file</goal>
+                    </goals>
+                    <configuration>
+                      <file>target/dspace-installer-${project.version}.tar.gz</file>
+                      <url>https://maven.lib.umd.edu/nexus/content/repositories/releases</url>
+                      <repositoryId>nexus</repositoryId>
+                      <groupId>edu.umd.lib.mdsoar</groupId>
+                      <artifactId>mdsoar-installer</artifactId>
+                      <version>${project.version}</version>
+                      <packaging>tar.gz</packaging>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+
     </profiles>
 
     <dependencies>

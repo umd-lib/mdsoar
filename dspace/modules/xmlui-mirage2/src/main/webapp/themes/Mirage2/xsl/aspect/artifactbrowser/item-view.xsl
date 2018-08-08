@@ -271,8 +271,7 @@
             <!--  Customization for LIBCIR-164 -->
             <a>
 	            <xsl:attribute name="href">
-			            <xsl:value-of
-			                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+			            <xsl:value-of select="$context-path"/>
 			            <xsl:text>/browse?type=author&amp;value=</xsl:text>
 			            <xsl:copy-of select="node()"/>
 	            </xsl:attribute>
@@ -432,8 +431,7 @@
 	             <!--  Begin customization for LIBCIR-164 -->      
 	             <a>
 		            <xsl:attribute name="href">
-			            <xsl:value-of
-	                     		select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+			            <xsl:value-of select="$context-path"/>
 			            <xsl:text>/browse?type=subject&amp;value=</xsl:text>
 			            <xsl:copy-of select="./node()"/>
 		            </xsl:attribute>

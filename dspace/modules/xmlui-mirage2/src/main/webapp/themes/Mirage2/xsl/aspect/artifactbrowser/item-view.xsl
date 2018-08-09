@@ -270,14 +270,16 @@
             </xsl:if>
             <!--  Customization for LIBCIR-164 -->
             <a>
-            <xsl:attribute name="href">
-            <xsl:text>/browse?type=author&amp;value=</xsl:text>
-                	<xsl:copy-of select="node()"/>
-               	</xsl:attribute>
-                <i18n:text><xsl:copy-of select="node()"/></i18n:text>
+	            <xsl:attribute name="href">
+			            <xsl:value-of
+			                    select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+			            <xsl:text>/browse?type=author&amp;value=</xsl:text>
+			            <xsl:copy-of select="node()"/>
+	            </xsl:attribute>
+	            <i18n:text><xsl:copy-of select="node()"/></i18n:text>
             </a> 
-          <!--  <xsl:copy-of select="node()"/> -->
-          <!--  End Customization LIBCIR-164 -->
+            <!--  <xsl:copy-of select="node()"/> -->
+            <!--  End Customization LIBCIR-164 -->
         </div>
     </xsl:template>
 
@@ -430,13 +432,15 @@
 	             <!--  Begin customization for LIBCIR-164 -->      
 	             <a>
 		            <xsl:attribute name="href">
-		            <xsl:text>/browse?type=subject&amp;value=</xsl:text>
-		                	<xsl:copy-of select="./node()"/>
+			            <xsl:value-of
+	                     		select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+			            <xsl:text>/browse?type=subject&amp;value=</xsl:text>
+			            <xsl:copy-of select="./node()"/>
 		            </xsl:attribute>
 		            <i18n:text><xsl:copy-of select="./node()"/></i18n:text>
 	            </a> 
-	           <!--  End of customization -->
-               <!--    <xsl:copy-of select="./node()"/>  --> 
+	            <!--  End of customization -->
+                <!--    <xsl:copy-of select="./node()"/>  --> 
                     <xsl:if test="count(following-sibling::dim:field[@element='subject' and not(@qualifier)]) != 0">
                         <br/>
                     </xsl:if>

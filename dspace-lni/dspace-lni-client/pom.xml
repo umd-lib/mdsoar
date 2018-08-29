@@ -11,7 +11,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>dspace-parent</artifactId>
-      <version>6.2-mdsoar-2.1</version>
+      <version>6.3-mdsoar-0</version>
       <relativePath>../..</relativePath>
    </parent>
    

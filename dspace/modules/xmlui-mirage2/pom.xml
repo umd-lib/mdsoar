@@ -12,14 +12,14 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>modules</artifactId>
-        <version>6.2-mdsoar-2.1</version>
+        <version>6.3-mdsoar-0</version>
         <relativePath>..</relativePath>
     </parent>
 
     <properties>
         <!-- This is the path to the root [dspace-src] directory. -->
         <root.basedir>${basedir}/../../..</root.basedir>
-        <grunt.environment>dev</grunt.environment>
+        <grunt.environment>prod</grunt.environment>
         <grunt.color.scheme>classic_mirage_color_scheme</grunt.color.scheme>
         <mirage2.deps.included>false</mirage2.deps.included>
         <!-- Versions of build dependencies to be auto-installed when "mirage2.deps.included=true" -->

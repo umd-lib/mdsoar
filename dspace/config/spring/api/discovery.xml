@@ -31,6 +31,9 @@
     <!-- Additional indexing plugin make filtering by has content in original bundle (like pdf's, images) posible via SOLR -->
     <bean id="hasContentInOriginalBundle" class="org.dspace.discovery.SolrServiceContentInOriginalBundleFilterPlugin"/>
 
+    <!-- Additional indexing plugin enables searching by filenames and by file descriptions for files in ORIGINAL bundle -->
+    <bean id="solrServiceFileInfoPlugin" class="org.dspace.discovery.SolrServiceFileInfoPlugin"/>
+
     <!--Bean that is used for mapping communities/collections to certain discovery configurations.-->
     <bean id="org.dspace.discovery.configuration.DiscoveryConfigurationService" class="org.dspace.discovery.configuration.DiscoveryConfigurationService">
         <property name="map">
@@ -117,6 +120,8 @@
                 <ref bean="searchFilterEditor" />
                 <ref bean="searchFilterDescription" />
 		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -169,11 +174,14 @@
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
+                             may appear in search results when the Item is public. See DS-3498
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="fulltext"/>
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        -->
                     </list>
                 </property>
             </bean>
@@ -231,6 +239,8 @@
                 <ref bean="searchFilterEditor" />
                 <ref bean="searchFilterDescription" />
 		        <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
@@ -273,11 +283,14 @@
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
+                             may appear in search results when the Item is public. See DS-3498
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="fulltext"/>
                             <property name="maxSize" value="250"/>
                             <property name="snippets" value="2"/>
                         </bean>
+                        -->
                     </list>
                 </property>
             </bean>
@@ -547,6 +560,20 @@
                 <value>dc.description.version</value>
                 <value>dc.description</value>
             </list>
+        </property>
+    </bean>
+
+    <bean id="searchFilterFileNameInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="original_bundle_filenames"/>
+        <property name="metadataFields">
+            <list/>
+        </property>
+    </bean>
+
+    <bean id="searchFilterFileDescriptionInOriginalBundle" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="original_bundle_descriptions"/>
+        <property name="metadataFields">
+            <list/>
         </property>
     </bean>
 

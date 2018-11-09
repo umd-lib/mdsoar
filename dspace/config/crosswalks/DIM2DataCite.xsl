@@ -50,15 +50,15 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://datacite.org/schema/kernel-3 http://schema.datacite.org/meta/kernel-3/metadata.xsd">
 
-            <!--
+            <!-- 
                 MANDATORY PROPERTIES
             -->
 
-            <!--
+            <!-- 
                 DataCite (1)
                 Template Call for DOI identifier.
                 Occ: 1
-            -->
+            --> 
             <!--
                 dc.identifier.uri may contain more than one DOI, e.g. if the
                 repository contains an item that is published by a publishing 
@@ -67,15 +67,20 @@
             -->
             <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='identifier' and starts-with(., concat('http://dx.doi.org/', $prefix))]" />
 
-            <!--
+            <!-- 
                 DataCite (2)
                 Add creator information. 
                 Occ: 1-n
             -->
             <creators>
                 <xsl:choose>
-                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
-                        <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                     <xsl:when test="(//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']) or (//dspace:field[@mdschema='dc' and @element='creator'])">
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                        </xsl:if>
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='creator']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='creator']" />
+                        </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
                         <creator>
@@ -85,10 +90,10 @@
                 </xsl:choose>
             </creators>
 
-            <!--
+            <!-- 
                 DataCite (3)
-                Add Title information. 
-		Occ: 1-n
+                Add Title information.
+                Occ: 1-n
             -->
             <titles>
                 <xsl:choose>
@@ -100,8 +105,8 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </titles>
-
-            <!--
+            
+            <!-- 
                 DataCite (4)
                 Add Publisher information from configuration above
                 Occ: 1
@@ -118,7 +123,7 @@
                 </xsl:choose>
             </xsl:element>
 
-            <!--
+            <!-- 
                 DataCite (5)
                 Add PublicationYear information
                 Occ: 1
@@ -139,7 +144,7 @@
                 </xsl:choose>
             </publicationYear>
 
-            <!--
+            <!-- 
                 OPTIONAL PROPERTIES
             -->
 
@@ -287,6 +292,7 @@
         </resource>
     </xsl:template>
 
+    <!-- TEMPLATES -->
 
     <!-- Add doi identifier information. -->
     <!--
@@ -303,6 +309,13 @@
 
     <!-- DataCite (2) :: Creator -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+        <creator>
+            <creatorName>
+                <xsl:value-of select="." />
+            </creatorName>
+        </creator>
+    </xsl:template>
+    <xsl:template match="//dspace:field[@mdschema='dc' and @element='creator']">
         <creator>
             <creatorName>
                 <xsl:value-of select="." />
@@ -329,14 +342,14 @@
         </xsl:element>
     </xsl:template>
 
-    <!--
+    <!-- 
         DataCite (6), DataCite (6.1)
         Adds subject and subjectScheme information
-
-        "This term is intended to be used with non-literal values as defined in the
-        DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).
-        As of December 2007, the DCMI Usage Board is seeking a way to express
-        this intention with a formal range declaration."
+    
+        "This term is intended to be used with non-literal values as defined in the 
+        DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). 
+        As of December 2007, the DCMI Usage Board is seeking a way to express 
+        this intention with a formal range declaration." 
         (http://dublincore.org/documents/dcmi-terms/#terms-subject)
     -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='subject']">
@@ -446,7 +459,7 @@
 	</xsl:if>
     </xsl:template>
 
-    <!--
+    <!-- 
         DataCite (9)
         Adds Language information
         Transforming the language flags according to IETF BCP 47 or ISO 639-1
@@ -464,7 +477,7 @@
         </xsl:element>
     </xsl:template>
 
-    <!--
+    <!-- 
         DataCite (10), DataCite (10.1)
         Adds resourceType and resourceTypeGeneral information
     -->
@@ -477,7 +490,10 @@
                     <xsl:when test="string(text())='Book'">Text</xsl:when>
                     <xsl:when test="string(text())='Book chapter'">Text</xsl:when>
                     <xsl:when test="string(text())='Dataset'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Event'">Event</xsl:when>
+                    <xsl:when test="string(text())='InteractiveResource'">InteractiveResource</xsl:when>
                     <xsl:when test="string(text())='Learning Object'">InteractiveResource</xsl:when>
+                    <xsl:when test="string(text())='StillImage'">Image</xsl:when>
                     <xsl:when test="string(text())='Image'">Image</xsl:when>
                     <xsl:when test="string(text())='Image, 3-D'">Image</xsl:when>
                     <xsl:when test="string(text())='Map'">Model</xsl:when>
@@ -488,13 +504,15 @@
                     <xsl:when test="string(text())='Recording, acoustical'">Sound</xsl:when>
                     <xsl:when test="string(text())='Recording, musical'">Sound</xsl:when>
                     <xsl:when test="string(text())='Recording, oral'">Sound</xsl:when>
+                    <xsl:when test="string(text())='Service'">Service</xsl:when>
                     <xsl:when test="string(text())='Software'">Software</xsl:when>
+                    <xsl:when test="string(text())='Sound'">Sound</xsl:when>
                     <xsl:when test="string(text())='Technical Report'">Text</xsl:when>
                     <xsl:when test="string(text())='Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
                     <xsl:when test="string(text())='Working Paper'">Text</xsl:when>
-                    <xsl:when test="string(text())='Other'">Other</xsl:when>
-                    <xsl:otherwise>Other</xsl:otherwise>
+                    <xsl:when test="string(text())='Other'">Collection</xsl:when>
+                    <xsl:otherwise>Collection</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
             <xsl:value-of select="." />
@@ -577,7 +595,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <!--
+    <!-- 
         DataCite (17)
         Description
     -->
@@ -593,5 +611,5 @@
             <xsl:value-of select="." />
         </xsl:element>
     </xsl:template>
-
+    
 </xsl:stylesheet>

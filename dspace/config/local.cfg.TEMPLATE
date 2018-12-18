@@ -165,6 +165,17 @@ db.schema = public
 # (Defaults to a dummy/fake prefix of 123456789)
 #handle.prefix = 123456789
 
+#####################
+# DOI CONFIGURATION #
+#####################
+identifier.doi.user =
+identifier.doi.password =
+identifier.doi.prefix = 10.33522
+identifier.doi.datacite.host = mds.test.datacite.org
+identifier.doi.mintRandom = true
+# identifier.doi.namespaceseparator = 
+crosswalk.dissemination.DataCite.publisher = Maryland Shared Open Access Repository
+
 #######################
 # PROXY CONFIGURATION #
 #######################

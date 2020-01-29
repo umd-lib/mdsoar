@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>modules</artifactId>
-        <version>6.3-mdsoar-2</version>
+        <version>6.3-mdsoar-3-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -213,13 +213,13 @@
                 <dependency>
                     <groupId>org.dspace.modules</groupId>
                     <artifactId>xmlui-mirage2</artifactId>
-                    <version>6.3-mdsoar-2</version>
+                    <version>6.3-mdsoar-3-SNAPSHOT</version>
                     <type>war</type>
                 </dependency>
                 <dependency>
                     <groupId>org.dspace.modules</groupId>
                     <artifactId>xmlui-mirage2-communities</artifactId>
-                    <version>6.3-mdsoar-2</version>
+                    <version>6.3-mdsoar-3-SNAPSHOT</version>
                     <type>war</type>
                 </dependency>
             </dependencies>

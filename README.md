@@ -4,12 +4,11 @@ Home: http://mdsoar.lib.umd.edu/
 
 ## Documentation
 
-The original DSpace documentation:
-
-* [README](README-DSPACE.md)
+* [Original DSpace README](README-DSPACE.md)
 * [DSpace Manual](dspace/docs/pdf/DSpace-Manual.pdf)
 * [Theme Customization](dspace/docs/ThemeCustomization.md)
 * [Mirage2 Prerequisites on Server](dspace/docs/Mirage2PrerequisitesOnServer.md)
+* [Vagrant Deployment](https://github.com/umd-lib/mdsoar-vagrant)
 
 ### Installation
 

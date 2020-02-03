@@ -21,12 +21,12 @@ Instructions for installing in UMD Libraries development environments (Mac OS X)
 # Full build is only required after a version change (checking out a different version
 # or a local project version change)
 cd /apps/git/mdsoar
-mvn clean install -Dmirage2.deps.included=false
+mvn clean install
 
 # Build only the overlay modules (Faster)
 # Can be run only after a full build is done at least once after a version change.
 cd /apps/git/mdsoar/dspace
-mvn install -Dmirage2.deps.included=false
+mvn install
 ```
 
 *Note:* Due to a outdated Java 7 security certificate issue, the mirage2 build using native tools is no longer working. The `-Dmirage2.deps.included=false` needs to be added to all maven build commands.
@@ -43,10 +43,10 @@ cd /apps/git/mdsoar/dspace
 
 # Deploy a snapshot version to nexus
 # (use this profile if the current project version is a SNAPSHOT version)
-mvn -P installer-dist,deploy-snapshot -Dmirage2.deps.included=false
+mvn -P installer-dist,deploy-snapshot -rf :dspace
 
 # Deploy a release version to nexus
-mvn -P installer-dist,deploy-release -Dmirage2.deps.included=false
+mvn -P installer-dist,deploy-release -Dmirage2.deps.included=false -rf :dspace
 ```
 
 *NOTE:* For the Nexus deployment to succeed, the nexus server, username and password needs to be configured in the `.m2/setting.xml` and a prior successful `mvn install`.

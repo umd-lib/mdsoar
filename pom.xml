@@ -4,7 +4,7 @@
     <groupId>org.dspace</groupId>
     <artifactId>dspace-parent</artifactId>
     <packaging>pom</packaging>
-    <version>6.3-mdsoar-4</version>
+    <version>6.3-mdsoar-4.1</version>
     <name>DSpace Parent Project</name>
     <description>
    	DSpace open source software is a turnkey institutional repository application.
@@ -1091,11 +1091,7 @@
                 <artifactId>mets</artifactId>
                 <version>1.5.2</version>
             </dependency>
-            <dependency>
-                <groupId>org.dspace.dependencies</groupId>
-                <artifactId>dspace-tm-extractors</artifactId>
-                <version>1.0.1</version>
-            </dependency>
+
             <!-- Required by Commons Configuration -->
             <dependency>
                 <groupId>commons-beanutils</groupId>

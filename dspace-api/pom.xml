@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>6.3-mdsoar-4</version>
+        <version>6.3-mdsoar-4.1</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -325,10 +325,6 @@
         <dependency>
             <groupId>org.dspace</groupId>
             <artifactId>mets</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.dspace.dependencies</groupId>
-            <artifactId>dspace-tm-extractors</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>

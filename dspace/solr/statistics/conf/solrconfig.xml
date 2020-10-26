@@ -807,11 +807,6 @@
     -->
   <requestHandler name="/select" class="solr.SearchHandler">
 
-     <!-- Url scheme configuration for solr's internal shard queries.  -->
-     <shardHandlerFactory class="HttpShardHandlerFactory">
-       <str name="urlScheme">https://</str>
-     </shardHandlerFactory>
-
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->

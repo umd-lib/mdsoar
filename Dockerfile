@@ -56,7 +56,7 @@ COPY --from=ant_build /dspace $DSPACE_INSTALL
 EXPOSE 8080 8009
 
 RUN apt-get update && \
-    apt-get install -y rsync cron postfix && \
+    apt-get install -y rsync cron postfix vim && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     rm -rf /usr/local/tomcat/webapps/* && \
     ln -s $DSPACE_INSTALL/webapps/xmlui /usr/local/tomcat/webapps/ROOT && \

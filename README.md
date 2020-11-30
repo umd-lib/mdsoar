@@ -39,7 +39,7 @@ mvn install
 
 Dockerfile.dependencies is used to pre-cache maven downloads that will be used in subsequent DSpace docker builds.
 
-    docker build -t docker.lib.umd.edu/mdsoar-dependencies:6_x -f Dockerfile.dependencies .
+    docker build -t docker.lib.umd.edu/mdsoar-dependencies-6_x:latest -f Dockerfile.dependencies .
 
 
 This dockefile builds a mdsoar tomcat image.

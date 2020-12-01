@@ -1,11 +1,11 @@
 # This image will be published as dspace/dspace
 # See https://dspace-labs.github.io/DSpace-Docker-Images/ for usage details
-# 
+#
 # This version is JDK8 compatible
 # - tomcat:8-jre8
 # - ANT 1.10.7
 # - maven:3-jdk-8
-# - note: 
+# - note:
 # - default tag for branch: dspace/dspace: dspace/dspace:dspace-6_x-jdk8
 
 # Step 1 - Run Maven Build
@@ -56,7 +56,12 @@ COPY --from=ant_build /dspace $DSPACE_INSTALL
 EXPOSE 8080 8009
 
 RUN apt-get update && \
-    apt-get install -y rsync cron postfix vim && \
+    apt-get install -y \
+        rsync \
+        cron \
+        postfix \
+        vim \
+        python3-lxml && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     rm -rf /usr/local/tomcat/webapps/* && \
     ln -s $DSPACE_INSTALL/webapps/xmlui /usr/local/tomcat/webapps/ROOT && \

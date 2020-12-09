@@ -110,21 +110,7 @@ public class ContextUtil
             }
 
             // Set the session ID and IP address
-            String ip = request.getRemoteAddr();
-            if (useProxies == null) {
-                useProxies = DSpaceServicesFactory.getInstance().getConfigurationService().getBooleanProperty("useProxies", false);
-            }
-            if(useProxies && request.getHeader("X-Forwarded-For") != null)
-            {
-                /* This header is a comma delimited list */
-	            for(String xfip : request.getHeader("X-Forwarded-For").split(","))
-                {
-                    if(!request.getHeader("X-Forwarded-For").contains(ip))
-                    {
-                        ip = xfip.trim();
-                    }
-                }
-	        }
+            String ip = getRealRemoteIp(request);
             context.setExtraLogInfo("session_id=" + request.getSession().getId() + ":ip_addr=" + ip);
 
             // Store the context in the request
@@ -172,5 +158,24 @@ public class ContextUtil
    			context.abort();
     	}
 	}
+
+    public static String getRealRemoteIp(HttpServletRequest request) {
+        String ip = request.getRemoteAddr();
+        if (useProxies == null) {
+            useProxies = DSpaceServicesFactory.getInstance().getConfigurationService().getBooleanProperty("useProxies", false);
+        }
+        if(useProxies && request.getHeader("X-Forwarded-For") != null)
+        {
+            /* This header is a comma delimited list */
+            for(String xfip : request.getHeader("X-Forwarded-For").split(","))
+            {
+                if(!request.getHeader("X-Forwarded-For").contains(ip))
+                {
+                    ip = xfip.trim();
+                }
+            }
+        }
+        return ip;
+    }
 
 }

@@ -33,7 +33,47 @@ mvn install
 
 [Old Build Instuctions](dspace/docs/LocalBuildInstructions.md)
 
-### Deployment
+### Building Images for K8s Deployment
+
+#### DSpace Image
+
+Dockerfile.dependencies is used to pre-cache maven downloads that will be used in subsequent DSpace docker builds.
+
+```
+docker build -t docker.lib.umd.edu/mdsoar-dependencies-6_x:latest -f Dockerfile.dependencies .
+```
+
+This dockefile builds a mdsoar tomcat image.
+
+```
+docker build -t docker.lib.umd.edu/mdsoar:<VERSION> .
+```
+
+The version would follow the mdsoar project version. For example, a release version could be `6.3/mdsoar-4.2`, and we can suffix the version number with `-alpha1`, `-beta1`, or `-rc1` as necessary for non-production images.
+
+#### Postgres Image
+
+To build postgres image with pgcrypto module.
+
+```
+cd dspace/src/main/docker/dspace-postgres-pgcrypto
+docker build -t docker.lib.umd.edu/dspace-postgres:<VERSION> .
+```
+
+We could follow the same versioning scheme as the main mdsoar image, but we don't necessariliy have create new image versions for postgres for every patch or hotfix version increments. The postgres image can be built when there is a relevant change.
+
+#### Solr Image
+
+To build postgres image with pgcrypto module.
+
+```
+cd dspace/solr
+docker build -t docker.lib.umd.edu/mdsoar-solr:<VERSION> .
+```
+
+We could follow the same versioning scheme as the main mdsoar image, but we don't necessariliy have create new image versions for solr for every patch or hotfix version increments. The solr image can be built when there is a relevant change.
+
+### Deployment (Old VM based deployment)
 
 The `dspace-installer` directory that contains all the artifacts and the ant script to perform the deployment. The `installer-dist` maven profile creates a tar file of the installer directory which can be pushed to the UMD nexus by using the `deploy-release` or `deploy-snapshot` profile.
 

@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import org.apache.avalon.framework.parameters.Parameters;
 import org.apache.cocoon.ProcessingException;
 import org.apache.cocoon.environment.SourceResolver;
+import org.apache.log4j.Logger;
 import org.dspace.app.util.DCInput;
 import org.dspace.app.util.DCInputSet;
 import org.dspace.app.util.DCInputsReader;
@@ -68,6 +69,9 @@ import org.xml.sax.SAXException;
  * @author Tim Donohue (updated for Configurable Submission)
  */
 public class DescribeStep extends AbstractSubmissionStep {
+
+    private static final Logger log = Logger.getLogger(DescribeStep.class);
+
     /** Language Strings **/
     protected static final Message T_head = message("xmlui.Submission.submit.DescribeStep.head");
 
@@ -242,6 +246,8 @@ public class DescribeStep extends AbstractSubmissionStep {
                 renderSelectFromListField(form, fieldName, dcInput, dcValues, readonly);
             } else if (inputType.equals("onebox")) {
                 renderOneboxField(form, fieldName, dcInput, dcValues, readonly);
+            } else if (inputType.equals("onebox_orcid")) {
+                renderOneboxOrcidField(form, fieldName, dcInput, dcValues, readonly);
             } else {
                 form.addItem(T_unknown_field);
             }
@@ -926,6 +932,7 @@ public class DescribeStep extends AbstractSubmissionStep {
         }
     }
 
+    // Customization for LIBCIR-263
     /**
      * Render a simple text field to the DRI document
      *
@@ -944,7 +951,39 @@ public class DescribeStep extends AbstractSubmissionStep {
         // as a render hint.
         org.dspace.app.xmlui.wing.element.Item item = form.addItem();
         Text text = item.addText(fieldName, "submit-text");
+        setupOneboxTextField(item, text, fieldName, dcInput, dcValues, readonly);
+    }
 
+    /**
+     * Render a simple text field to the DRI document
+     *
+     * @param form      The form list to add the field to
+     * @param fieldName The field's name.
+     * @param dcInput   The field's input definition
+     * @param dcValues  The field's pre-existing values.
+     */
+    private void renderOneboxOrcidField(List form, String fieldName, DCInput dcInput,
+            java.util.List<MetadataValue> dcValues, boolean readonly) throws WingException {
+        org.dspace.app.xmlui.wing.element.Item item = form.addItem();
+        Text text = item.addText(fieldName, "submit-text");
+        text.setSize(37, 37);
+        setupOneboxTextField(item, text, fieldName, dcInput, dcValues, readonly);
+        String validityPattern = "https://orcid.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[X0-9]";
+        String validityMessage = "Must be of format https://orcid.org/xxxx-xxxx-xxxx-xxxx";
+        text.setValidationPattern(validityPattern, validityMessage);
+    }
+
+    /**
+     * Render a simple text field to the DRI document
+     *
+     * @param item      The item containing the text field.
+     * @param text      The text field
+     * @param fieldName The field's name.
+     * @param dcInput   The field's input definition
+     * @param dcValues  The field's pre-existing values.
+     */
+    private void setupOneboxTextField(org.dspace.app.xmlui.wing.element.Item item, Text text, String fieldName,
+            DCInput dcInput, java.util.List<MetadataValue> dcValues, boolean readonly) throws WingException {
         if (dcInput.getVocabulary() != null) {
             String vocabularyUrl = DSpaceServicesFactory.getInstance().getConfigurationService()
                     .getProperty("dspace.url");
@@ -1018,6 +1057,7 @@ public class DescribeStep extends AbstractSubmissionStep {
             }
         }
     }
+    // End Customization for LIBCIR-263
 
     /**
      * Check if the given fieldname is listed as being in error.

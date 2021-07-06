@@ -60,6 +60,19 @@ public class Text extends Field {
         this.params.setMaxLength(maxLength);
     }
 
+    // Customization for LIBCIR-263
+    /**
+     * Set the validation pattern and message of the text field.
+     *
+     * @param pattern         The validation pattern of the field.
+     * @param validityMessage The validation message of the field.
+     */
+    public void setValidationPattern(String pattern, String validityMessage) {
+        this.params.setPattern(pattern);
+        this.params.setValidityMessage(validityMessage);
+    }
+    // End Customization for LIBDRUM-263
+
     /**
      * Enable the add operation for this field. When this is enabled the front end
      * will add a button to add more items to the field.

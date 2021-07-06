@@ -42,6 +42,9 @@ public class Params extends AbstractWingElement implements StructuralElement {
     /** The name of the max length attribute */
     public static final String A_MAX_LENGTH = "maxlength";
 
+    public static final String A_PATTERN = "pattern";
+    public static final String A_VALIDITY_MESSAGE = "validityMessage";
+
     /** The name of the multiple attribute */
     public static final String A_MULTIPLE = "multiple";
 
@@ -103,6 +106,9 @@ public class Params extends AbstractWingElement implements StructuralElement {
 
     /** The maximum length of the field */
     protected int maxlength = -1;
+
+    protected String pattern = "";
+    protected String validityMessage = "";
 
     /** Whether multiple values for this field are allowed */
     protected boolean multiple = false;
@@ -195,6 +201,28 @@ public class Params extends AbstractWingElement implements StructuralElement {
      */
     public void setMaxLength(int maxlength) {
         this.maxlength = maxlength;
+    }
+
+    /**
+     * Set the validation pattern of the field.
+     *
+     * This applies to text field.
+     *
+     * @param pattern (Required) The validation pattern of the field.
+     */
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    /**
+     * Set the validity message of the field.
+     *
+     * This applies to text field.
+     *
+     * @param validityMessage (Required) The validity message of the field.
+     */
+    public void setValidityMessage(String validityMessage) {
+        this.validityMessage = validityMessage;
     }
 
     /**
@@ -377,6 +405,16 @@ public class Params extends AbstractWingElement implements StructuralElement {
         if (this.maxlength > -1) {
             attributes.put(A_MAX_LENGTH, this.maxlength);
         }
+
+        // Customization for LIBCIR-263
+        if (!this.pattern.equals("")) {
+            attributes.put(A_PATTERN, this.pattern);
+        }
+
+        if (!this.validityMessage.equals("")) {
+            attributes.put(A_VALIDITY_MESSAGE, this.validityMessage);
+        }
+        // End Customization for LIBCIR-263
 
         if (this.multiple == true) {
             attributes.put(A_MULTIPLE, this.multiple);

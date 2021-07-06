@@ -229,7 +229,8 @@ public class DescribeStep extends AbstractProcessingStep {
                         itemService.addMetadata(context, item, schema, element, thisQual, null, thisVal);
                     }
                 }
-            } else if ((inputType.equals("onebox")) || (inputType.equals("twobox")) || (inputType.equals("textarea"))) {
+            } else if ((inputType.equals("onebox")) || (inputType.equals("onebox_orcid")) // Customization for LIBCIR-263
+                    || (inputType.equals("twobox")) || (inputType.equals("textarea"))) {  // Customization for LIBCIR-263
                 readText(context, request, item, schema, element, qualifier, inputs[j].getRepeatable(),
                         LANGUAGE_QUALIFIER, inputs[j].getLanguage());
             } else {

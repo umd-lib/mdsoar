@@ -112,6 +112,7 @@
     <message key="xmlui.Discovery.AbstractSearch.type_author">Filter by: Author</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.author">Author</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.author_filter">Author</message>
+    <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.dcterms.creator">Author ORCID</message> <!-- Customization for LIBCIR-263 -->
     <message key="xmlui.Discovery.AbstractSearch.type_subject">Filter by: Subject</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.subject">Subject</message>
     <message key="xmlui.ArtifactBrowser.SimpleSearch.filter.subject_filter">Subject</message>

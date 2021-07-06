@@ -67,6 +67,16 @@
         <xsl:attribute name="maxlength"><xsl:value-of select="."/></xsl:attribute>
     </xsl:template>
 
+    <!-- Customization for LIBCIR-263 -->
+    <xsl:template match="@pattern">
+        <xsl:attribute name="pattern"><xsl:value-of select="."/></xsl:attribute>
+    </xsl:template>
+    <xsl:template match="@validityMessage">
+        <xsl:attribute name="oninvalid">setCustomValidity('<xsl:value-of select="."/>');</xsl:attribute>
+        <xsl:attribute name="oninput">setCustomValidity('');</xsl:attribute>
+    </xsl:template>
+    <!-- End Customization for LIBCIR-263 -->
+
     <!-- "multiple" attribute is used by the <select> input method -->
     <xsl:template match="@multiple[.='yes']">
         <xsl:attribute name="multiple">multiple</xsl:attribute>

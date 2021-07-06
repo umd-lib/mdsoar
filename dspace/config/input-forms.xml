@@ -51,6 +51,19 @@
 		 <!-- End customization -->
          <required></required>
        </field>
+       <!-- Customization for LIBCIR-263 -->
+       <field>
+         <dc-schema>dcterms</dc-schema>
+         <dc-element>creator</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Author ORCID(s)</label>
+         <input-type>onebox_orcid</input-type>
+         <hint>Enter the ORCID of the author(s) of this item. To add multiple authors' ORCID, enter one ORCID at a time and then click “Add”.
+         </hint>
+         <required></required>
+       </field>
+		   <!-- End customization -->
 
        <field>
          <dc-schema>dc</dc-schema>

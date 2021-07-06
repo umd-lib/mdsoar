@@ -2232,7 +2232,8 @@
 
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Preview</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Title</message>
-        <message key="xmlui.dri2xhtml.METS-1.0.item-author">Author/Creator</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-author">Author/Creator</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-author-orcid">Author/Creator ORCID</message> <!-- Customization for LIBCIR-263 -->
 	<message key="xmlui.dri2xhtml.METS-1.0.item-abstract">Abstract</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-description">Description</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">Permanent Link</message>

@@ -59,7 +59,7 @@
          <repeatable>true</repeatable>
          <label>Author ORCID(s)</label>
          <input-type>onebox_orcid</input-type>
-         <hint>Enter the ORCID of the author(s) of this item. To add multiple authors' ORCID, enter one ORCID at a time and then click “Add”.
+         <hint>Enter the ORCID of the author(s) of this item. ORCIDs must be entered as full URLs (i.e. https://orcid.org/xxxx-xxxx-xxxx-xxxx). To add multiple authors' ORCID, enter one ORCID at a time and then click “Add”.
          </hint>
          <required></required>
        </field>

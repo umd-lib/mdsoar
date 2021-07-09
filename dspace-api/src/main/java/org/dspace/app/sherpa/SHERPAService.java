@@ -88,7 +88,7 @@ public class SHERPAService
 
                 HttpEntity responseBody = response.getEntity();
 
-                if (null != responseBody)
+                if (null != responseBody && statusCode != HttpStatus.SC_NOT_FOUND)
                     sherpaResponse = new SHERPAResponse(responseBody.getContent());
                 else
                     sherpaResponse = new SHERPAResponse("SHERPA/RoMEO returned no response");

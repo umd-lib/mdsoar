@@ -10,7 +10,7 @@
 
     Handlebars.registerHelper('set_selected', function(value, options) {
         var $el = $('<select />').html( options.fn(this) );
-        $el.find('[value=' + value + ']').attr({'selected':'selected'});
+        $el.find('[value="' + value + '"]').attr({'selected':'selected'});
         return $el.html();
     });
 

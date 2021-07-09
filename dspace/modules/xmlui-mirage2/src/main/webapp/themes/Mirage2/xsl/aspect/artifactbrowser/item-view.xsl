@@ -259,7 +259,7 @@
         <div class="simple-item-view-authors item-page-field-wrapper table">
           <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author-orcid</i18n:text></h5>
           <xsl:for-each select="dim:field[@element='creator']">
-            <xsl:call-template name="itemSummaryView-DIM-authors-entry" />
+            <xsl:call-template name="itemSummaryView-DIM-author-orcids-entry" />
           </xsl:for-each>
         </div>
       </xsl:if>
@@ -284,6 +284,25 @@
             <!--  End Customization LIBCIR-164 -->
         </div>
     </xsl:template>
+
+    <!--  Customization for LIBCIR-263 -->
+    <xsl:template name="itemSummaryView-DIM-author-orcids-entry">
+        <div>
+            <xsl:if test="@authority">
+                <xsl:attribute name="class"><xsl:text>ds-dc_contributor_author-authority</xsl:text></xsl:attribute>
+            </xsl:if>
+            
+            <a>
+	            <xsl:attribute name="href">
+			            <xsl:value-of select="$context-path"/>
+			            <xsl:text>/discover?filtertype_1=dcterms.creator&amp;filter_relational_operator_1=contains&amp;filter_1=</xsl:text>
+			            <xsl:copy-of select="node()"/>
+	            </xsl:attribute>
+	            <i18n:text><xsl:copy-of select="node()"/></i18n:text>
+            </a> 
+        </div>
+    </xsl:template>
+    <!--  End Customization LIBCIR-263 -->
 
     <xsl:template name="itemSummaryView-DIM-URI">
         <xsl:if test="dim:field[@element='identifier' and @qualifier='uri' and descendant::text()]">

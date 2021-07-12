@@ -856,7 +856,14 @@ public class DescribeStep extends AbstractSubmissionStep {
         for (int i = 0; i < pairs.size(); i += 2) {
             String display = pairs.get(i);
             String value = pairs.get(i + 1);
-            select.addOption(value, display);
+
+            // Customization for LIBCIR-263
+            if (fieldName.equals("dc_type") && value.equals("Text") && dcValues.size() == 0) {
+                select.addOption(true, value, display);
+            } else {
+                select.addOption(value, display);
+            }
+            // End customization for LIBCIR-263
         }
 
         // Setup the field's pre-selected values

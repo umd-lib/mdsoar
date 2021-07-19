@@ -51,6 +51,19 @@
 		 <!-- End customization -->
          <required></required>
        </field>
+       <!-- Customization for LIBCIR-263 -->
+       <field>
+         <dc-schema>dcterms</dc-schema>
+         <dc-element>creator</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Author ORCID(s)</label>
+         <input-type>onebox_orcid</input-type>
+         <hint>Enter the ORCID of the author(s) of this item. ORCIDs must be entered as full URLs (i.e. https://orcid.org/xxxx-xxxx-xxxx-xxxx). To add multiple authors' ORCID, enter one ORCID at a time and then click “Add”.
+         </hint>
+         <required></required>
+       </field>
+		   <!-- End customization -->
 
        <field>
          <dc-schema>dc</dc-schema>
@@ -206,10 +219,10 @@
          <dc-schema>dc</dc-schema>
          <dc-element>type</dc-element>
          <dc-qualifier></dc-qualifier>
-         <repeatable>false</repeatable>
+         <repeatable>true</repeatable> <!-- Customization for LIBCIR-264 -->
          <label>Type</label>
          <input-type value-pairs-name="common_types">dropdown</input-type>
-         <hint>Select the type that best describes the item (e.g. for articles, select “Text”; for an audio file, select “Sound”).</hint>
+         <hint>Select the type that best describes the item (e.g. for articles, select “Text”; for an audio file, select “Sound”). To select multiple types, control-click (Windows/Linux) or command-click (Mac) on the types.</hint> <!-- Customization for LIBCIR-264 -->
          <required>You must choose a type for this item.</required>
        </field>
 
@@ -217,10 +230,10 @@
          <dc-schema>dc</dc-schema>
          <dc-element>genre</dc-element>
          <dc-qualifier></dc-qualifier>
-         <repeatable>false</repeatable>
+         <repeatable>true</repeatable> <!-- Customization for LIBCIR-264 -->
          <label>Format</label>
          <input-type>onebox</input-type>
-         <hint>Enter a more specific term that indicates what the item is (e.g. thesis, journal article, book review, presentation, etc.)</hint>
+         <hint>Enter a more specific term that indicates what the item is (e.g. theses, journal articles, book reviews, presentations, etc.). To add multiple formats, enter one format at a time and then click “Add”.</hint> <!-- Customization for LIBCIR-264 -->
          <required></required>
        </field>
 
@@ -285,6 +298,19 @@
          <hint>If the item has any sponsors, conference organizers, and/or funding codes, enter their name(s) and/or codes.</hint>
          <required></required>
        </field>
+
+       <!-- Customization for LIBCIR-264 -->
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>rights</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Rights Statement</label>
+         <input-type>textarea</input-type>
+         <hint>If necessary, enter any rights statement(s) required by the rights holder.</hint>
+         <required></required>
+       </field>
+       <!-- End customization for LIBCIR-264 -->
 
        <field>
          <dc-schema>dc</dc-schema>
@@ -417,10 +443,6 @@
      -->
    <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
      <pair>
-       <displayed-value>N/A</displayed-value>
-       <stored-value></stored-value>
-     </pair>
-     <pair>
        <displayed-value>English (United States)</displayed-value>
        <stored-value>en_US</stored-value>
       </pair>
@@ -471,6 +493,10 @@
      <pair>
        <displayed-value>(Other)</displayed-value>
        <stored-value>other</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>N/A</displayed-value>
+       <stored-value></stored-value>
      </pair>
    </value-pairs>
 

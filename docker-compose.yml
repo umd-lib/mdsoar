@@ -14,7 +14,11 @@ services:
     container_name: dspace
     depends_on:
     - dspacedb
-    image: "${DOCKER_OWNER:-dspace}/dspace:${DSPACE_VER:-dspace-6_x-jdk8-test}"
+    image: docker.lib.umd.edu/mdsoar:dev
+    command:
+      - catalina.sh
+      # - jpda
+      - run
     build:
       context: .
       dockerfile: Dockerfile.jdk8-test
@@ -23,16 +27,18 @@ services:
     ports:
     - published: 8080
       target: 8080
+    - published: 8000
+      target: 8000
+    environment:
+     - JPDA_ADDRESS=8000
+     - JPDA_TRANSPORT=dt_socket
+    #  - JPDA_SUSPEND=y
     stdin_open: true
     tty: true
     volumes:
     - ./dspace/src/main/docker-compose/local.cfg:/dspace/config/local.cfg
     - ./dspace/src/main/docker-compose/xmlui.xconf:/dspace/config/xmlui.xconf
     - assetstore:/dspace/assetstore
-    - solr_authority:/dspace/solr/authority/data
-    - solr_oai:/dspace/solr/oai/data
-    - solr_search:/dspace/solr/search/data
-    - solr_statistics:/dspace/solr/statistics/data
   dspacedb:
     container_name: dspacedb
     environment:
@@ -44,10 +50,25 @@ services:
     tty: true
     volumes:
     - pgdata:/pgdata
+  solr:
+    container_name: solr
+    image: docker.lib.umd.edu/mdsoar-solr:6.3-mdsoar-5.0
+    networks:
+      dspacenet:
+    command:
+      - bash
+      - -c
+      - |-
+        precreate-or-update-core search /opt/solr/server/solr/configsets/search; \
+        precreate-or-update-core statistics /opt/solr/server/solr/configsets/statistics; \
+        precreate-or-update-core oai /opt/solr/server/solr/configsets/oai; \
+        exec solr -f -s /opt/solr/server/solr -m 2g
+    ports:
+    - published: 8983
+      target: 8983
+    volumes:
+    - solr:/opt/solr/server/solr/mycores
 volumes:
   assetstore:
   pgdata:
-  solr_authority:
-  solr_oai:
-  solr_search:
-  solr_statistics:
+  solr:

@@ -229,6 +229,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterAuthorOrcid" /> <!-- Customization for LIBCIR-263 -->
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterIdentifier" />
@@ -417,6 +418,17 @@
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
     </bean>
+
+    <!-- Customization for LIBCIR-263 -->
+    <bean id="searchFilterAuthorOrcid" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="dcterms.creator"/>
+        <property name="metadataFields">
+            <list>
+                <value>dcterms.creator</value>
+            </list>
+        </property>
+    </bean>
+    <!-- End Customization -->
 
     <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="subject"/>

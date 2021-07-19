@@ -25,45 +25,28 @@ COPY dspace/src/main/docker/local.cfg /app/local.cfg
 
 # Build DSpace.  Copy the dspace-install directory to /install.  Clean up the build to keep the docker image small
 RUN mvn package -Denv=local -P \!dspace-jspui,\!dspace-lni,\!dspace-rdf,\!dspace-solr,\!dspace-sword,\!dspace-swordv2 && \
+# RUN mvn package -Dmirage2.on=true  -Dmirage2.deps.included=true && \
   mv /app/dspace/target/${TARGET_DIR}/* /install && \
   mvn clean
 
 # Step 2 - Run Ant Deploy
-FROM tomcat:8-jre8 as ant_build
+FROM docker.lib.umd.edu/mdsoar-ant:latest as ant_build
 ARG TARGET_DIR=dspace-installer
 COPY --from=build /install /dspace-src
 WORKDIR /dspace-src
-
-# Create the initial install deployment using ANT
-ENV ANT_VERSION 1.10.7
-ENV ANT_HOME /tmp/ant-$ANT_VERSION
-ENV PATH $ANT_HOME/bin:$PATH
-ENV TEST=
-RUN mkdir $ANT_HOME && \
-    wget -qO- "https://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C $ANT_HOME
 
 RUN ant init_installation update_configs update_code update_webapps update_solr_indexes
 
 # Step 3 - Run tomcat
 # Create a new tomcat image that does not retain the the build directory contents
-FROM tomcat:8-jre8
+FROM docker.lib.umd.edu/mdsoar-tomcat:latest
 
 ENV DSPACE_INSTALL=/dspace \
-    JAVA_OPTS=-Xmx2000m \
-    TZ=America/New_York
+    JAVA_OPTS=-Xmx2000m
 
 COPY --from=ant_build /dspace $DSPACE_INSTALL
-EXPOSE 8080 8009
 
-RUN apt-get update && \
-    apt-get install -y \
-        rsync \
-        cron \
-        postfix \
-        vim \
-        python3-lxml && \
-    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
-    rm -rf /usr/local/tomcat/webapps/* && \
+RUN rm -rf /usr/local/tomcat/webapps/* && \
     ln -s $DSPACE_INSTALL/webapps/xmlui /usr/local/tomcat/webapps/ROOT && \
     ln -s $DSPACE_INSTALL/webapps/rest /usr/local/tomcat/webapps/rest && \
     ln -s $DSPACE_INSTALL/webapps/oai /usr/local/tomcat/webapps/oai && \

@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>6.3-mdsoar-5</version>
+        <version>6.3-mdsoar-5.1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -46,6 +46,9 @@
             </modules>
         </profile>
         <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <id>dspace-jspui</id>
             <modules>
                 <module>jspui</module>
@@ -112,7 +115,6 @@
             </activation>
             <modules>
                 <module>xmlui</module>
-                <module>rdf</module>
                 <module>rest</module>
                 <module>oai</module>
                 <module>xmlui-mirage2</module>

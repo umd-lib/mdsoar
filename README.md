@@ -12,24 +12,44 @@ Home: http://mdsoar.lib.umd.edu/
 
 ### Installation
 
-Instructions for installing in UMD Libraries development environments (Mac OS X):
+Instructions for building and running mdsoar locally.
+#### Prerequisites
 
-*Important:* Until the upcoming DSpace 7 upgrade, we will be using Java 7 for both the maven build (local) and ant deployment (server). Set your JAVA_HOME and PATH environment variables to run maven build using Java 7.
+The following images needs to be built once for the Dockerfile.dev to build successfully.
 
 ```
-# Build the base modules and overlay modules (Slower)
-# Full build is only required after a version change (checking out a different version
-# or a local project version change)
-cd /apps/git/mdsoar
-mvn clean install
-
-# Build only the overlay modules (Faster)
-# Can be run only after a full build is done at least once after a version change.
-cd /apps/git/mdsoar/dspace
-mvn install
+docker build -t docker.lib.umd.edu/mdsoar-dependencies-6_x:latest -f Dockerfile.dependencies .
+docker build -t docker.lib.umd.edu/mdsoar-ant:latest -f Dockerfile.ant .
+docker build -t docker.lib.umd.edu/mdsoar-tomcat:latest -f Dockerfile.tomcat .
 ```
 
-*Note:* Due to a outdated Java 7 security certificate issue, the mirage2 build using native tools is no longer working. The `-Dmirage2.deps.included=false` needs to be added to all maven build commands.
+#### Build
+
+To build the dspace development image used by the docker-compose.yml
+
+```
+docker build -t docker.lib.umd.edu/mdsoar:dev -f Dockerfile.dev .
+```
+
+#### Run
+
+Start the mdsoar using docker-compose.
+
+```
+docker-compose up -d
+```
+
+Useful commands
+```
+# To stop all the containers
+docker-compose down
+
+# To stop just the dspace container
+docker-compose stop dspace
+
+# To attach to the dspace container
+docker exec -it $(docker ps -f name=dspace$ --format {{.ID}}) bash
+```
 
 [Old Build Instuctions](dspace/docs/LocalBuildInstructions.md)
 
@@ -49,7 +69,7 @@ This dockefile builds a mdsoar tomcat image.
 docker build -t docker.lib.umd.edu/mdsoar:<VERSION> .
 ```
 
-The version would follow the mdsoar project version. For example, a release version could be `6.3/mdsoar-4.2`, and we can suffix the version number with `-alpha1`, `-beta1`, or `-rc1` as necessary for non-production images.
+The version would follow the mdsoar project version. For example, a release version could be `6.3/mdsoar-4.2`, and we can suffix the version number with `-rcX` or use `latest` as the version for non-production images.
 
 #### Postgres Image
 

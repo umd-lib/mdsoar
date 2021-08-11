@@ -250,29 +250,40 @@ public class EditItemMetadataForm extends AbstractDSpaceTransformer {
                         }
                         else
                         {
-                            TextArea mdValue = mdCell.addTextArea("value_"+index);
-                        mdValue.setSize(4,35);
-                        mdValue.setValue(value.getValue());
-                            boolean isAuth = metadataAuthorityService.isAuthorityControlled(fieldKey);
-                            if (isAuth)
-                            {
-                                mdValue.setAuthorityControlled();
-                                mdValue.setAuthorityRequired(metadataAuthorityService.isAuthorityRequired(fieldKey));
-                                Value authValue =  mdValue.setAuthorityValue((value.getAuthority() == null)?"":value.getAuthority(), Choices.getConfidenceText(value.getConfidence()));
-                                // add the "unlock" button to auth field
-                                Button unlock = authValue.addButton("authority_unlock_"+index,"ds-authority-lock");
-                                unlock.setHelp(T_unlock);
-                            }
-                            if (choiceAuthorityService.isChoicesConfigured(fieldKey))
-                            {
-                                mdValue.setChoices(fieldKey);
-                                if(Params.PRESENTATION_AUTHORLOOKUP.equals(choiceAuthorityService.getPresentation(fieldKey))){
-                                    mdValue.setChoicesPresentation(Params.PRESENTATION_AUTHORLOOKUP);
-                                }else{
-                                    mdValue.setChoicesPresentation(Params.PRESENTATION_LOOKUP);
+                            // Customization for LIBCIR-263
+                            if (name.equals("dcterms.creator")) {
+                                Text mdValue = mdCell.addText("value_"+index);
+                                mdValue.setSize(37, 37);
+                                String validityPattern = "https://orcid.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[X0-9]";
+                                String validityMessage = "Must be of format https://orcid.org/xxxx-xxxx-xxxx-xxxx";
+                                mdValue.setValidationPattern(validityPattern, validityMessage);
+                                mdValue.setValue(value.getValue());
+                            } else {
+                                TextArea mdValue = mdCell.addTextArea("value_"+index);
+                                mdValue.setSize(4,35);
+                                mdValue.setValue(value.getValue());
+                                boolean isAuth = metadataAuthorityService.isAuthorityControlled(fieldKey);
+                                if (isAuth)
+                                {
+                                    mdValue.setAuthorityControlled();
+                                    mdValue.setAuthorityRequired(metadataAuthorityService.isAuthorityRequired(fieldKey));
+                                    Value authValue =  mdValue.setAuthorityValue((value.getAuthority() == null)?"":value.getAuthority(), Choices.getConfidenceText(value.getConfidence()));
+                                    // add the "unlock" button to auth field
+                                    Button unlock = authValue.addButton("authority_unlock_"+index,"ds-authority-lock");
+                                    unlock.setHelp(T_unlock);
                                 }
-                                mdValue.setChoicesClosed(choiceAuthorityService.isClosed(fieldKey));
+                                if (choiceAuthorityService.isChoicesConfigured(fieldKey))
+                                {
+                                    mdValue.setChoices(fieldKey);
+                                    if(Params.PRESENTATION_AUTHORLOOKUP.equals(choiceAuthorityService.getPresentation(fieldKey))){
+                                        mdValue.setChoicesPresentation(Params.PRESENTATION_AUTHORLOOKUP);
+                                    }else{
+                                        mdValue.setChoicesPresentation(Params.PRESENTATION_LOOKUP);
+                                    }
+                                    mdValue.setChoicesClosed(choiceAuthorityService.isClosed(fieldKey));
+                                }
                             }
+                            // End customization for LIBCIR-263
                         }
                         Text mdLang = row.addCell().addText("language_"+index);
                         mdLang.setSize(6);

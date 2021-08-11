@@ -604,21 +604,25 @@
         <!-- JS to scroll form to DIV parent of "Add" button if jump-to -->
         <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='jumpTo']">
             <script type="text/javascript">
-                <xsl:text>var button = document.getElementById('</xsl:text>
-                <xsl:value-of select="translate(@id,'.','_')"/>
-                <xsl:text>').elements['</xsl:text>
-                <xsl:value-of select="concat('submit_',/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='jumpTo'],'_add')"/>
-                <xsl:text>'];</xsl:text>
-            <xsl:text>
-                      if (button != null) {
-                        var n = button.parentNode;
-                        for (; n != null; n = n.parentNode) {
-                            if (n.tagName == 'DIV') {
-                              n.scrollIntoView(false);
-                              break;
-                           }
+                <xsl:text>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var button = document.getElementById('</xsl:text>
+                        <xsl:value-of select="translate(@id,'.','_')"/>
+                        <xsl:text>').elements['</xsl:text>
+                        <xsl:value-of select="concat('submit_',/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='jumpTo'],'_add')"/>
+                        <xsl:text>'];</xsl:text>
+                        <xsl:text>
+                        if (button != null) {
+                            var offsetTop = button.offsetTop;
+                            var element = button.offsetParent;
+                            while(element) {
+                                offsetTop += element.offsetTop;
+                                element = element.offsetParent;
+                              }
+                            var topPos = offsetTop - 50;
+                            window.scrollTo(0,topPos);
                         }
-                      }
+                    });
             </xsl:text>
             </script>
         </xsl:if>

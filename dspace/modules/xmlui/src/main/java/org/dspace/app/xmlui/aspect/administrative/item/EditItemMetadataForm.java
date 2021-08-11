@@ -251,7 +251,7 @@ public class EditItemMetadataForm extends AbstractDSpaceTransformer {
                         else
                         {
                             // Customization for LIBCIR-263
-                            if (name.equals("dcterms.creator")) {
+                            if (name.equals("dcterms_creator")) {
                                 Text mdValue = mdCell.addText("value_"+index);
                                 mdValue.setSize(37, 37);
                                 String validityPattern = "https://orcid.org/\\d{4}-\\d{4}-\\d{4}-\\d{3}[X0-9]";

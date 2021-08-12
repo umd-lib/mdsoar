@@ -406,15 +406,15 @@
      </pair>
      <pair>
        <displayed-value>Interactive Resource</displayed-value>
-       <stored-value>InteractiveResource</stored-value>
+       <stored-value>Interactive Resource</stored-value>
      </pair>
      <pair>
        <displayed-value>Moving Image</displayed-value>
-       <stored-value>MovingImage</stored-value>
+       <stored-value>Moving Image</stored-value>
      </pair>
      <pair>
        <displayed-value>Physical Object</displayed-value>
-       <stored-value>PhysicalObject</stored-value>
+       <stored-value>Physical Object</stored-value>
      </pair>
      <pair>
        <displayed-value>Service</displayed-value>
@@ -430,7 +430,7 @@
      </pair>
      <pair>
        <displayed-value>Still Image</displayed-value>
-       <stored-value>StillImage</stored-value>
+       <stored-value>Still Image</stored-value>
      </pair>
      <pair>
        <displayed-value>Text</displayed-value>

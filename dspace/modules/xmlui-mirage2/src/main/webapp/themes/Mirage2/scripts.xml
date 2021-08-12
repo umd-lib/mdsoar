@@ -49,6 +49,7 @@
     <script src="scripts/jquery-ui.js">&#160;</script>
     <script src="scripts/autocomplete.js">&#160;</script>
     <!-- End customization -->
+    <script src="scripts/admin-orcid-validation.js">&#160;</script> <!-- Customization for LIBCIR-263 -->
 
     <!-- authorLookup and its dependencies -->
     <script src="vendor/datatables/media/js/jquery.dataTables.js">&#160;</script>

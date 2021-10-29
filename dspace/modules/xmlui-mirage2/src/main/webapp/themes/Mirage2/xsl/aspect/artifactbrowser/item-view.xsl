@@ -255,10 +255,10 @@
           </xsl:otherwise>
         </xsl:choose>
       </div>
-      <xsl:if test="dim:field[@element='creator' and descendant::text()]">
+      <xsl:if test="dim:field[@element='creator' and @mdschema='dcterms' and descendant::text()]">
         <div class="simple-item-view-authors item-page-field-wrapper table">
           <h5><i18n:text>xmlui.dri2xhtml.METS-1.0.item-author-orcid</i18n:text></h5>
-          <xsl:for-each select="dim:field[@element='creator']">
+          <xsl:for-each select="dim:field[@element='creator' and @mdschema='dcterms']">
             <xsl:call-template name="itemSummaryView-DIM-author-orcids-entry" />
           </xsl:for-each>
         </div>

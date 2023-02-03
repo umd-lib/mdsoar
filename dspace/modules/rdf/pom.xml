@@ -11,7 +11,7 @@
     <parent>
         <artifactId>modules</artifactId>
         <groupId>org.dspace</groupId>
-        <version>6.3-mdsoar-7</version>
+        <version>6.3-mdsoar-8-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 

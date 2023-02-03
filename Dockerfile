@@ -46,7 +46,8 @@ RUN ant init_installation update_configs update_code update_webapps update_solr_
 
 # Step 3 - Run tomcat
 # Create a new tomcat image that does not retain the the build directory contents
-FROM tomcat:8-jre8
+# After https://github.com/DSpace/DSpace/issues/8557 is resolved, we can switch back to tomcat:8-jre
+FROM tomcat:8-jdk8-openjdk-bullseye
 
 ENV DSPACE_INSTALL=/dspace \
     JAVA_OPTS=-Xmx2000m \
@@ -56,7 +57,7 @@ COPY --from=ant_build /dspace $DSPACE_INSTALL
 EXPOSE 8080 8009
 
 RUN apt-get update && \
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
         rsync \
         cron \
         postfix \

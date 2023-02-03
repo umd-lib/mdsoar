@@ -44,7 +44,7 @@
                                 <!-- End of LIBCIR-201 -->
                                 Contact information:<br/>
                                 Email: <a href="mailto:scholarworks-group@umbc.edu">scholarworks-group@umbc.edu</a><br/>
-                                Phone: <a href="tel:4104553021">410-455-3021</a><br/>
+                                Phone: <a href="tel:4104553544">410-455-3544</a><br/>
                             </p>
                             <hr/>
                             <p>

@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>6.3-mdsoar-7</version>
+        <version>7.5</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -27,153 +27,42 @@
         <module>additions</module>
     </modules>
 
-    <!-- 
+    <!--
          List of enabled DSpace "addon" / local customization Modules to build/install.
-         To disable building of modules, you can use the Maven '-P' commandline 
+         To disable building of modules, you can use the Maven '-P' commandline
          option along with the profile's id.  For example, the following tells
          Maven to *disable* building of the 'dspace-oai' module:
          'mvn package -P !dspace-oai'
-         
+
          Also note that the profile IDs below match the profile IDs of the source
          modules in [dspace-src]/pom.xml, so the above command will also disable the
          compiling of the corresponding source module.
     -->
     <profiles>
-        <profile>
-            <id>dspace-xmlui</id>
-            <modules>
-                <module>xmlui</module>
-            </modules>
-        </profile>
-        <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>dspace-jspui</id>
-            <modules>
-                <module>jspui</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>dspace-rdf</id>
-            <modules>
-                <module>rdf</module>
-            </modules>
-        </profile>
+        <!-- As this old REST API module is deprecated, it only builds if you activate it via -Pdspace-rest -->
         <profile>
             <id>dspace-rest</id>
-            <modules>
-                <module>rest</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>dspace-sword</id>
-            <modules>
-                <module>sword</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>dspace-swordv2</id>
-            <modules>
-                <module>swordv2</module>
-            </modules>
-        </profile>
-        <profile>
             <activation>
                 <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>dspace-solr</id>
-            <modules>
-                <module>solr</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>dspace-oai</id>
-            <modules>
-                <module>oai</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>mirage2</id>
-            <modules>
-                <module>xmlui-mirage2</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>mirage2-communities</id>
-            <modules>
-                <module>xmlui-mirage2-communities</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>xmlui</module>
-                <module>rest</module>
-                <module>oai</module>
-                <module>xmlui-mirage2</module>
-                <module>xmlui-mirage2-communities</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>server</id>
-            <activation>
+                <!-- Enable if we are doing a release (-Drelease), to tag/release this optional module -->
                 <property>
-                    <name>env</name>
-                    <value>!local</value>
+                    <name>release</name>
                 </property>
             </activation>
             <modules>
-                <module>xmlui</module>
-                <module>jspui</module>
-                <module>rdf</module>
                 <module>rest</module>
-                <module>sword</module>
-                <module>swordv2</module>
-                <module>oai</module>
-                <module>xmlui-mirage2</module>
-                <module>xmlui-mirage2-communities</module>
             </modules>
         </profile>
-
         <profile>
-            <id>xmlui-plus</id>
+            <id>dspace-server-webapp</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <file>
+                    <exists>server/pom.xml</exists>
+                </file>
             </activation>
             <modules>
-                <module>xmlui</module>
-                <module>xmlui-mirage2</module>
-                <module>xmlui-mirage2-communities</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>all-modules</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <modules>
-                <module>xmlui</module>
-                <module>lni</module>
-                <module>jspui</module>
-                <module>rdf</module>
-                <module>rest</module>
-                <module>sword</module>
-                <module>swordv2</module>
-                <module>solr</module>
-                <module>oai</module>
-                <module>xmlui-mirage2</module>
-                <module>xmlui-mirage2-communities</module>
+                <module>server</module>
             </modules>
         </profile>
     </profiles>
-
 </project>

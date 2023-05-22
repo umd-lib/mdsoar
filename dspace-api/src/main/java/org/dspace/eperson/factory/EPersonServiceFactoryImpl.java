@@ -7,11 +7,16 @@
  */
 package org.dspace.eperson.factory;
 
-import org.dspace.eperson.service.*;
+import org.dspace.eperson.service.AccountService;
+import org.dspace.eperson.service.EPersonService;
+import org.dspace.eperson.service.GroupService;
+import org.dspace.eperson.service.RegistrationDataService;
+import org.dspace.eperson.service.SubscribeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Factory implementation to get services for the eperson package, use EPersonServiceFactory.getInstance() to retrieve an implementation
+ * Factory implementation to get services for the eperson package, use EPersonServiceFactory.getInstance() to
+ * retrieve an implementation
  *
  * @author kevinvandevelde at atmire.com
  */
@@ -27,8 +32,6 @@ public class EPersonServiceFactoryImpl extends EPersonServiceFactory {
     private AccountService accountService;
     @Autowired(required = true)
     private SubscribeService subscribeService;
-    @Autowired(required = true)
-    private SupervisorService supervisorService;
 
     @Override
     public EPersonService getEPersonService() {
@@ -55,8 +58,4 @@ public class EPersonServiceFactoryImpl extends EPersonServiceFactory {
         return subscribeService;
     }
 
-    @Override
-    public SupervisorService getSupervisorService() {
-        return supervisorService;
-    }
 }

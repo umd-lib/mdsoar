@@ -5,7 +5,7 @@
     Created on : January 23, 2013, 1:26 PM
     Updated on : November 26, 2015, 3:00 PM
     Author     : pbecker, ffuerste
-    Description: Converts metadata from DSpace Intermediat Format (DIM) into
+    Description: Converts metadata from DSpace Intermediate Format (DIM) into
                  metadata following the DataCite Schema for the Publication and
                  Citation of Research Data, Version 3.1, for use with EZID.
                  Copied from DIM2DataCite.xsl, with small changes.
@@ -26,7 +26,7 @@
     <!-- We need the prefix to determine DOIs that were minted by ourself. -->
     <xsl:param name="prefix">10.5072/dspace-</xsl:param>
     <!-- The content of the following parameter will be used as element publisher. -->
-    <xsl:param name="publisher">Maryland Shared Open Access Repository</xsl:param>
+    <xsl:param name="publisher">My University</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
     <xsl:param name="datamanager"><xsl:value-of select="$publisher" /></xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
@@ -63,7 +63,7 @@
             <!--
                  For EZID we need an empty field here.
             -->
-                <identifier identifierType='DOI'/>
+                <identifier type='DOI'/>
 
             <!--
                 DataCite (2)
@@ -72,13 +72,8 @@
             -->
             <creators>
                 <xsl:choose>
-                    <xsl:when test="(//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']) or (//dspace:field[@mdschema='dc' and @element='creator'])">
-                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
-                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
-                        </xsl:if>
-                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='creator']">
-                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='creator']" />
-                        </xsl:if>
+                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+                        <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
                     </xsl:when>
                     <xsl:otherwise>
                         <creator>
@@ -299,13 +294,6 @@
             </creatorName>
         </creator>
     </xsl:template>
-    <xsl:template match="//dspace:field[@mdschema='dc' and @element='creator']">
-        <creator>
-            <creatorName>
-                <xsl:value-of select="." />
-            </creatorName>
-        </creator>
-    </xsl:template>
 
     <!-- DataCite (3) :: Title -->
     <xsl:template match="dspace:field[@mdschema='dc' and @element='title']">
@@ -474,10 +462,7 @@
                     <xsl:when test="string(text())='Book'">Text</xsl:when>
                     <xsl:when test="string(text())='Book chapter'">Text</xsl:when>
                     <xsl:when test="string(text())='Dataset'">Dataset</xsl:when>
-                    <xsl:when test="string(text())='Event'">Event</xsl:when>
-                    <xsl:when test="string(text())='InteractiveResource'">InteractiveResource</xsl:when>
                     <xsl:when test="string(text())='Learning Object'">InteractiveResource</xsl:when>
-                    <xsl:when test="string(text())='StillImage'">Image</xsl:when>
                     <xsl:when test="string(text())='Image'">Image</xsl:when>
                     <xsl:when test="string(text())='Image, 3-D'">Image</xsl:when>
                     <xsl:when test="string(text())='Map'">Model</xsl:when>
@@ -488,15 +473,13 @@
                     <xsl:when test="string(text())='Recording, acoustical'">Sound</xsl:when>
                     <xsl:when test="string(text())='Recording, musical'">Sound</xsl:when>
                     <xsl:when test="string(text())='Recording, oral'">Sound</xsl:when>
-                    <xsl:when test="string(text())='Service'">Service</xsl:when>
                     <xsl:when test="string(text())='Software'">Software</xsl:when>
-                    <xsl:when test="string(text())='Sound'">Sound</xsl:when>
                     <xsl:when test="string(text())='Technical Report'">Text</xsl:when>
                     <xsl:when test="string(text())='Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
                     <xsl:when test="string(text())='Working Paper'">Text</xsl:when>
-                    <xsl:when test="string(text())='Other'">Collection</xsl:when>
-                    <xsl:otherwise>Collection</xsl:otherwise>
+                    <xsl:when test="string(text())='Other'">Other</xsl:when>
+                    <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
             <xsl:value-of select="." />

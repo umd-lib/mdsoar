@@ -22,16 +22,23 @@ services:
       # dspace__P__ui__P__url: http://localhost:4000
       dspace__P__name: 'DSpace Started with Docker Compose'
       # db.url: Ensure we are using the 'dspacedb' image for our database
-      db__P__url: 'jdbc:postgresql://dspacedb:5432/dspace'
+      # UMD Customization
+      db__P__url: 'jdbc:postgresql://dspacedb:5432/mdsoar'
+      # End UMD Customization
       # solr.server: Ensure we are using the 'dspacesolr' image for Solr
       solr__P__server: http://dspacesolr:8983/solr
       # proxies.trusted.ipranges: This setting is required for a REST API running in Docker to trust requests
       # from the host machine. This IP range MUST correspond to the 'dspacenet' subnet defined above.
       proxies__P__trusted__P__ipranges: '172.23.0'
-    image: "${DOCKER_OWNER:-dspace}/dspace:${DSPACE_VER:-dspace-7_x-test}"
+      # UMD Customization
+      JPDA_OPTS: "-agentlib:jdwp=transport=dt_socket,address=0.0.0.0:8000,server=y,suspend=n"
+      # End UMD Customization
+    # UMD Customization
+    image: "docker.lib.umd.edu/mdsoar:${DSPACE_VER:-7_x-dev}"
+    # End UMD Customization
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile.dev
     depends_on:
     - dspacedb
     networks:
@@ -55,20 +62,29 @@ services:
     # 1. While a TCP connection to dspacedb port 5432 is not available, continue to sleep
     # 2. Then, run database migration to init database tables
     # 3. Finally, start Tomcat
+    # UMD Customization
     entrypoint:
     - /bin/bash
     - '-c'
     - |
       while (!</dev/tcp/dspacedb/5432) > /dev/null 2>&1; do sleep 1; done;
-      /dspace/bin/dspace database migrate
-      catalina.sh run
+      /dspace/bin/dspace database migrate ignored
+      catalina.sh jpda run
+    # End UMD Customization
   # DSpace database container
   dspacedb:
     container_name: dspacedb
     environment:
       PGDATA: /pgdata
+      # UMD Customization
+      POSTGRES_DB: mdsoar
+      POSTGRES_USER: mdsoar
+      POSTGRES_PASSWORD: mdsoar
+      # End UMD Customization
     # Uses a custom Postgres image with pgcrypto installed
-    image: dspace/dspace-postgres-pgcrypto
+    # UMD Customization
+    image: docker.lib.umd.edu/mdsoar-postgres:latest
+    # End UMD Customization
     networks:
       dspacenet:
     ports:
@@ -77,7 +93,10 @@ services:
     stdin_open: true
     tty: true
     volumes:
-    - pgdata:/pgdata
+    # UMD Customization
+    - pgdata:/pgdatasql
+    - ./postgres-init:/docker-entrypoint-initdb.d
+    # End UMD Customizaton
   # DSpace Solr container
   dspacesolr:
     container_name: dspacesolr

@@ -1,4 +1,4 @@
-# This image will be published as dspace/dspace-dependencies
+# This image will be published as docker.lib.umd.edu/mdsoar-dependencies-7_x:latest
 # The purpose of this image is to make the build for dspace/dspace run faster
 #
 
@@ -23,6 +23,9 @@ RUN apt-get update \
 
 # Switch to dspace user & run below commands as that user
 USER dspace
+
+# Add maven settings
+COPY --chown=dspace dspace/src/main/docker/mvn-settings.xml /home/dspace/.m2/settings.xml
 
 # Copy the DSpace source code (from local machine) into the workdir (excluding .dockerignore contents)
 ADD --chown=dspace . /app/

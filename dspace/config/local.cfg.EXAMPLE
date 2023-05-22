@@ -32,13 +32,17 @@
 # Windows note: Please remember to use forward slashes for all paths (e.g. C:/dspace)
 dspace.dir=/dspace
 
+dspace.hostname = localhost
+dspace.baseUrl = http://localhost:8080
+dspace.url = ${dspace.baseUrl}
+
 # Public URL of DSpace backend ('server' webapp). May require a port number if not using standard ports (80 or 443)
 # DO NOT end it with '/'.
 # This is where REST API and all enabled server modules (OAI-PMH, SWORD, SWORDv2, RDF, etc) will respond.
 # NOTE: This URL must be accessible to all DSpace users (should not use 'localhost' in Production)
 # and is usually "synced" with the "rest" section in the DSpace User Interface's config.*.yml.
 # It corresponds to the URL that you would type into your browser to access the REST API.
-dspace.server.url = http://localhost:8080/server
+dspace.server.url = ${dspace.baseUrl}/server
 
 # Public URL of DSpace frontend (Angular UI). May require a port number if not using standard ports (80 or 443)
 # DO NOT end it with '/'.
@@ -48,7 +52,7 @@ dspace.server.url = http://localhost:8080/server
 dspace.ui.url = http://localhost:4000
 
 # Name of the site
-dspace.name = DSpace at My University
+dspace.name = Maryland Shared Open Access Repository
 
 # Assetstore configurations have moved to config/modules/assetstore.cfg
 # and config/spring/api/bitstore.xml.
@@ -61,7 +65,7 @@ dspace.name = DSpace at My University
 # Solr server/webapp.
 # DSpace uses Solr for all search/browse capability (and for usage statistics).
 # Since DSpace 7, SOLR must be installed as a stand-alone service
-#solr.server = http://localhost:8983/solr
+solr.server = http://dspacesolr:8983/solr
 
 # Solr core name prefix.
 # If you connect multiple instances of DSpace to a single Solr instance, you
@@ -78,7 +82,7 @@ dspace.name = DSpace at My University
 # URL for connecting to database
 #    * Postgres template: jdbc:postgresql://localhost:5432/dspace
 #    * Oracle template (DEPRECATED): jdbc:oracle:thin:@//localhost:1521/xe
-db.url = jdbc:postgresql://localhost:5432/dspace
+db.url = jdbc:postgresql://dspacedb:5432/mdsoar
 
 # JDBC Driver
 #    * For Postgres: org.postgresql.Driver
@@ -91,8 +95,8 @@ db.driver = org.postgresql.Driver
 db.dialect = org.hibernate.dialect.PostgreSQL94Dialect
 
 # Database username and password
-db.username = dspace
-db.password = dspace
+db.username = mdsoar
+db.password = mdsoar
 
 # Database Schema name
 #    * For Postgres, this is often "public" (default schema)

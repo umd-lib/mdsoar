@@ -1,0 +1,30 @@
+# This image is used for MD-SOAR development
+#
+# This image is used as the first stage of the two stage "Quick Build"
+#
+# Build: docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:7_x-dev-base .
+#
+
+ARG JDK_VERSION=11
+
+# Step 1 - Run Maven Build
+FROM docker.lib.umd.edu/mdsoar-dependencies-7_x:latest
+ARG TARGET_DIR=dspace-installer
+WORKDIR /app
+
+# The dspace-install directory will be written to /install
+RUN mkdir /install \
+    && chown -Rv dspace: /install
+
+USER dspace
+
+# Copy the DSpace source code into the workdir (excluding .dockerignore contents)
+ADD --chown=dspace . /app/
+COPY dspace/src/main/docker/local.cfg /app/local.cfg
+
+# Build DSpace.
+# RUN mvn package
+RUN mvn install -Dlicense.skip=true -Dcheckstyle.skip
+
+# RUN mvn install -pl '!org.dspace.modules:additions'
+# RUN mvn package -rf org.dspace.modules:additions

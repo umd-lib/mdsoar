@@ -1,112 +1,130 @@
-# Maryland Shared Open Access Repository (MD-SOAR)
 
-Home: http://mdsoar.lib.umd.edu/
+# DSpace
 
-## Documentation
+[![Build Status](https://github.com/DSpace/DSpace/workflows/Build/badge.svg)](https://github.com/DSpace/DSpace/actions?query=workflow%3ABuild)
 
-* [Original DSpace README](README-DSPACE.md)
-* [DSpace Manual](dspace/docs/pdf/DSpace-Manual.pdf)
-* [Theme Customization](dspace/docs/ThemeCustomization.md)
-* [Mirage2 Prerequisites on Server](dspace/docs/Mirage2PrerequisitesOnServer.md)
-* [Vagrant Deployment](https://github.com/umd-lib/mdsoar-vagrant)
+[DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC/) |
+[DSpace Releases](https://github.com/DSpace/DSpace/releases) |
+[DSpace Wiki](https://wiki.lyrasis.org/display/DSPACE/Home) |
+[Support](https://wiki.lyrasis.org/display/DSPACE/Support)
 
-### Installation
+## Overview
 
-Instructions for building and running mdsoar locally.
-#### Prerequisites
+DSpace open source software is a turnkey repository application used by more than
+2,000 organizations and institutions worldwide to provide durable access to digital resources.
+For more information, visit http://www.dspace.org/
 
-The following images needs to be built once for the Dockerfile.dev to build successfully.
+DSpace consists of both a Java-based backend and an Angular-based frontend.
 
-```
-docker build -t docker.lib.umd.edu/mdsoar-dependencies-6_x:latest -f Dockerfile.dependencies .
-docker build -t docker.lib.umd.edu/mdsoar-ant:latest -f Dockerfile.ant .
-docker build -t docker.lib.umd.edu/mdsoar-tomcat:latest -f Dockerfile.tomcat .
-```
+* Backend (this codebase) provides a REST API, along with other machine-based interfaces (e.g. OAI-PMH, SWORD, etc)
+    * The REST Contract is at https://github.com/DSpace/RestContract
+* Frontend (https://github.com/DSpace/dspace-angular/) is the User Interface built on the REST API
 
-#### Build
+Prior versions of DSpace (v6.x and below) used two different UIs (XMLUI and JSPUI). Those UIs are no longer supported in v7 (and above).
+* A maintenance branch for older versions is still available, see `dspace-6_x` for 6.x maintenance.
 
-To build the dspace development image used by the docker-compose.yml
+## Downloads
 
-```
-docker build -t docker.lib.umd.edu/mdsoar:dev -f Dockerfile.dev .
-```
+* Backend (REST API): https://github.com/DSpace/DSpace/releases
+* Frontend (User Interface): https://github.com/DSpace/dspace-angular/releases
 
-#### Run
+## Documentation / Installation
 
-Start the mdsoar using docker-compose.
+Documentation for each release may be viewed online or downloaded via our [Documentation Wiki](https://wiki.lyrasis.org/display/DSDOC/).
 
-```
-docker-compose up -d
-```
+The latest DSpace Installation instructions are available at:
+https://wiki.lyrasis.org/display/DSDOC7x/Installing+DSpace
 
-Useful commands
-```
-# To stop all the containers
-docker-compose down
+Please be aware that, as a Java web application, DSpace requires a database (PostgreSQL)
+and a servlet container (usually Tomcat) in order to function.
+More information about these and all other prerequisites can be found in the Installation instructions above.
 
-# To stop just the dspace container
-docker-compose stop dspace
+## Running DSpace 7 in Docker
 
-# To attach to the dspace container
-docker exec -it $(docker ps -f name=dspace$ --format {{.ID}}) bash
-```
+NOTE: At this time, we do not have production-ready Docker images for DSpace.
+That said, we do have quick-start Docker Compose scripts for development or testing purposes.
 
-[Old Build Instuctions](dspace/docs/LocalBuildInstructions.md)
+See [Running DSpace 7 with Docker Compose](dspace/src/main/docker-compose/README.md)
 
-### Building Images for K8s Deployment
+## Contributing
 
-#### DSpace Image
+See [Contributing documentation](CONTRIBUTING.md)
 
-Dockerfile.dependencies is used to pre-cache maven downloads that will be used in subsequent DSpace docker builds.
+## Getting Help
 
-```
-docker build -t docker.lib.umd.edu/mdsoar-dependencies-6_x:latest -f Dockerfile.dependencies .
-```
+DSpace provides public mailing lists where you can post questions or raise topics for discussion.
+We welcome everyone to participate in these lists:
 
-This dockefile builds a mdsoar tomcat image.
+* [dspace-community@googlegroups.com](https://groups.google.com/d/forum/dspace-community) : General discussion about DSpace platform, announcements, sharing of best practices
+* [dspace-tech@googlegroups.com](https://groups.google.com/d/forum/dspace-tech) : Technical support mailing list. See also our guide for [How to troubleshoot an error](https://wiki.lyrasis.org/display/DSPACE/Troubleshoot+an+error).
+* [dspace-devel@googlegroups.com](https://groups.google.com/d/forum/dspace-devel) : Developers / Development mailing list
 
-```
-docker build -t docker.lib.umd.edu/mdsoar:<VERSION> .
-```
+Great Q&A is also available under the [DSpace tag on Stackoverflow](http://stackoverflow.com/questions/tagged/dspace)
 
-The version would follow the mdsoar project version. For example, a release version could be `6.3/mdsoar-4.2`, and we can suffix the version number with `-rcX` or use `latest` as the version for non-production images.
+Additional support options are at https://wiki.lyrasis.org/display/DSPACE/Support
 
-#### Postgres Image
+DSpace also has an active service provider network. If you'd rather hire a service provider to
+install, upgrade, customize or host DSpace, then we recommend getting in touch with one of our
+[Registered Service Providers](http://www.dspace.org/service-providers).
 
-To build postgres image with pgcrypto module.
+## Issue Tracker
 
-```
-cd dspace/src/main/docker/dspace-postgres-pgcrypto
-docker build -t docker.lib.umd.edu/dspace-postgres:<VERSION> .
-```
+DSpace uses GitHub to track issues:
+* Backend (REST API) issues: https://github.com/DSpace/DSpace/issues
+* Frontend (User Interface) issues: https://github.com/DSpace/dspace-angular/issues
 
-We could follow the same versioning scheme as the main mdsoar image, but we don't necessariliy have create new image versions for postgres for every patch or hotfix version increments. The postgres image can be built when there is a relevant change.
+## Testing
 
-#### Solr Image
+### Running Tests
 
-To build postgres image with pgcrypto module.
+By default, in DSpace, Unit Tests and Integration Tests are disabled. However, they are
+run automatically by [GitHub Actions](https://github.com/DSpace/DSpace/actions?query=workflow%3ABuild) for all Pull Requests and code commits.
 
-```
-cd dspace/solr
-docker build -t docker.lib.umd.edu/mdsoar-solr:<VERSION> .
-```
+* How to run both Unit Tests (via `maven-surefire-plugin`) and Integration Tests (via `maven-failsafe-plugin`):
+  ```
+  mvn install -DskipUnitTests=false -DskipIntegrationTests=false
+  ```
+* How to run _only_ Unit Tests:
+  ```
+  mvn test -DskipUnitTests=false
+  ```
+* How to run a *single* Unit Test
+  ```
+  # Run all tests in a specific test class
+  # NOTE: failIfNoTests=false is required to skip tests in other modules
+  mvn test -DskipUnitTests=false -Dtest=[full.package.testClassName] -DfailIfNoTests=false
 
-We could follow the same versioning scheme as the main mdsoar image, but we don't necessariliy have create new image versions for solr for every patch or hotfix version increments. The solr image can be built when there is a relevant change.
+  # Run one test method in a specific test class
+  mvn test -DskipUnitTests=false -Dtest=[full.package.testClassName]#[testMethodName] -DfailIfNoTests=false
+  ```
+* How to run _only_ Integration Tests
+  ```
+  mvn install -DskipIntegrationTests=false
+  ```
+* How to run a *single* Integration Test
+  ```
+  # Run all integration tests in a specific test class
+  # NOTE: failIfNoTests=false is required to skip tests in other modules
+  mvn install -DskipIntegrationTests=false -Dit.test=[full.package.testClassName] -DfailIfNoTests=false
 
-### Deployment (Old VM based deployment)
+  # Run one test method in a specific test class
+  mvn install -DskipIntegrationTests=false -Dit.test=[full.package.testClassName]#[testMethodName] -DfailIfNoTests=false
+  ```
+* How to run only tests of a specific DSpace module
+  ```
+  # Before you can run only one module's tests, other modules may need installing into your ~/.m2
+  cd [dspace-src]
+  mvn clean install
 
-The `dspace-installer` directory that contains all the artifacts and the ant script to perform the deployment. The `installer-dist` maven profile creates a tar file of the installer directory which can be pushed to the UMD nexus by using the `deploy-release` or `deploy-snapshot` profile.
+  # Then, move into a module subdirectory, and run the test command
+  cd [dspace-src]/dspace-server-webapp
+  # Choose your test command from the lists above
+  ```
 
-```
-# Switch to the dspace directory
-cd /apps/git/mdsoar/dspace
+## License
 
-# Deploy a snapshot version to nexus
-# (use this profile if the current project version is a SNAPSHOT version)
-mvn -P installer-dist,deploy-snapshot -rf :dspace
+DSpace source code is freely available under a standard [BSD 3-Clause license](https://opensource.org/licenses/BSD-3-Clause).
+The full license is available in the [LICENSE](LICENSE) file or online at http://www.dspace.org/license/
 
-# Deploy a release version to nexus
-mvn -P installer-dist,deploy-release -Dmirage2.deps.included=false -rf :dspace
-```
-
-*NOTE:* For the Nexus deployment to succeed, the nexus server, username and password needs to be configured in the `.m2/setting.xml` and a prior successful `mvn install`.
+DSpace uses third-party libraries which may be distributed under different licenses. Those licenses are listed
+in the [LICENSES_THIRD_PARTY](LICENSES_THIRD_PARTY) file.

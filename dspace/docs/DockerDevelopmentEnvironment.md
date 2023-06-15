@@ -31,11 +31,18 @@ main branch for MD-SOAR development.
     $ cp dspace/config/local.cfg.EXAMPLE dspace/config/local.cfg
     ```
 
+    If testing DOI generation, edit the file, and fill out the following fields:
+
+    * identifier.doi.user: `DEMO.UMD`
+    * identifier.doi.password: <See the `identifier.doi.password` property
+                                in the “mdsoar-local-secrets-cfg” secret in the
+                                Kubernetes configuration>
+
 4) Retrieve a database dump from Kubernetes. The following steps work with
    both DSpace 6 and DSpace 7 databases:
 
    ```bash
-   # Switch the appropiate Kubernetes namespace from which the database snapshot
+   # Switch the appropriate Kubernetes namespace from which the database snapshot
    # should be retrieved (the following example uses the Kubernetes "test"
    # namespace):
    $ kubectl config use-context test

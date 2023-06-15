@@ -255,3 +255,14 @@ db.schema = public
 
 # Maximum size of a multipart request (i.e. max total size of all files in one request)
 #spring.servlet.multipart.max-request-size = 512MB
+
+#####################
+# DOI CONFIGURATION #
+#####################
+identifier.doi.user =
+identifier.doi.password =
+identifier.doi.prefix = 10.33522
+identifier.doi.datacite.host = mds.test.datacite.org
+identifier.doi.mintRandom = true
+identifier.doi.namespaceseparator = m2
+crosswalk.dissemination.DataCite.publisher = Maryland Shared Open Access Repository

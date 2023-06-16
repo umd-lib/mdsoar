@@ -57,12 +57,79 @@
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Author</label>
+                    <!-- UMD Customization -->
+                    <label>Author(s)</label>
+                    <!-- End UMD Customization -->
                     <input-type>onebox</input-type>
-                    <hint>Enter the author's name (Family name, Given names).</hint>
+                    <!-- UMD Customization -->
+                    <hint>
+                        Enter the name(s) of the author(s) of this item. To add
+                        multiple authors, enter one name (last and first)
+                        at a time and then click "Add more".
+                    </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
+
+            <!-- UMD Customization -->
+            <row>
+                <field>
+                    <dc-schema>dcterms</dc-schema>
+                    <dc-element>creator</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Author ORCID(s)</label>
+                    <!-- TODO LIBCIR-296 <input-type>onebox_orcid</input-type> -->
+                    <input-type>onebox</input-type>
+                    <hint>
+                        Enter the ORCID of the author(s) of this item. ORCIDs
+                        must be entered as full URLs (i.e. https://orcid.org/xxxx-xxxx-xxxx-xxxx).
+                        To add multiple authors' ORCID, enter one ORCID at a
+                        time and then click "Add more".
+                    </hint>
+                    <regex>https:\/\/orcid.org\/\d{4}-\d{4}-\d{4}-\d{3}[X0-9]</regex>
+                    <required></required>
+                </field>
+            </row>
+
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Contributor(s)</label>
+                    <input-type>onebox</input-type>
+                    <hint>
+                        Enter the name(s) of any other contributors to the item
+                        (e.g. editors, illustrators, narrators, etc.). To add
+                        multiple contributors, enter one name (last and first)
+                        at a time and then click "Add more".
+                    </hint>
+                    <required></required>
+                </field>
+            </row>
+
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>advisor</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Advisor(s)</label>
+                    <input-type>onebox</input-type>
+                    <hint>
+                        If applicable, enter the name(s) of the advisor(s) who
+                        oversaw the creation of this item. To add multiple
+                        advisors, enter one name (last and first) at a time and
+                        then click "Add more".
+		                </hint>
+                    <required></required>
+                </field>
+            </row>
+            <!-- End UMD Customization -->
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -71,7 +138,9 @@
                     <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
+                    <!-- UMD Customization -->
+                    <hint>Enter the title of the item, including any subtitles.</hint>
+                    <!-- End UMD Customization -->
                     <required>You must enter a main title for this item.</required>
                 </field>
             </row>
@@ -83,7 +152,13 @@
                     <repeatable>true</repeatable>
                     <label>Other Titles</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
+                    <!-- UMD Customization -->
+                    <hint>
+                        If the item has any alternative titles, enter them here.
+                        To add multiple alternative titles, enter one title at
+                        a time and then click "Add more".
+                    </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
@@ -94,23 +169,44 @@
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Date of Issue</label>
-                    <style>col-sm-4</style>
+                    <!-- UMD Customization -->
+                    <!-- <style>col-sm-4</style> -->
+                    <!-- End UMD Customization -->
                     <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day and/or month if they aren't applicable.
+                    <!-- UMD Customization -->
+                    <hint>
+                        Enter the date of previous publication or public
+                        distribution when the item was made generally available.
+                        Otherwise, enter the date that the item was created. You
+                        may leave out the day and/or month if they are not
+                        applicable.
+                        If the date is unknown or uncertain, leave these boxes
+                        blank and use the "Description" box to give the
+                        approximate date, century, era, etc. with an
+                        explanatory note.
                     </hint>
-                    <required>You must enter at least the year.</required>
+                    <required></required>
+                    <!-- End UMD Customization -->
                 </field>
+            <!-- UMD Customization -->
+            <!-- Place "Date of Issue" and "Publisher" fields on separate rows -->
+            </row>
 
+            <row>
+            <!-- End UMD Customization -->
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>publisher</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Publisher</label>
-                    <style>col-sm-8</style>
+                    <!-- UMD Customization -->
+                    <!-- <style>col-sm-8</style> -->
+                    <!-- UMD Customization -->
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+                    <!-- UMD Customization -->
+                    <hint>If the item has been previously published, enter the name of the publisher.</hint>
+                     <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
@@ -120,9 +216,13 @@
                     <dc-element>identifier</dc-element>
                     <dc-qualifier>citation</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Citation</label>
+                    <!-- UMD Customization -->
+                    <label>Citation of Original Publication</label>
+                    <!-- End UMD Customization -->
                     <input-type>onebox</input-type>
-                    <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+                     <!-- UMD Customization -->
+                    <hint>If the item has been previously published, enter its bibliographic citation.</hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
@@ -132,12 +232,48 @@
                     <dc-element>relation</dc-element>
                     <dc-qualifier>ispartofseries</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Series/Report No.</label>
+                    <!-- UMD Customization -->
+                    <label>Series/Report</label>
+                    <!-- End UMD Customization -->
                     <input-type>series</input-type>
-                    <hint>Enter the series and number assigned to this item by your community.</hint>
+                    <!-- UMD Customization -->
+                    <hint>
+                        If the item is part of a series, enter the series name
+                        and the numbering for the item within the series. To add
+                        multiple series, enter one series and numbering at a
+                        time and then click "Add more".
+                    </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
+            <!-- UMD Customization -->
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>department</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Department</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the academic or administrative department for which the item was created.</hint>
+                    <required></required>
+                </field>
+            </row>
+
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>program</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Program</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the academic or administrative program for which the item was created.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <!-- End UMD Customization -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -147,12 +283,34 @@
                     <repeatable>true</repeatable>
                     <label>Identifiers</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
+                    <!-- UMD Customization -->
+                    <hint>
+                        If the item has any standard identification numbers or
+                        codes associated with it, select the type of identifier
+                        and enter the number or code. To add multiple
+                        identifiers, select the type of identifier and enter
+                        the number or code one at a time and then click "Add more".
                     </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
+
+            <!-- UMD Customization -->
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>External Link</label>
+                    <input-type>onebox</input-type>
+                    <hint>If applicable, enter the URL for the item located elsewhere on the Internet.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <!-- End UMD Customization -->
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -161,11 +319,57 @@
                     <repeatable>true</repeatable>
                     <label>Type</label>
                     <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Select the type of content of the item.
+                    <!-- UMD Customization -->
+                    <hint>
+                        Select the type that best describes the item (e.g. for
+                        articles, select "Text"; for an audio file, select
+                        "Sound"). To add multiple types, select the type
+                        one at a time and then click "Add more".
                     </hint>
-                    <required></required>
+                    <required>You must choose a type for this item.</required>
+                    <!-- End UMD Customization -->
                 </field>
             </row>
+
+
+            <!-- UMD Customizaton -->
+            <row>
+                <field>
+                  <dc-schema>dc</dc-schema>
+                  <dc-element>genre</dc-element>
+                  <dc-qualifier></dc-qualifier>
+                  <repeatable>true</repeatable> <!-- Customization for LIBCIR-264 -->
+                  <label>Format</label>
+                  <input-type>onebox</input-type>
+                  <hint>
+                      Enter a more specific term that indicates what the item
+                      is (e.g. theses, journal articles, book reviews,
+                      presentations, etc.). To add multiple formats, enter one
+                      format at a time and then click "Add more".
+                  </hint>
+                  <required></required>
+                </field>
+            </row>
+
+            <row>
+                <field>
+                  <dc-schema>dc</dc-schema>
+                  <dc-element>format</dc-element>
+                  <dc-qualifier>extent</dc-qualifier>
+                  <repeatable>false</repeatable>
+                  <label>Extent</label>
+                  <input-type>onebox</input-type>
+                  <hint>
+                      Enter a number (in Arabic numerals) and a unit of extent
+                      (e.g. pages, running time, dimensions, file size, etc.).
+                      A complete entry might look like "22 pages", or
+                      "35 minutes", or "8x10 inches", etc.
+                  </hint>
+                  <required></required>
+                </field>
+            </row>
+            <!-- End UMD Customizaton -->
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -194,10 +398,19 @@
                     <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
                     <label>Subject Keywords</label>
-                    <input-type>tag</input-type>
-                    <hint>Enter appropriate subject keywords or phrases.</hint>
+                    <!-- UMD Customization -->
+                    <input-type>onebox</input-type>
+                    <hint>
+                        Enter appropriate subject keywords or phrases to
+                        describe the nature of the content of the item. To add
+                        multiple subject keywords, enter one term or phrase at
+                        a time and then click "Add more".
+                    </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
-                    <vocabulary>srsc</vocabulary>
+                    <!-- UMD Customization -->
+                    <!-- <vocabulary>srsc</vocabulary> -->
+                    <!-- End UMD Customization -->
                 </field>
             </row>
             <row>
@@ -220,10 +433,31 @@
                     <repeatable>false</repeatable>
                     <label>Sponsors</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the names of any sponsors and/or funding codes in the box.</hint>
+                    <!-- UMD Customization -->
+                    <hint>
+                        If the item has any sponsors, conference organizers,
+                        and/or funding codes, enter their name(s) and/or
+                        codes.
+                    </hint>
+                    <!-- End UMD Customization -->
                     <required></required>
                 </field>
             </row>
+
+            <!-- UMD Customization -->
+            <row>
+                <field>
+                  <dc-schema>dc</dc-schema>
+                  <dc-element>rights</dc-element>
+                  <dc-qualifier></dc-qualifier>
+                  <repeatable>false</repeatable>
+                  <label>Rights Statement</label>
+                  <input-type>textarea</input-type>
+                  <hint>If necessary, enter any rights statement(s) required by the rights holder.</hint>
+                  <required></required>
+                </field>
+            </row>
+            <!-- End UMD Customization -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1390,97 +1624,65 @@
                 <displayed-value>ISBN</displayed-value>
                 <stored-value>isbn</stored-value>
             </pair>
+            <!-- UMD Customization -->
+            <pair>
+              <displayed-value>DOI</displayed-value>
+              <stored-value>uri</stored-value>
+            </pair>
+            <!-- End UMD Customization -->
         </value-pairs>
 
         <value-pairs value-pairs-name="common_types" dc-term="type">
+            <!-- UMD Customization -->
             <pair>
-                <displayed-value>Animation</displayed-value>
-                <stored-value>Animation</stored-value>
+              <displayed-value>Collection</displayed-value>
+              <stored-value>Collection</stored-value>
             </pair>
             <pair>
-                <displayed-value>Article</displayed-value>
-                <stored-value>Article</stored-value>
+              <displayed-value>Dataset</displayed-value>
+              <stored-value>Dataset</stored-value>
             </pair>
             <pair>
-                <displayed-value>Book</displayed-value>
-                <stored-value>Book</stored-value>
+              <displayed-value>Event</displayed-value>
+              <stored-value>Event</stored-value>
             </pair>
             <pair>
-                <displayed-value>Book chapter</displayed-value>
-                <stored-value>Book chapter</stored-value>
+              <displayed-value>Image</displayed-value>
+              <stored-value>Image</stored-value>
             </pair>
             <pair>
-                <displayed-value>Dataset</displayed-value>
-                <stored-value>Dataset</stored-value>
+              <displayed-value>Interactive Resource</displayed-value>
+              <stored-value>Interactive Resource</stored-value>
             </pair>
             <pair>
-                <displayed-value>Learning Object</displayed-value>
-                <stored-value>Learning Object</stored-value>
+              <displayed-value>Moving Image</displayed-value>
+              <stored-value>Moving Image</stored-value>
             </pair>
             <pair>
-                <displayed-value>Image</displayed-value>
-                <stored-value>Image</stored-value>
+              <displayed-value>Physical Object</displayed-value>
+              <stored-value>Physical Object</stored-value>
             </pair>
             <pair>
-                <displayed-value>Image, 3-D</displayed-value>
-                <stored-value>Image, 3-D</stored-value>
+              <displayed-value>Service</displayed-value>
+              <stored-value>Service</stored-value>
             </pair>
             <pair>
-                <displayed-value>Map</displayed-value>
-                <stored-value>Map</stored-value>
+              <displayed-value>Software</displayed-value>
+              <stored-value>Software</stored-value>
             </pair>
             <pair>
-                <displayed-value>Musical Score</displayed-value>
-                <stored-value>Musical Score</stored-value>
+              <displayed-value>Sound</displayed-value>
+              <stored-value>Sound</stored-value>
             </pair>
             <pair>
-                <displayed-value>Plan or blueprint</displayed-value>
-                <stored-value>Plan or blueprint</stored-value>
+              <displayed-value>Still Image</displayed-value>
+              <stored-value>Still Image</stored-value>
             </pair>
             <pair>
-                <displayed-value>Preprint</displayed-value>
-                <stored-value>Preprint</stored-value>
+              <displayed-value>Text</displayed-value>
+              <stored-value>Text</stored-value>
             </pair>
-            <pair>
-                <displayed-value>Presentation</displayed-value>
-                <stored-value>Presentation</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Recording, acoustical</displayed-value>
-                <stored-value>Recording, acoustical</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Recording, musical</displayed-value>
-                <stored-value>Recording, musical</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Recording, oral</displayed-value>
-                <stored-value>Recording, oral</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Software</displayed-value>
-                <stored-value>Software</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Technical Report</displayed-value>
-                <stored-value>Technical Report</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Thesis</displayed-value>
-                <stored-value>Thesis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Video</displayed-value>
-                <stored-value>Video</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Working Paper</displayed-value>
-                <stored-value>Working Paper</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Other</displayed-value>
-                <stored-value>Other</stored-value>
-            </pair>
+            <!-- End UMD Customization -->
         </value-pairs>
 
         <!-- default language order: (from dspace 1.2.1)

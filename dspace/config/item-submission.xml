@@ -259,7 +259,9 @@
             <!-- <step id="extractionstep"/> -->
 
             <!-- Uncomment this step to allow the user to select a Creative Commons License -->
-            <!-- <step id="cclicense"/> -->
+            <!-- UMD Customization -->
+            <step id="cclicense"/>
+            <!-- End UMD Customization -->
 
             <!--Step will be to Sign off on the required DSpace License agreement -->
             <step id="license"/>

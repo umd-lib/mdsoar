@@ -11,16 +11,15 @@ Major customizations have their own documents:
 
 * [MdsoarDOI.md](./MdsoarDOI.md)
 * [SubmissionForm.md](./SubmissionForm.md)
-* Community Themes - See the [umd-lib/medsoar-angular](https://github.com/umd-lib/mdsoar-angular)
+* Community Themes - See the [umd-lib/mdsoar-angular](https://github.com/umd-lib/mdsoar-angular)
   documentation
 
 ## Minor Customizations
 
-The following customizations were made to the DSpace configuration settings in
-the "dspace/config/local.cfg.EXAMPLE" file, to override the default settings in
-the stock DSpace configuration files.
+The following settings were added to the "dspace/config/local.cfg.EXAMPLE" file,
+to override default settings in the stock DSpace configuration files.
 
-* `usage-statistics.logBots` - ("false") Disable logging of spiders/bots in Solr
+* `usage-statistics.logBots` - Disable logging of spiders/bots in Solr
   statistics.
 
 * `usage-statistics.authorization.admin.usage` - Do not show "Statistics" menu

@@ -287,3 +287,6 @@ cc.license.classfilter = recombo, mark, publicdomain
 
 # Disable logging of spiders in solr statistics.
 usage-statistics.logBots = false
+
+# Suppress "Statistics" entry in the navbar for non-admins
+usage-statistics.authorization.admin.usage=true

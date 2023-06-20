@@ -111,16 +111,14 @@ Confluence for information about setting up a MacBook to use the Kubernetes
     $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -f Dockerfile -t docker.lib.umd.edu/mdsoar-solr:$MDSOAR_TAG .
     ```
 
-### Features
+### MD-SOAR Customizations
 
-* [MdSoarFeatures](dspace/docs/MdsoarFeatures.md) - Summary of MD-SOAR
-  enhancements to base DSpace functionality
-* [MdSoarConfigurationCustomization](dspace/docs/MdSoarConfigurationCustomization.md) -
-  Information about customizing DSpace for MD-SOAR.
-* [docs](dspace/docs) - additional documentation
+MD-SOAR customizations to the stock DSpace code are described in
+[dspace/docs/MdSoarCustomizations](dspace/docs/MdsoarCustomizations.md).
+
+The [dspace/docs](dspace/docs) directory contains additonal documentation
+related to MD-SOAR.
 
 ## License
 
-See the [MDSOAR-LICENSE](MDSOAR-LICENSE.md) file for license rights and limitations
-(Apache 2.0). This lincense only governs the part of code base developed at UMD.
 The DSpace license can be found at <https://github.com/DSpace/DSpace>

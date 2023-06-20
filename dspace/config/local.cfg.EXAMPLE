@@ -266,3 +266,16 @@ identifier.doi.datacite.host = mds.test.datacite.org
 identifier.doi.mintRandom = true
 identifier.doi.namespaceseparator = m2
 crosswalk.dissemination.DataCite.publisher = Maryland Shared Open Access Repository
+
+############################
+# UI-RELATED CONFIGURATION #
+############################
+
+# Creative Commons settings
+cc.api.rooturl = https://api.creativecommons.org/rest/1.5
+# A list of license classes that should be excluded from selection process
+# Excluding "publicdomain" because it is now a duplicate of the CC0 license
+# This section can likely be removed in future DSpace versions.
+# See https://github.com/DSpace/DSpace/issues/8543 and
+# https://github.com/DSpace/DSpace/pull/8903
+cc.license.classfilter = recombo, mark, publicdomain

@@ -10,7 +10,7 @@
 ##
 ## See org.dspace.core.Email for information on the format of this file.
 ##
-#set($subject = "DSpace: Error ${params[0]} DOI ${params[3]}")
+#set($subject = "MD-SOAR: Error ${params[0]} DOI ${params[3]}")
 
 Date:    ${params[1]}
 

@@ -16,6 +16,8 @@ Major customizations have their own documents:
 
 ## Minor Customizations
 
+### dspace/config/local.cfg.EXAMPLE
+
 The following settings were added to the "dspace/config/local.cfg.EXAMPLE" file,
 to override default settings in the stock DSpace configuration files.
 
@@ -24,3 +26,10 @@ to override default settings in the stock DSpace configuration files.
 
 * `usage-statistics.authorization.admin.usage` - Do not show "Statistics" menu
   entry in the navbar for non-admins users.
+
+### Email Templates
+
+The email templates in the "dspace/config/emails/" directory were modified to
+replace "DSpace" with "MD-SOAR".
+
+

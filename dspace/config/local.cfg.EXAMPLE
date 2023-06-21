@@ -52,7 +52,7 @@ dspace.server.url = ${dspace.baseUrl}/server
 dspace.ui.url = http://localhost:4000
 
 # Name of the site
-dspace.name = Maryland Shared Open Access Repository
+dspace.name = MD-SOAR
 
 # Assetstore configurations have moved to config/modules/assetstore.cfg
 # and config/spring/api/bitstore.xml.
@@ -141,7 +141,7 @@ db.schema = public
 #feedback.recipient = dspace-help@myu.edu
 
 # General site administration (Webmaster) e-mail
-#mail.admin = dspace-help@myu.edu
+mail.admin = mdsoar-help@umd.edu
 
 # Helpdesk E-mail
 #mail.helpdesk = ${mail.admin}

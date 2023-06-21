@@ -21,6 +21,9 @@ Major customizations have their own documents:
 The following settings were added to the "dspace/config/local.cfg.EXAMPLE" file,
 to override default settings in the stock DSpace configuration files.
 
+* `webui.user.assumelogin` - Enabled administrators to impersonate non-admin
+    users
+
 * `usage-statistics.logBots` - Disable logging of spiders/bots in Solr
   statistics.
 

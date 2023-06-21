@@ -270,6 +270,7 @@ crosswalk.dissemination.DataCite.publisher = Maryland Shared Open Access Reposit
 ############################
 # UI-RELATED CONFIGURATION #
 ############################
+webui.user.assumelogin = true
 
 # Creative Commons settings
 cc.api.rooturl = https://api.creativecommons.org/rest/1.5

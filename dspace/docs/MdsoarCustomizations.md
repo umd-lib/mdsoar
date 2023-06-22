@@ -21,8 +21,7 @@ Major customizations have their own documents:
 The following settings were added to the "dspace/config/local.cfg.EXAMPLE" file,
 to override default settings in the stock DSpace configuration files.
 
-* `webui.user.assumelogin` - Enabled administrators to impersonate non-admin
-    users
+* `eperson.subscription.onlynew` - Only send subscription emails for new items
 
 * `usage-statistics.logBots` - Disable logging of spiders/bots in Solr
   statistics.
@@ -32,6 +31,9 @@ to override default settings in the stock DSpace configuration files.
 
 * Modified `webui.browse.index.<n>` entries, adding the ability to browse by
   "Type".
+
+* `webui.user.assumelogin` - Enabled administrators to impersonate non-admin
+    users
 
 ### Email Templates
 

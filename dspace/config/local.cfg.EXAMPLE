@@ -300,3 +300,9 @@ usage-statistics.authorization.admin.usage=true
 
 # Disable logging of spiders in solr statistics.
 usage-statistics.logBots = false
+
+######################
+# MISC CONFIGURATION #
+######################
+# Only send subscription emails for new items
+eperson.subscription.onlynew = true

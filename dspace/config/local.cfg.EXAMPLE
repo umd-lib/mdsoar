@@ -256,6 +256,15 @@ mail.admin = mdsoar-help@umd.edu
 # Maximum size of a multipart request (i.e. max total size of all files in one request)
 #spring.servlet.multipart.max-request-size = 512MB
 
+########################
+# BROWSE CONFIGURATION #
+########################
+webui.browse.index.1 = dateissued:item:dateissued
+webui.browse.index.2 = title:item:title
+webui.browse.index.3 = author:metadata:dc.contributor.author\,dc.creator:text
+webui.browse.index.4 = subject:metadata:dc.coverage.spatial\,dc.coverage.temporal\,dc.coverage\,dc.subject.classification\,dc.subject.*\,dc.subject\,dcterms.temporal\,dcterms.subject\,dcterms.spatial\,dcterms.coverage:text
+webui.browse.index.5 = type:metadata:dc.format\,dc.genre\,dc.type:text
+
 #####################
 # DOI CONFIGURATION #
 #####################

@@ -30,6 +30,9 @@ to override default settings in the stock DSpace configuration files.
 * `usage-statistics.authorization.admin.usage` - Do not show "Statistics" menu
   entry in the navbar for non-admins users.
 
+* Modified `webui.browse.index.<n>` entries, adding the ability to browse by
+  "Type".
+
 ### Email Templates
 
 The email templates in the "dspace/config/emails/" directory were modified to

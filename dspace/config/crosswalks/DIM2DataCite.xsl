@@ -74,9 +74,16 @@
             -->
             <creators>
                 <xsl:choose>
-                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
-                        <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                    <!-- UMD Customization -->
+                     <xsl:when test="(//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']) or (//dspace:field[@mdschema='dc' and @element='creator'])">
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='contributor' and @qualifier='author']" />
+                        </xsl:if>
+                        <xsl:if test="//dspace:field[@mdschema='dc' and @element='creator']">
+                            <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='creator']" />
+                        </xsl:if>
                     </xsl:when>
+                    <!-- End UMD Customization -->
                     <xsl:otherwise>
                         <creator>
                             <creatorName>(:unkn) unknown</creatorName>
@@ -310,6 +317,16 @@
         </creator>
     </xsl:template>
 
+    <!-- UMD Customization -->
+    <xsl:template match="//dspace:field[@mdschema='dc' and @element='creator']">
+        <creator>
+            <creatorName>
+                <xsl:value-of select="." />
+            </creatorName>
+        </creator>
+    </xsl:template>
+    <!-- End UMD Customization -->
+
     <!-- DataCite (3) :: Title -->
     <xsl:template match="dspace:field[@mdschema='dc' and @element='title']">
         <xsl:element name="title">
@@ -493,8 +510,19 @@
                     <xsl:when test="string(text())='Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
                     <xsl:when test="string(text())='Working Paper'">Text</xsl:when>
-                    <xsl:when test="string(text())='Other'">Other</xsl:when>
-                    <xsl:otherwise>Other</xsl:otherwise>
+                    <!-- UMD Customization -->
+                    <xsl:when test="string(text())='Collection'">Collection</xsl:when>
+                    <xsl:when test="string(text())='Event'">Event</xsl:when>
+                    <xsl:when test="string(text())='Interactive Resource'">InteractiveResource</xsl:when>
+                    <xsl:when test="string(text())='Moving Image'">Audiovisual</xsl:when>
+                    <xsl:when test="string(text())='Physical Object'">PhysicalObject</xsl:when>
+                    <xsl:when test="string(text())='Service'">Service</xsl:when>
+                    <xsl:when test="string(text())='Still Image'">Image</xsl:when>
+                    <xsl:when test="string(text())='Sound'">Sound</xsl:when>
+                    <xsl:when test="string(text())='Text'">Text</xsl:when>
+                    <xsl:when test="string(text())='Other'">Collection</xsl:when>
+                    <xsl:otherwise>Collection</xsl:otherwise>
+                    <!-- End UMD Customization -->
                 </xsl:choose>
             </xsl:attribute>
             <xsl:value-of select="." />

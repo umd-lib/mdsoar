@@ -276,6 +276,14 @@ identifier.doi.mintRandom = true
 identifier.doi.namespaceseparator = m2
 crosswalk.dissemination.DataCite.publisher = Maryland Shared Open Access Repository
 
+##################################
+# GOOGLE ANALYTICS CONFIGURATION #
+##################################
+google.analytics.key =
+google.analytics.buffer = 256
+google.analytics.cron = 0 0/5 * * * ?
+google.analytics.api-secret =
+
 ############################
 # UI-RELATED CONFIGURATION #
 ############################

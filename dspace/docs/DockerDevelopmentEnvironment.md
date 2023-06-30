@@ -31,12 +31,24 @@ main branch for MD-SOAR development.
     $ cp dspace/config/local.cfg.EXAMPLE dspace/config/local.cfg
     ```
 
-    If testing DOI generation, edit the file, and fill out the following fields:
+    The following functionality is not enabled by default in the local
+    development environment:
 
-    * identifier.doi.user: `DEMO.UMD`
-    * identifier.doi.password: <See the `identifier.doi.password` property
-                                in the “mdsoar-local-secrets-cfg” secret in the
-                                Kubernetes configuration>
+    * DataCite DOI generation
+
+      To enable DOI generation, fill out the following properties from the
+      "DRUM/MD-SOAR DataCite Credentials" note in LastPass:
+
+        * identifier.doi.user
+        * identifier.doi.password
+
+    * Google Analytics
+
+      To enable Google Analytics, fill out the following properties from the
+      "MD-SOAR Google Analytics" note in LastPass:
+
+        * google.analytics.key
+        * google.analytics.api-secret
 
 4) Retrieve a database dump from Kubernetes. The following steps work with
    both DSpace 6 and DSpace 7 databases:

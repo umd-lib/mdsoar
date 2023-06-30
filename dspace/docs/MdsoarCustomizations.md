@@ -40,4 +40,16 @@ to override default settings in the stock DSpace configuration files.
 The email templates in the "dspace/config/emails/" directory were modified to
 replace "DSpace" with "MD-SOAR".
 
+### Google Analytics
 
+MD-SOAR uses stock DSpace Google Analytics 4 functionality to track site usage,
+including file/bitstream downloads (see
+<https://wiki.lyrasis.org/display/DSDOC7x/DSpace+Google+Analytics+Statistics>).
+
+In order to track file downloads, the following properties must be set in
+the "dspace/config/local.cfg" file:
+
+* google.analytics.key
+* google.analytics.buffer
+* google.analytics.cron
+* google.analytics.api-secret

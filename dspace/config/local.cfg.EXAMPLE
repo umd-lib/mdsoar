@@ -265,6 +265,25 @@ webui.browse.index.3 = author:metadata:dc.contributor.author\,dc.creator:text
 webui.browse.index.4 = subject:metadata:dc.coverage.spatial\,dc.coverage.temporal\,dc.coverage\,dc.subject.classification\,dc.subject.*\,dc.subject\,dcterms.temporal\,dcterms.subject\,dcterms.spatial\,dcterms.coverage:text
 webui.browse.index.5 = type:metadata:dc.format\,dc.genre\,dc.type:text
 
+# CrossLinks configuration
+# See "webui.browse.link" section in dspace.cfg
+#
+# Wild cards are allowed, but multiple values per entry are not
+
+# Author
+webui.browse.link.1 = author:dc.contributor.author
+webui.browse.link.2 = author:dc.creator
+
+# Subject
+webui.browse.link.3 = subject:dc.subject.*
+webui.browse.link.4 = subject:dc.coverage.*
+
+# Type
+webui.browse.link.5 = type:dc.genre
+webui.browse.link.6 = type:dc.type
+webui.browse.link.7 = type:dc.format
+webui.browse.link.8 = type:dcterms.format
+
 #####################
 # DOI CONFIGURATION #
 #####################

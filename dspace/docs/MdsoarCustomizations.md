@@ -9,11 +9,12 @@ the stock DSpace code for MD-SOAR.
 
 Major customizations have their own documents:
 
-* Community Themes - See the [umd-lib/mdsoar-angular](https://github.com/umd-lib/mdsoar-angular)
-  documentation
 * [DataCiteDOI.md](./DataCiteDOI.md)
 * [SimpleItemPage.md](./SimpleItemPage.md)
+* [SolrAutosuggest.md](./SolrAutosuggest.md)
 * [SubmissionForm.md](./SubmissionForm.md)
+* Community Themes - See the [umd-lib/mdsoar-angular](https://github.com/umd-lib/mdsoar-angular)
+  documentation
 
 ## Minor Customizations
 

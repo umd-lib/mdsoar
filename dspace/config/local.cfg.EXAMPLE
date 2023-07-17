@@ -303,6 +303,29 @@ google.analytics.buffer = 256
 google.analytics.cron = 0 0/5 * * * ?
 google.analytics.api-secret =
 
+##############################
+# SOLR SUGGEST CONFIGURATION #
+##############################
+# Override settings in dspace/config/modules/authority.cfg
+
+# Enable choice authority plugins for Solr autosuggest
+plugin.named.org.dspace.content.authority.ChoiceAuthority = \
+  edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrFormatAuthority, \
+  edu.umd.lib.dspace.content.authority.SuggestChoiceAuthority = SolrSubjectAuthority
+
+# Configuration settings for Solr autosuggest
+solr.suggest.server=${solr.server}/${solr.multicorePrefix}search
+
+# "Format" submission form field
+choices.plugin.dc.genre = SolrFormatAuthority
+choices.presentation.dc.genre = suggest
+choices.SolrFormatAuthority.dictionary = formatSuggest
+
+# "Subject Keywords" submission form field
+choices.plugin.dc.subject = SolrSubjectAuthority
+choices.presentation.dc.subject = suggest
+choices.SolrSubjectAuthority.dictionary = subjectSuggest
+
 ############################
 # UI-RELATED CONFIGURATION #
 ############################

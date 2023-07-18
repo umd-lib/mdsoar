@@ -51,9 +51,6 @@ with "book":
 $ curl 'http://localhost:8983/solr/search/suggest?indent=true&q.op=OR&suggest.dictionary=formatSuggest&suggest.q=book&wt=json&highlight=false'
 ```
 
-**Note:** If applying this configuration to an existing Solr "search" core, a
-Solr reindex is necessary for suggestions to actually be generated.
-
 ### DSpace configuration
 
 Two files require configuration for this functionality:

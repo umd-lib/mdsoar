@@ -59,6 +59,8 @@ Dspace 7 MD-SOAR, to better conform to the DSpace 7 look-and-feel.
   * `<From the DSpace object>`
 * Files
   * `<Links to all files in the DSpace object>`
+* Links to Files
+  * dc.description.uri
 * Permanent Link
   * dc.identifier.uri
 * Collections

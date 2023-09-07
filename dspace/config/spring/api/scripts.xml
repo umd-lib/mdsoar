@@ -86,4 +86,11 @@
         <property name="dspaceRunnableClass" value="org.dspace.subscriptions.SubscriptionEmailNotificationCli"/>
     </bean>
 
+    <!-- UMD Customization -->
+    <bean id="umd-solr-rebuild-suggesters" class="edu.umd.lib.dspace.content.authority.UmdSolrRebuildSuggestersScriptConfiguration">
+        <property name="description" value="Rebuild Solr suggesters"/>
+        <property name="dspaceRunnableClass" value="edu.umd.lib.dspace.content.authority.UmdSolrRebuildSuggestersClient"/>
+    </bean>
+    <!-- End UMD Customization -->
+
 </beans>

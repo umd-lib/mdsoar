@@ -28,6 +28,7 @@ import org.dspace.services.factory.DSpaceServicesFactory;
  */
 public class SolrSuggestService implements SuggestService {
     private static final Logger log = LogManager.getLogger(SolrSuggestService.class);
+    public static final String REQUEST_HANDLER = "/suggest";
 
     @Inject @Named("solrHttpConnectionPoolService")
     private HttpConnectionPoolService httpConnectionPoolService;
@@ -62,7 +63,7 @@ public class SolrSuggestService implements SuggestService {
             boolean hasMore = false;
 
             SolrQuery solrQuery = new SolrQuery();
-            solrQuery.setRequestHandler("/suggest");
+            solrQuery.setRequestHandler(REQUEST_HANDLER);
             solrQuery.setParam("suggest", "true");
             solrQuery.setParam("suggest.dictionary", suggestDictionary);
             solrQuery.setParam("suggest.q", queryText);

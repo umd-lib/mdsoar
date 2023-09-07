@@ -169,7 +169,7 @@
             <str name="field" multiValued="true">dc.genre</str>
             <str name="suggestAnalyzerFieldType">text</str>
             <str name="buildOnStartup">true</str>
-            <str name="buildOnCommit">true</str>
+            <str name="buildOnCommit">false</str>
             <str name="highlight">false</str>
         </lst>
         <lst name="suggester">
@@ -180,7 +180,7 @@
             <str name="field" multiValued="true">dc.subject</str>
             <str name="suggestAnalyzerFieldType">text</str>
             <str name="buildOnStartup">true</str>
-            <str name="buildOnCommit">true</str>
+            <str name="buildOnCommit">false</str>
             <str name="highlight">false</str>
         </lst>
     </searchComponent>

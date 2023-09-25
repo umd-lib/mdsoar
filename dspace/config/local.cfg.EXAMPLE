@@ -340,6 +340,9 @@ cc.api.rooturl = https://api.creativecommons.org/rest/1.5
 # https://github.com/DSpace/DSpace/pull/8903
 cc.license.classfilter = recombo, mark, publicdomain
 
+# File upload is not required
+webui.submit.upload.required = false
+
 ####################
 # USAGE STATISTICS #
 ####################

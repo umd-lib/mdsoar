@@ -77,6 +77,10 @@ The following list was copied from the DSpace 6 version of MD-SOAR:
 
 The Creative Commons license field is enabled, and should appear on the form.
 
+## File Uploads
+
+A file upload is *not* required.
+
 ## Workflow
 
 There is only one workflow, which uses the default DSpace workflow.

@@ -37,6 +37,12 @@ to override default settings in the stock DSpace configuration files.
 * `webui.user.assumelogin` - Enabled administrators to impersonate non-admin
     users
 
+* `org.dspace.content.Collection.findAuthorizedPerformanceOptimize` - Enabling
+  this property significantly speeds up the display of the submission form
+  for non-admins when selecting the “Submit item to MD-SOAR” link on the
+  home page. See the description for this property in "dspace/config/dspace.cfg"
+  for caveats on enabling this property (which do not apply to MD-SOAR).
+
 ### Email Templates
 
 The email templates in the "dspace/config/emails/" directory were modified to

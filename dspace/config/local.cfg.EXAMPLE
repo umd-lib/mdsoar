@@ -359,3 +359,6 @@ usage-statistics.logBots = false
 ######################
 # Only send subscription emails for new items
 eperson.subscription.onlynew = true
+
+# Enabling performance optimization for select-collection-step collection query
+org.dspace.content.Collection.findAuthorizedPerformanceOptimize = true

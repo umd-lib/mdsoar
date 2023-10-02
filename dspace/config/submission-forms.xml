@@ -1634,6 +1634,11 @@
 
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <!-- UMD Customization -->
+            <!-- "Text" is the first item, because it is the most commonly used. -->
+            <pair>
+              <displayed-value>Text</displayed-value>
+              <stored-value>Text</stored-value>
+            </pair>
             <pair>
               <displayed-value>Collection</displayed-value>
               <stored-value>Collection</stored-value>
@@ -1677,10 +1682,6 @@
             <pair>
               <displayed-value>Still Image</displayed-value>
               <stored-value>Still Image</stored-value>
-            </pair>
-            <pair>
-              <displayed-value>Text</displayed-value>
-              <stored-value>Text</stored-value>
             </pair>
             <!-- End UMD Customization -->
         </value-pairs>

@@ -60,6 +60,7 @@ The following list was copied from the DSpace 6 version of MD-SOAR:
 
 | displayed-value      | stored-value         |
 | -------------------- | -------------------- |
+| Text                 | Text                 |
 | Collection           | Collection           |
 | Dataset              | Dataset              |
 | Event                | Event                |
@@ -71,7 +72,9 @@ The following list was copied from the DSpace 6 version of MD-SOAR:
 | Software             | Software             |
 | Sound                | Sound                |
 | Still Image          | Still Image          |
-| Text                 | Text                 |
+
+**Note:** As it is the most commonly selected entry, "Text" should be the first
+entry in the drop-down list on the submission form.
 
 ## Creative Commons License
 

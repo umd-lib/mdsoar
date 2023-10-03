@@ -300,6 +300,18 @@ webui.browse.link.6 = type:dc.type
 webui.browse.link.7 = type:dc.format
 webui.browse.link.8 = type:dcterms.format
 
+#################################
+# COMMUNITY ADMIN CONFIGURATION #
+#################################
+# Only system admins are allowed to permanently delete items
+core.authorization.community-admin.item.delete = false
+
+##################################
+# COLLECTION ADMIN CONFIGURATION #
+##################################
+# Only system admins are allowed to permanently delete items
+core.authorization.collection-admin.item.delete = false
+
 #####################
 # DOI CONFIGURATION #
 #####################

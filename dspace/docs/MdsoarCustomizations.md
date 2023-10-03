@@ -43,6 +43,14 @@ to override default settings in the stock DSpace configuration files.
   home page. See the description for this property in "dspace/config/dspace.cfg"
   for caveats on enabling this property (which do not apply to MD-SOAR).
 
+* Only system admins should be able to permanently delete items, so the
+  following properties were added:
+  * `core.authorization.community-admin.item.delete`
+  * `core.authorization.collection-admin.item.delete`
+
+  Note: This also means that only system admins can move items to another
+  collection.
+
 ### Email Templates
 
 The email templates in the "dspace/config/emails/" directory were modified to

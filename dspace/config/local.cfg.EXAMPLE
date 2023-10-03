@@ -32,9 +32,11 @@
 # Windows note: Please remember to use forward slashes for all paths (e.g. C:/dspace)
 dspace.dir=/dspace
 
+# UMD Customization
 dspace.hostname = localhost
 dspace.baseUrl = http://localhost:8080
 dspace.url = ${dspace.baseUrl}
+# End UMD Customization
 
 # Public URL of DSpace backend ('server' webapp). May require a port number if not using standard ports (80 or 443)
 # DO NOT end it with '/'.
@@ -42,7 +44,9 @@ dspace.url = ${dspace.baseUrl}
 # NOTE: This URL must be accessible to all DSpace users (should not use 'localhost' in Production)
 # and is usually "synced" with the "rest" section in the DSpace User Interface's config.*.yml.
 # It corresponds to the URL that you would type into your browser to access the REST API.
+# UMD Customization
 dspace.server.url = ${dspace.baseUrl}/server
+# End UMD Customization
 
 # Public URL of DSpace frontend (Angular UI). May require a port number if not using standard ports (80 or 443)
 # DO NOT end it with '/'.
@@ -52,7 +56,9 @@ dspace.server.url = ${dspace.baseUrl}/server
 dspace.ui.url = http://localhost:4000
 
 # Name of the site
+# UMD Customization
 dspace.name = MD-SOAR
+# End UMD Customization
 
 # Assetstore configurations have moved to config/modules/assetstore.cfg
 # and config/spring/api/bitstore.xml.
@@ -65,7 +71,9 @@ dspace.name = MD-SOAR
 # Solr server/webapp.
 # DSpace uses Solr for all search/browse capability (and for usage statistics).
 # Since DSpace 7, SOLR must be installed as a stand-alone service
+# UMD Customization
 solr.server = http://dspacesolr:8983/solr
+# End UMD Customization
 
 # Solr core name prefix.
 # If you connect multiple instances of DSpace to a single Solr instance, you
@@ -82,7 +90,9 @@ solr.server = http://dspacesolr:8983/solr
 # URL for connecting to database
 #    * Postgres template: jdbc:postgresql://localhost:5432/dspace
 #    * Oracle template (DEPRECATED): jdbc:oracle:thin:@//localhost:1521/xe
+# UMD Customization
 db.url = jdbc:postgresql://dspacedb:5432/mdsoar
+# End UMD Customization
 
 # JDBC Driver
 #    * For Postgres: org.postgresql.Driver
@@ -95,8 +105,10 @@ db.driver = org.postgresql.Driver
 db.dialect = org.hibernate.dialect.PostgreSQL94Dialect
 
 # Database username and password
+# UMD Customization
 db.username = mdsoar
 db.password = mdsoar
+# End UMD Customization
 
 # Database Schema name
 #    * For Postgres, this is often "public" (default schema)
@@ -141,7 +153,9 @@ db.schema = public
 #feedback.recipient = dspace-help@myu.edu
 
 # General site administration (Webmaster) e-mail
+# UMD Customization
 mail.admin = mdsoar-help@umd.edu
+# End UMD Customization
 
 # Helpdesk E-mail
 #mail.helpdesk = ${mail.admin}
@@ -256,6 +270,8 @@ mail.admin = mdsoar-help@umd.edu
 # Maximum size of a multipart request (i.e. max total size of all files in one request)
 #spring.servlet.multipart.max-request-size = 512MB
 
+# UMD Customization
+
 ########################
 # BROWSE CONFIGURATION #
 ########################
@@ -283,6 +299,18 @@ webui.browse.link.5 = type:dc.genre
 webui.browse.link.6 = type:dc.type
 webui.browse.link.7 = type:dc.format
 webui.browse.link.8 = type:dcterms.format
+
+#################################
+# COMMUNITY ADMIN CONFIGURATION #
+#################################
+# Only system admins are allowed to permanently delete items
+core.authorization.community-admin.item.delete = false
+
+##################################
+# COLLECTION ADMIN CONFIGURATION #
+##################################
+# Only system admins are allowed to permanently delete items
+core.authorization.collection-admin.item.delete = false
 
 #####################
 # DOI CONFIGURATION #
@@ -362,3 +390,5 @@ eperson.subscription.onlynew = true
 
 # Enabling performance optimization for select-collection-step collection query
 org.dspace.content.Collection.findAuthorizedPerformanceOptimize = true
+
+# End UMD Customization

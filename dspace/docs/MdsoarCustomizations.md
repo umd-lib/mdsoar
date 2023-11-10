@@ -28,9 +28,6 @@ to override default settings in the stock DSpace configuration files.
 * `usage-statistics.logBots` - Disable logging of spiders/bots in Solr
   statistics.
 
-* `usage-statistics.authorization.admin.usage` - Do not show "Statistics" menu
-  entry in the navbar for non-admins users.
-
 * Modified `webui.browse.index.<n>` entries, adding the ability to browse by
   "Type".
 

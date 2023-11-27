@@ -25,6 +25,10 @@ to override default settings in the stock DSpace configuration files.
 
 * `eperson.subscription.onlynew` - Only send subscription emails for new items
 
+* `spring.servlet.multipart.max-file-size` and
+  `spring.servlet.multipart.max-request-size` - increased the maximum size of
+  a single file upload to 2GB, and maximum for a multiple file upload to 15GB.
+
 * `usage-statistics.logBots` - Disable logging of spiders/bots in Solr
   statistics.
 

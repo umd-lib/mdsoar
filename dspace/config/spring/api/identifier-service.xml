@@ -55,7 +55,7 @@
             ref="org.dspace.identifier.doi.DOIConnector" />
         <property name="filter" ref="doi-filter" />
     </bean>
-    <!-- EndUMD Customization -->
+    <!-- End UMD Customization -->
     <!--
     <bean id="org.dspace.identifier.DOIIdentifierProvider"
         class="org.dspace.identifier.VersionedDOIIdentifierProvider"

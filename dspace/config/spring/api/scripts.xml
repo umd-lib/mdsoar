@@ -86,6 +86,11 @@
         <property name="dspaceRunnableClass" value="org.dspace.subscriptions.SubscriptionEmailNotificationCli"/>
     </bean>
 
+    <bean id="bulk-access-control" class="org.dspace.app.bulkaccesscontrol.BulkAccessControlCliScriptConfiguration" primary="true">
+        <property name="description" value="Bulk access control"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.bulkaccesscontrol.BulkAccessControlCli"/>
+    </bean>
+
     <!-- UMD Customization -->
     <bean id="umd-solr-rebuild-suggesters" class="edu.umd.lib.dspace.content.authority.UmdSolrRebuildSuggestersScriptConfiguration">
         <property name="description" value="Rebuild Solr suggesters"/>

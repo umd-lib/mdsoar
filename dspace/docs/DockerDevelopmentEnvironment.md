@@ -283,7 +283,7 @@ stanza, to enable the "MailHog" (<https://github.com/mailhog/MailHog>) SMTP
 capture tool as part of the Docker Compose stack:
 
 ```yaml
-service:
+services:
   # MailHog SMTP Capture
   mailhog:
     container_name: mailhog

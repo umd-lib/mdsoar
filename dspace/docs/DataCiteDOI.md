@@ -40,6 +40,12 @@ Additionally, in MD-SOAR, the DOI is stored using the "doi:" format,
 i.e., `doi:10.13016/m2xzog-gouv`, instead of the “URL” form used by DRUM
 `https://doi.org/10.13016/dspace/g84g-gnfp`.
 
+## DOI Filter
+
+We have disabled "doi-filter" filter config in the DOIIdentifierProvider in the
+[identifier-service.xml](../config/spring/api/identifier-service.xml) as it is
+not compatible with the our DOI generation workflow.
+
 ## DSpace to DataCite Crosswalk
 
 When registering a DOI with DataCite, DSpace sends an XML file containing

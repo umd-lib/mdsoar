@@ -49,10 +49,10 @@ Confluence for information about setting up a MacBook to use the Kubernetes
    where \<MDSOAR_TAG> is the Docker image tag to associate with the
    Docker images. This will typically be the Git tag for the MD-SOAR version,
    or some other identifier, such as a Git commit hash. For example, using the
-   Git tag of "7.5/mdsoar-0":
+   Git tag of "7.5-mdsoar-0":
 
     ```bash
-    $ export MDSOAR_TAG=7.5/mdsoar-0
+    $ export MDSOAR_TAG=7.5-mdsoar-0
     ```
 
 4) Set up a "MDSOAR_DIR" environment variable referring to the current
@@ -94,7 +94,7 @@ Confluence for information about setting up a MacBook to use the Kubernetes
     ```bash
     $ cd $MDSOAR_DIR/dspace/src/main/docker/dspace-postgres-pgcrypto
 
-    $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -f Dockerfile -t docker.lib.umd.edu/dspace-postgres:$MDSOAR_TAG .
+    $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -f Dockerfile -t docker.lib.umd.edu/mdsoar-postgres:$MDSOAR_TAG .
     ```
 
 9) Create the "docker.lib.umd.edu/mdsoar-solr":

@@ -1,3 +1,10 @@
+## UMD Customization
+# Ignore database dump directory to be used with docker-compose for initializing
+postgres-init/*
+!postgres-init/README.md
+!postgres-init/pg_restore.sh
+## End UMD Customization
+
 ## Ignore the MVN compiled output directories from version tracking
 target/
 
@@ -46,9 +53,3 @@ rebel.xml
 
 ## Ignore jenv configuration
 .java-version
-
-# UMD Customization
-# Ignore database dump directory to be used with docker-compose for initializing
-postgres-init/*
-!postgres-init/README.md
-# End UMD Customization

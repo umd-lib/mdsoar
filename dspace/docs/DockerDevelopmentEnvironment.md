@@ -5,8 +5,8 @@ of a DSpace 7-based MD-SOAR using Docker.
 
 ## Development Setup
 
-This repository uses the "GitHub Flow" branching model, with "mdsoar-main" as the
-main branch for MD-SOAR development.
+This repository uses the "GitHub Flow" branching model, with "mdsoar-main" as
+the main branch for MD-SOAR development.
 
 1) Clone the Git repository and switch to the directory:
 
@@ -27,70 +27,53 @@ main branch for MD-SOAR development.
 
 3) Create the local configuration file
 
-    ```bash
+    ```zsh
     $ cp dspace/config/local.cfg.EXAMPLE dspace/config/local.cfg
     ```
 
-    The following functionality is not enabled by default in the local
-    development environment:
+4) Optional: Edit the local configuration file, if necessary.
 
-    * DataCite DOI generation
-
-      To enable DOI generation, fill out the following properties from the
-      "DRUM/MD-SOAR DataCite Credentials" note in LastPass:
-
-        * identifier.doi.user
-        * identifier.doi.password
-
-    * Google Analytics
-
-      To enable Google Analytics, fill out the following properties from the
-      "MD-SOAR Google Analytics" note in LastPass:
-
-        * google.analytics.key
-        * google.analytics.api-secret
-
-4) Retrieve a database dump from Kubernetes. The following steps work with
-   both DSpace 6 and DSpace 7 databases:
-
-   ```bash
-   # Switch the appropriate Kubernetes namespace from which the database snapshot
-   # should be retrieved (the following example uses the Kubernetes "test"
-   # namespace):
-   $ kubectl config use-context test
-
-   # Run "pg_dump" in the "mdsoar-db-0" Kubernetes pod,
-   # placing the database dump in the `postgres-init` subdirectory:
-   $ kubectl exec mdsoar-db-0 -- pg_dump -O -U mdsoar -d mdsoar > postgres-init/mdsoar.sql
+   ```zsh
+   $ vi dspace/config/local.cfg
    ```
 
-   ----
-   **Note:** The postgres container will use the initialization dump only if
-   the database is not previously initialized. If you would like to
-   reinitialize the database, stop the dspacedb container and delete the
-   volume:
+   No changes are needed for basic operations, but the following functionality
+   is not enabled by default in the local development environment:
 
-   ```bash
-   $ docker compose -p d7 down
-   $ docker volume rm d7_pgdata
-   ```
+   * DataCite DOI generation
 
-   ----
+     To enable DOI generation, fill out the following properties from the
+     "DRUM/MD-SOAR DataCite Credentials" note in LastPass:
 
-5) Build the application and client Docker images:
+       * identifier.doi.user
+       * identifier.doi.password
+
+   * Google Analytics
+
+     To enable Google Analytics, fill out the following properties from the
+     "MD-SOAR Google Analytics" note in LastPass:
+
+       * google.analytics.key
+       * google.analytics.api-secret
+
+5) Follow the instructions at
+   [dspace/docs/MdsoarDBRestore.md](MdsoarDBRestore.md)
+   to populate the Postgres database with a DSpace 7 database dump from
+   Kubernetes.
+6) Build the application and client Docker images:
 
    **Note:** If building for development, use the instructions in the
    "Quick Builds for development" section below, in place of the following
    steps.
 
-    ```bash
+    ```zsh
     # Build the dspace image
     $ docker compose -f docker-compose.yml build
     ```
 
-6) Start all the containers
+7) Start all the containers
 
-    ```bash
+    ```zsh
     $ docker compose -p d7 up
     ```
 
@@ -104,7 +87,7 @@ can do a two stage build where the base build does a full Maven build, and for
 subsequent changes, only build the "overlays" modules that contain our
 customized Java classes.
 
-```bash
+```zsh
 # Base build
 $ docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:7_x-dev-base .
 
@@ -116,7 +99,7 @@ Also, we can start the "dspace" container and the dependencies ("dspacedb"
 and "dspacesolr") in separate commands. This allows the "dspace"
 container to be started/stopped individually.
 
-```bash
+```zsh
 # Start the db and solr container in detached mode
 $ docker compose -p d7 up -d dspacedb dspacesolr
 
@@ -143,9 +126,9 @@ development:
 ## Debugging
 
 The `JAVA_TOOL_OPTIONS` configuration included in the Docker compose starts the
-jpda debugger for Tomcat. The [.vscode/launch.json](/.vscode/launch.json)
+JPDA debugger for Tomcat. The [.vscode/launch.json](/.vscode/launch.json)
 file contains the VS Code debug configuration needed to attach to Tomcat. See
-the "Visual Studio Code IDE Setup" section for the extensions neeeded for
+the "Visual Studio Code IDE Setup" section for the extensions needed for
 debugging.
 
 To start debugging,
@@ -154,12 +137,12 @@ To start debugging,
 
 2) Open to the "Run and Debug" panel (CMD + SHIFT + D) on VS Code.
 
-3) Click the green triange (Play)  "Debug (Attach to Tomcat)" button on top of
+3) Click the green triangle (Play)  "Debug (Attach to Tomcat)" button on top of
    the debug panel.
 
 ## Useful commands
 
-```bash
+```zsh
 # To stop all the containers
 $ docker compose -p d7 stop
 
@@ -173,9 +156,9 @@ $ docker compose -p d7 restart dspace
 $ docker exec -it dspace bash
 ```
 
-## Create an adminstrator user
+## Create an administrator user
 
-```bash
+```zsh
 $ docker compose -p d7 -f docker-compose-cli.yml run dspace-cli create-administrator
 $ docker exec -it dspace /dspace/bin/dspace create-administrator
 Creating d7_dspace-cli_run ... done
@@ -192,7 +175,7 @@ Administrator account created
 
 ## Populate the Solr search index
 
-```bash
+```zsh
 $ docker exec -it dspace /dspace/bin/dspace index-discovery
 The script has started
 Updating Index
@@ -206,7 +189,7 @@ By default the unit and integration tests are not run when building the project.
 
 To run both the unit and integration tests:
 
-```bash
+```zsh
 $ mvn install -DskipUnitTests=false -DskipIntegrationTests=false
 ```
 
@@ -238,7 +221,7 @@ standard DSpace or Spring configuration files, or any changes in a module's
 "src/test/data/dspaceFolder" folder, run the following command in the project
 root directory:
 
-```bash
+```zsh
 $ mvn install
 ```
 
@@ -284,6 +267,7 @@ capture tool as part of the Docker Compose stack:
 
 ```yaml
 services:
+  ...
   # MailHog SMTP Capture
   mailhog:
     container_name: mailhog
@@ -335,7 +319,7 @@ credentials.
 <https://db-ip.com/db/download/ip-to-city-lite> and put in the “/tmp” directory,
 and extract the file, where “YYYY-MM” is the year/month of the download:
 
-```bash
+```zsh
 $ cd /tmp
 $ gunzip dbip-city-lite-YYYY-MM.mmdb.gz
 ```
@@ -343,19 +327,19 @@ $ gunzip dbip-city-lite-YYYY-MM.mmdb.gz
 This will result in a file named “dbip-city-lite-YYYY-MM.mmdb”. For simplicity,
 rename the file to “dbip-city-lite.mmdb”:
 
-```bash
+```zsh
 $ mv /tmp/dbip-city-lite-<yyyy-MM>.mmdb /tmp/dbip-city-lite.mmdb
 ```
 
 2) Copy the "/tmp/dbip-city-lite.mmdb" file into the "dspace/config/" directory:
 
-```bash
+```zsh
 $ cp /tmp/dbip-city-lite.mmdb dspace/config/
 ```
 
 3) Add the following line to the “dspace/config/local.cfg” file:
 
-```text
+```zsh
 usage-statistics.dbfile = /dspace/config/dbip-city-lite.mmdb
 ```
 

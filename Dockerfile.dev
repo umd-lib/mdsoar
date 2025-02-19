@@ -23,7 +23,7 @@ RUN mvn package -Pdspace-rest && \
   mvn clean
 
 # Step 2 - Run Ant Deploy
-FROM docker.lib.umd.edu/drum-ant:latest as ant_build
+FROM docker.lib.umd.edu/mdsoar-ant:latest as ant_build
 ARG TARGET_DIR=dspace-installer
 COPY --from=build /install /dspace-src
 WORKDIR /dspace-src

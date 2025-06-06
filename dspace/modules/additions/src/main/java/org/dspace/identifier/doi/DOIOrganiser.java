@@ -13,12 +13,11 @@ import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-import javax.mail.MessagingException;
 
+import jakarta.mail.MessagingException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -227,8 +226,16 @@ public class DOIOrganiser {
                 }
 
                 for (DOI doi : dois) {
-                    organiser.reserve(doi);
-                    context.uncacheEntity(doi);
+                    doi = context.reloadEntity(doi);
+                    try {
+                        organiser.reserve(doi);
+                        context.commit();
+                    } catch (RuntimeException e) {
+                        System.err.format("DOI %s for object %s reservation failed, skipping:  %s%n",
+                                doi.getDSpaceObject().getID().toString(),
+                                doi.getDoi(), e.getMessage());
+                        context.rollback();
+                    }
                 }
             } catch (SQLException ex) {
                 System.err.println("Error in database connection:" + ex.getMessage());
@@ -245,14 +252,22 @@ public class DOIOrganiser {
                                            + "that could be registered.");
                 }
                 for (DOI doi : dois) {
-                    organiser.register(doi);
-                    context.uncacheEntity(doi);
+                    doi = context.reloadEntity(doi);
+                    try {
+                        organiser.register(doi);
+                        context.commit();
+                    } catch (SQLException e) {
+                        System.err.format("DOI %s for object %s registration failed, skipping:  %s%n",
+                                doi.getDSpaceObject().getID().toString(),
+                                doi.getDoi(), e.getMessage());
+                        context.rollback();
+                    }
                 }
             } catch (SQLException ex) {
-                System.err.println("Error in database connection:" + ex.getMessage());
+                System.err.format("Error in database connection:  %s%n", ex.getMessage());
                 ex.printStackTrace(System.err);
-            } catch (DOIIdentifierException ex) {
-                System.err.println("Error registering DOI identifier:" + ex.getMessage());
+            } catch (RuntimeException ex) {
+                System.err.format("Error registering DOI identifier:  %s%n", ex.getMessage());
             }
         }
 
@@ -268,8 +283,9 @@ public class DOIOrganiser {
                 }
 
                 for (DOI doi : dois) {
+                    doi = context.reloadEntity(doi);
                     organiser.update(doi);
-                    context.uncacheEntity(doi);
+                    context.commit();
                 }
             } catch (SQLException ex) {
                 System.err.println("Error in database connection:" + ex.getMessage());
@@ -286,12 +302,17 @@ public class DOIOrganiser {
                                            + "that could be deleted.");
                 }
 
-                Iterator<DOI> iterator = dois.iterator();
-                while (iterator.hasNext()) {
-                    DOI doi = iterator.next();
-                    iterator.remove();
-                    organiser.delete(doi.getDoi());
-                    context.uncacheEntity(doi);
+                for (DOI doi : dois) {
+                    doi = context.reloadEntity(doi);
+                    try {
+                        organiser.delete(doi.getDoi());
+                        context.commit();
+                    } catch (SQLException e) {
+                        System.err.format("DOI %s for object %s deletion failed, skipping:  %s%n",
+                                doi.getDSpaceObject().getID().toString(),
+                                doi.getDoi(), e.getMessage());
+                        context.rollback();
+                    }
                 }
             } catch (SQLException ex) {
                 System.err.println("Error in database connection:" + ex.getMessage());
@@ -401,12 +422,18 @@ public class DOIOrganiser {
 
     /**
      * Register DOI with the provider
-     * @param doiRow        - doi to register
-     * @param filter        - logical item filter to override
-     * @throws SQLException
-     * @throws DOIIdentifierException
+     * @param doiRow        DOI to register
+     * @param filter        logical item filter to override
+     * @throws IllegalArgumentException
+     *                      if {@link doiRow} does not name an Item.
+     * @throws IllegalStateException
+     *                      on invalid DOI.
+     * @throws RuntimeException
+     *                      on database error.
      */
-    public void register(DOI doiRow, Filter filter) throws SQLException, DOIIdentifierException {
+    public void register(DOI doiRow, Filter filter)
+            throws IllegalArgumentException, IllegalStateException,
+            RuntimeException {
         DSpaceObject dso = doiRow.getDSpaceObject();
         if (Constants.ITEM != dso.getType()) {
             throw new IllegalArgumentException("Currenty DSpace supports DOIs for Items only.");
@@ -479,30 +506,33 @@ public class DOIOrganiser {
     }
 
     /**
-     * Register DOI with the provider
-     * @param doiRow        - doi to register
-     * @throws SQLException
-     * @throws DOIIdentifierException
+     * Register DOI with the provider.
+     * @param doiRow        DOI to register
+     * @throws IllegalArgumentException passed through.
+     * @throws IllegalStateException passed through.
+     * @throws RuntimeException passed through.
      */
-    public void register(DOI doiRow) throws SQLException, DOIIdentifierException {
+    public void register(DOI doiRow)
+            throws IllegalStateException, IllegalArgumentException,
+            RuntimeException {
         register(doiRow, this.filter);
     }
 
     /**
      * Reserve DOI with the provider,
      * @param doiRow        - doi to reserve
-     * @throws SQLException
-     * @throws DOIIdentifierException
      */
     public void reserve(DOI doiRow) {
         reserve(doiRow, this.filter);
     }
 
     /**
-     * Reserve DOI with the provider
+     * Reserve DOI with the provider.
      * @param doiRow        - doi to reserve
-     * @throws SQLException
-     * @throws DOIIdentifierException
+     * @param filter        - Logical item filter to determine whether this
+     *                        identifier should be reserved online.
+     * @throws IllegalStateException on invalid DOI.
+     * @throws RuntimeException on database error.
      */
     public void reserve(DOI doiRow, Filter filter) {
         DSpaceObject dso = doiRow.getDSpaceObject();
@@ -589,7 +619,8 @@ public class DOIOrganiser {
             }
         } catch (IdentifierException ex) {
             if (!(ex instanceof DOIIdentifierException)) {
-                LOG.error("It wasn't possible to register the identifier online. ", ex);
+                LOG.error("Registering DOI {} for object {}:  the registrar returned an error.",
+                        doiRow.getDoi(), dso.getID(), ex);
             }
 
             DOIIdentifierException doiIdentifierException = (DOIIdentifierException) ex;
@@ -680,21 +711,23 @@ public class DOIOrganiser {
      * If the DOI is marked as TO_BE_REGISTERED or TO_BE_RESERVED locally, but it
      * already is reserved with the provider then it is possible that the randomly
      * generated local DOI is not globally unique. This is possible if the
-     * same DOI was created with the provider external to this DSpace instance (from
+     * same DOI was created with the provider external to this DSpace instance (From
      * a different application or manually)
      *
      * @see DOIIdentifierProvider#mintRandomUniqueDoi()
      * @see DOIIdentifierProvider#mintRandomGloballyUniqueDoi()
      *
-     * @param context
-     * @param doi
-     * @return
-     * @throws DOIIdentifierException
+     * @param context the current Context
+     * @param doi the DOI to check for uniqueness with the external provider
+     * @return true if the given DOI has already been reserved with the external
+     *         provider, false otherwise.
+     * @throws DOIIdentifierException if an error occurs setting the newly
+     *         minted DOi
      */
     private boolean isNonUniqueDoi(Context context, DOI doi) throws DOIIdentifierException {
         if (doi.getStatus() == null ||
-                DOIIdentifierProvider.TO_BE_RESERVED.equals(doi.getStatus()) ||
-                DOIIdentifierProvider.TO_BE_REGISTERED.equals(doi.getStatus())) {
+                provider.TO_BE_RESERVED.equals(doi.getStatus()) ||
+                provider.TO_BE_REGISTERED.equals(doi.getStatus())) {
             if (provider.isReservedOnline(context, doi.getDoi())) {
                 System.out.println("The DOI: " + doi.getDoi() + " associated with item (handle:" +
                         doi.getDSpaceObject().getHandle() + ") is already reserved externally!");
@@ -707,10 +740,11 @@ public class DOIOrganiser {
     /**
      * Mint a new DOI that is unique both locally and in the provider system.
      *
-     * @param context
-     * @param doiRow
-     * @throws SQLException
-     * @throws DOIIdentifierException
+     * @param context the current Context
+     * @param doiRow the DOI to update with a globally unique DOI
+     * @throws SQLException if a database error occurs
+     * @throws DOIIdentifierException if an error occurs setting the newly
+     *         minted DOi
      */
     private void setNewDoi(Context context, DOI doiRow) throws SQLException, DOIIdentifierException {
         System.out.println("Minting new DOI for item with handle: " + doiRow.getDSpaceObject().getHandle());
@@ -721,7 +755,6 @@ public class DOIOrganiser {
 
     }
     // End UMD Customization
-
 
     /**
      * Finds the TableRow in the Doi table that belongs to the specified

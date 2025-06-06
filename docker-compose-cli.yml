@@ -7,7 +7,7 @@ networks:
 services:
   dspace-cli:
     # UMD Customization
-    image: "${DOCKER_OWNER:-dspace}/mdsoar-cli:${DSPACE_VER:-dspace-7_x}"
+    image: "docker.lib.umd.edu/mdsoar-cli:${DSPACE_VER:-dspace-8_x}"
     # End UMD Customization
     container_name: dspace-cli
     build:

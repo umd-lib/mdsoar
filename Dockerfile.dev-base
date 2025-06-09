@@ -41,4 +41,3 @@ RUN mvn install ${MAVEN_FLAGS} && \
 RUN rm -rf /install/webapps/server/
 
 # UMD Customization - Remaining steps are handled by Dockerfile.dev-additions
-# UMD Customization - Remaining steps are handled by Dockerfile.dev-additions

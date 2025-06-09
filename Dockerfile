@@ -91,9 +91,7 @@ RUN apt-get update && \
         vim \
         python3-lxml && \
     mkfifo /var/spool/postfix/public/pickup && \
-    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
-    rm -rf /usr/local/tomcat/webapps/* && \
-    ln -s $DSPACE_INSTALL/webapps/server   /usr/local/tomcat/webapps/server
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # End UMD Customization
 # On startup, run DSpace Runnable JAR
 ENTRYPOINT ["java", "-jar", "webapps/server-boot.jar", "--dspace.dir=$DSPACE_INSTALL"]

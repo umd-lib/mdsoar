@@ -16,7 +16,7 @@ ARG DOCKER_REGISTRY=docker.io
 
 # Step 1 - Run Maven Build
 # UMD Customization
-FROM docker.lib.umd.edu/mdsoar-dependencies-8_x:latest as build
+FROM docker.lib.umd.edu/mdsoar-dependencies-8_x:latest AS build
 # End UMD Customization
 ARG TARGET_DIR=dspace-installer
 WORKDIR /app
@@ -40,7 +40,7 @@ RUN rm -rf /install/webapps/server/
 
 # Step 2 - Run Ant Deploy
 # UMD Customization
-FROM docker.lib.umd.edu/mdsoar-ant:latest as ant_build
+FROM docker.lib.umd.edu/mdsoar-ant:latest AS ant_build
 # End UMD Customization
 ARG TARGET_DIR=dspace-installer
 # COPY the /install directory from 'build' container to /dspace-src in this container
@@ -70,5 +70,23 @@ RUN apt-get update \
 EXPOSE 8080 8000
 # Give java extra memory (2GB)
 ENV JAVA_OPTS=-Xmx2000m
+
+# UMD Customization
+ENV TZ=America/New_York
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        rsync \
+        cron \
+        csh \
+        postfix \
+        s-nail \
+        libgetopt-complete-perl \
+        libconfig-properties-perl \
+        vim \
+        python3-lxml && \
+    mkfifo /var/spool/postfix/public/pickup && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# End UMD Customization
 # On startup, run DSpace Runnable JAR
 ENTRYPOINT ["java", "-jar", "webapps/server-boot.jar", "--dspace.dir=$DSPACE_INSTALL"]

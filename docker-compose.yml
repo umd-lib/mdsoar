@@ -100,7 +100,7 @@ services:
     - pgdata:/pgdata
     # UMD Customization
     - ./postgres-init:/docker-entrypoint-initdb.d
-    # End UMD Customizaton
+    # End UMD Customization
   # DSpace Solr container
   dspacesolr:
     container_name: dspacesolr

@@ -332,7 +332,7 @@
             </row>
 
 
-            <!-- UMD Customizaton -->
+            <!-- UMD Customization -->
             <row>
                 <field>
                   <dc-schema>dc</dc-schema>
@@ -368,7 +368,7 @@
                   <required></required>
                 </field>
             </row>
-            <!-- End UMD Customizaton -->
+            <!-- End UMD Customization -->
 
             <row>
                 <field>

@@ -448,7 +448,7 @@ public class BitstreamStorageServiceImpl implements BitstreamStorageService, Ini
                 // application has been upgraded to a DSpace version containing
                 // the pull request.
                 context.commit();
-                // End UMD Customizaton
+                // End UMD Customization
             }
         }
 

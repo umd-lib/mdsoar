@@ -5,9 +5,9 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;

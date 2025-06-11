@@ -1,7 +1,7 @@
 # MD-SOAR Database Restore
 
-**Note:** The following steps describe using an MD-SOAR DSpace 7 database
-snapshot with MD-SOAR running DSpace 7.
+**Note:** The following steps describe retrieving a MD-SOAR DSpace database
+snapshot from Kubernetes for use with MD-SOAR for local development.
 
 1) Switch the appropriate Kubernetes namespace from which the database snapshot
    should be retrieved (the following example uses the Kubernetes "test"
@@ -28,7 +28,7 @@ snapshot with MD-SOAR running DSpace 7.
    Start the "dspacedb" container and wait for the restore to complete.
 
     ```bash
-    $ docker compose -p d7 up -d dspacedb
+    $ docker compose -p d8 up -d dspacedb
     ```
 
     To determine if the restore is complete, run the following command, and wait

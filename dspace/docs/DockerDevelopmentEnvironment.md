@@ -1,7 +1,7 @@
 # Docker Development Environment
 
 This document contains instructions for building a local development instance
-of a DSpace 7-based MD-SOAR using Docker.
+of a DSpace 8-based MD-SOAR using Docker.
 
 ## Development Setup
 
@@ -18,7 +18,7 @@ the main branch for MD-SOAR development.
 2) Optional: Build the dependent images.
 
     ```bash
-    $ docker build -f Dockerfile.dependencies -t docker.lib.umd.edu/mdsoar-dependencies-7_x:latest .
+    $ docker build -f Dockerfile.dependencies -t docker.lib.umd.edu/mdsoar-dependencies-8_x:latest .
     $ docker build -f Dockerfile.ant -t docker.lib.umd.edu/mdsoar-ant:latest .
     $ cd dspace/src/main/docker/dspace-postgres-pgcrypto
     $ docker build -t docker.lib.umd.edu/mdsoar-postgres:latest .
@@ -60,6 +60,7 @@ the main branch for MD-SOAR development.
    [dspace/docs/MdsoarDBRestore.md](MdsoarDBRestore.md)
    to populate the Postgres database with a DSpace 7 database dump from
    Kubernetes.
+
 6) Build the application and client Docker images:
 
    **Note:** If building for development, use the instructions in the
@@ -74,7 +75,7 @@ the main branch for MD-SOAR development.
 7) Start all the containers
 
     ```zsh
-    $ docker compose -p d7 up
+    $ docker compose -p d8 up
     ```
 
     Once the REST API starts, it should be accessible at
@@ -89,10 +90,10 @@ customized Java classes.
 
 ```zsh
 # Base build
-$ docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:7_x-dev-base .
+$ docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:8_x-dev-base .
 
 # Overlay modules build
-$ docker build -f Dockerfile.dev-additions -t docker.lib.umd.edu/mdsoar:7_x-dev .
+$ docker build -f Dockerfile.dev-additions -t docker.lib.umd.edu/mdsoar:8_x-dev .
 ```
 
 Also, we can start the "dspace" container and the dependencies ("dspacedb"
@@ -101,10 +102,10 @@ container to be started/stopped individually.
 
 ```zsh
 # Start the db and solr container in detached mode
-$ docker compose -p d7 up -d dspacedb dspacesolr
+$ docker compose -p d8 up -d dspacedb dspacesolr
 
 # Start the dspace container
-$ docker compose -p d7 up dspace
+$ docker compose -p d8 up dspace
 ```
 
 Once the REST API starts, it should be accessible at
@@ -125,7 +126,7 @@ development:
 
 ## Debugging
 
-The `JAVA_TOOL_OPTIONS` configuration included in the Docker compose starts the
+The `JPDA_OPTS` configuration included in the Docker compose starts the
 JPDA debugger for Tomcat. The [.vscode/launch.json](/.vscode/launch.json)
 file contains the VS Code debug configuration needed to attach to Tomcat. See
 the "Visual Studio Code IDE Setup" section for the extensions needed for
@@ -144,13 +145,13 @@ To start debugging,
 
 ```zsh
 # To stop all the containers
-$ docker compose -p d7 stop
+$ docker compose -p d8 stop
 
 # To stop just the dspace container
-$ docker compose -p d7 stop dspace
+$ docker compose -p d8 stop dspace
 
 # To restart just the dspace container
-$ docker compose -p d7 restart dspace
+$ docker compose -p d8 restart dspace
 
 # To attach to the dspace container
 $ docker exec -it dspace bash
@@ -159,9 +160,9 @@ $ docker exec -it dspace bash
 ## Create an administrator user
 
 ```zsh
-$ docker compose -p d7 -f docker-compose-cli.yml run dspace-cli create-administrator
+$ docker compose -p d8 -f docker-compose-cli.yml run dspace-cli create-administrator
 $ docker exec -it dspace /dspace/bin/dspace create-administrator
-Creating d7_dspace-cli_run ... done
+Creating d8_dspace-cli_run ... done
 Creating an initial administrator account
 E-mail address: <EMAIL_ADDRESS>
 First name: <FIRST_NAME>
@@ -225,25 +226,27 @@ root directory:
 $ mvn install
 ```
 
-## Email Setup
+## DSpace Scripts and Email Setup
 
 Some DSpace functionality may send email as part of their operation. The
 development Docker images do not, by themselves, support sending emails.
 
-The following changes enable email to be sent and captured by the "MailHog"
-application running at <http://localhost:8025/>.
+The following changes enable the DSpace scripts to be run in the "dspace"
+Docker container, with email being captured by the "MailHog" application.
 
 **Note:** After making the following changes, the "Dockerfile.dev-base" and
 "Dockerfile.dev-additions" Docker images need to be rebuilt.
 
 ### Dockerfile.dev-additions
 
-Add the following lines to the "Dockerfile.dev-additions" file, just after the
-`FROM tomcat:9-jdk${JDK_VERSION}` line, to include the packages needed for the
-script and email functionality:
+Replace the "RUN apt-get update" in the section "Dockerfile.dev-additions" file,
+just after the `FROM docker.io/eclipse-temurin:${JDK_VERSION}` line, to include
+the packages needed for the script and email functionality:
 
 ```text
-FROM tomcat:9-jdk${JDK_VERSION}
+FROM docker.io/eclipse-temurin:${JDK_VERSION}
+
+...
 
 # Dependencies for email functionality
 RUN apt-get update && \
@@ -297,7 +300,7 @@ mail.server.port = 1025
 With the above changes, the MailHog application can be run using:
 
 ```zsh
-$ docker compose -p d7 up mailhog
+$ docker compose -p d8 up mailhog
 ```
 
 The MailHog application will be accessible at <http://localhost:8025/>.
@@ -317,18 +320,18 @@ credentials.
 
 1) Download the “IP to City Lite” (in “mmdb” format) from
 <https://db-ip.com/db/download/ip-to-city-lite> and put in the “/tmp” directory,
-and extract the file, where “YYYY-MM” is the year/month of the download:
+and extract the file, where “\<YYYY-MM>” is the year/month of the download:
 
 ```zsh
 $ cd /tmp
-$ gunzip dbip-city-lite-YYYY-MM.mmdb.gz
+$ gunzip dbip-city-lite-<YYYY-MM>.mmdb.gz
 ```
 
-This will result in a file named “dbip-city-lite-YYYY-MM.mmdb”. For simplicity,
-rename the file to “dbip-city-lite.mmdb”:
+This will result in a file named “dbip-city-lite-\<YYYY-MM>.mmdb”. For
+simplicity, rename the file to “dbip-city-lite.mmdb”:
 
 ```zsh
-$ mv /tmp/dbip-city-lite-<yyyy-MM>.mmdb /tmp/dbip-city-lite.mmdb
+$ mv /tmp/dbip-city-lite-<YYYY-MM>.mmdb /tmp/dbip-city-lite.mmdb
 ```
 
 2) Copy the "/tmp/dbip-city-lite.mmdb" file into the "dspace/config/" directory:

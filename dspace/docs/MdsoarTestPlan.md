@@ -49,7 +49,7 @@ The MD-SOAR home page will be displayed.
 
 * The MD-SOAR favicon (looks like a graduation cap) is displayed in the browser
   tab, and that the text in the browser tab is
-  "MD-SOAR Open Access Repository Home"
+  "Maryland Shared Open Access Repository Home"
 * The appropriate SSDR environment banner is displayed.
 * There is an “Institutions in MD-SOAR” section
 

@@ -113,9 +113,9 @@ Confluence for information about setting up a MacBook to use the Kubernetes
 
 ### Features
 
-* [MdsoarCustomizations](dspace/docs/MdsoarCustomizations.md) - Summary of
+* [MdsoarCustomizations](/dspace/docs/MdsoarCustomizations.md) - Summary of
   MD-SOAR customizations to base DSpace functionality
-* [docs](dspace/docs) - additional documentation
+* [docs](/dspace/docs) - additional documentation
 
 ## Customization Markings
 

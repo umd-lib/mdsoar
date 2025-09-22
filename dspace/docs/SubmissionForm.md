@@ -54,6 +54,11 @@ The stock DSpace list was maintained, with one additional entry:
 | --------------- | ------------ |
 | DOI             | uri          |
 
+### common_iso_languages
+
+"English (United States)" has been commented out, and "English" has been made
+the first item in the list (instead of stock DSpace "N/A" entry).
+
 ### common_types
 
 The following list was copied from the DSpace 6 version of MD-SOAR:

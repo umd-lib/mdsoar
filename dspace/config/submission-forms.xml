@@ -1690,18 +1690,21 @@
              "en_US", "en", "es", "de", "fr", "it", "ja", "zh", "other", ""
           -->
         <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
-            <pair>
-                <displayed-value>N/A</displayed-value>
-                <stored-value></stored-value>
-            </pair>
-            <pair>
+            <!-- UMD Customization -->
+            <!-- <pair>
                 <displayed-value>English (United States)</displayed-value>
                 <stored-value>en_US</stored-value>
-            </pair>
+            </pair> -->
+            <!-- "English" should be first entry in the list. -->
             <pair>
                 <displayed-value>English</displayed-value>
                 <stored-value>en</stored-value>
             </pair>
+            <pair>
+                <displayed-value>N/A</displayed-value>
+                <stored-value></stored-value>
+            </pair>
+            <!-- End UMD Customization -->
             <pair>
                 <displayed-value>Spanish</displayed-value>
                 <stored-value>es</stored-value>

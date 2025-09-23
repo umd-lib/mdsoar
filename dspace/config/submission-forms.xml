@@ -63,9 +63,7 @@
                     <input-type>onebox</input-type>
                     <!-- UMD Customization -->
                     <hint>
-                        Enter the name(s) of the author(s) of this item. To add
-                        multiple authors, enter one name (last and first)
-                        at a time and then click "Add more".
+                        submission.hint.dc.contributor.author
                     </hint>
                     <!-- End UMD Customization -->
                     <required></required>
@@ -102,10 +100,7 @@
                     <label>Contributor(s)</label>
                     <input-type>onebox</input-type>
                     <hint>
-                        Enter the name(s) of any other contributors to the item
-                        (e.g. editors, illustrators, narrators, etc.). To add
-                        multiple contributors, enter one name (last and first)
-                        at a time and then click "Add more".
+                        submission.hint.dc.contributor
                     </hint>
                     <required></required>
                 </field>
@@ -120,11 +115,8 @@
                     <label>Advisor(s)</label>
                     <input-type>onebox</input-type>
                     <hint>
-                        If applicable, enter the name(s) of the advisor(s) who
-                        oversaw the creation of this item. To add multiple
-                        advisors, enter one name (last and first) at a time and
-                        then click "Add more".
-		                </hint>
+                        submission.hint.dc.contributor.advisor
+		            </hint>
                     <required></required>
                 </field>
             </row>

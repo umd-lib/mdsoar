@@ -41,6 +41,23 @@ Fields are listed in the order that they appear on the form.
 * Note (4): Dropdown using "common_iso_languages" value-pairs list
 * Note (5): In DSpace 6, uses Solr-based auto-suggest
 
+## Form Field Hints
+
+The "hint" attribute for the following fields uses an I18n key instead of
+hard-coding the text:
+
+| Schema Field           | "hint" I18n Key                        |
+| ---------------------- | -------------------------------------- |
+| dc.contributor.author  | submission.hint.dc.contributor.author  |
+| dc.contributor.advisor | submission.hint.dc.contributor.advisor |
+| dc.contributor         | submission.hint.dc.contributor         |
+
+The text for the hints is specified in the “src/assets/i18n/en.json5”
+localization file in the Angular front-end.
+
+I18n keys are used for these fields to allow for HTML tags to be used as part of
+hint text.
+
 ## Value-Pairs Lists
 
 The following value-pair lists were customized in DSpace 6, and seemed

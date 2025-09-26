@@ -49,10 +49,10 @@ Confluence for information about setting up a MacBook to use the Kubernetes
    where \<MDSOAR_TAG> is the Docker image tag to associate with the
    Docker images. This will typically be the Git tag for the MD-SOAR version,
    or some other identifier, such as a Git commit hash. For example, using the
-   Git tag of "7.5-mdsoar-0":
+   Git tag of "8.2-mdsoar-0":
 
     ```bash
-    $ export MDSOAR_TAG=7.5-mdsoar-0
+    $ export MDSOAR_TAG=8.2-mdsoar-0
     ```
 
 4) Set up a "MDSOAR_DIR" environment variable referring to the current
@@ -68,12 +68,12 @@ Confluence for information about setting up a MacBook to use the Kubernetes
     $ kubectl config use-context build
     ```
 
-6) Create the "docker.lib.umd.edu/mdsoar-dependencies-7_x" Docker image. This
+6) Create the "docker.lib.umd.edu/mdsoar-dependencies-8_x" Docker image. This
    image is used to pre-cache Maven downloads that will be used in subsequent
    DSpace docker builds:
 
     ```bash
-    $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -t docker.lib.umd.edu/mdsoar-dependencies-7_x:latest -f Dockerfile.dependencies .
+    $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -t docker.lib.umd.edu/mdsoar-dependencies-8_x:latest -f Dockerfile.dependencies .
     ```
 
 7) Create the "docker.lib.umd.edu/mdsoar" Docker image:

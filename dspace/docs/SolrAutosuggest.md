@@ -146,9 +146,8 @@ $ /dspace/bin/dspace umd-solr-rebuild-suggesters
 
 ### Cron Job
 
-A "umd-solr-rebuild-suggesters" entry should be added to the "crontab.txt" in
-Kubernetes, to ensure that the suggesters are periodically rebuilt. For example,
-to rebuild the suggesters once a day at 6am:
+A "umd-solr-rebuild-suggesters" entry has been added to the "crontab.txt" in
+Kubernetes, to ensure that the suggesters are periodically rebuilt, i.e.:
 
 ```text
 # Rebuild the Solr suggester indexes, adding any new terms added by users

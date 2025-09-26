@@ -17,7 +17,7 @@ to test the production system.
 ## Test Plan Assumptions
 
 This test plan assumes that the user has an MD-SOAR account with "administrator"
-privilege.
+privileges.
 
 The test plan steps are specified using URLs for the Kubernetes "test"
 namespace, as that seems to be the most useful. Unless otherwise specified,

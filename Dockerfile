@@ -90,8 +90,9 @@ RUN apt-get update && \
         libconfig-properties-perl \
         vim \
         python3-lxml && \
-    mkfifo /var/spool/postfix/public/pickup && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+COPY dspace/src/main/docker/cron/postfix.sh /usr/local/bin/postfix.sh
 # End UMD Customization
 # On startup, run DSpace Runnable JAR
 ENTRYPOINT ["java", "-jar", "webapps/server-boot.jar", "--dspace.dir=$DSPACE_INSTALL"]

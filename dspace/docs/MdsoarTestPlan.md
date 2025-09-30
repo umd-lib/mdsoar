@@ -17,7 +17,7 @@ to test the production system.
 ## Test Plan Assumptions
 
 This test plan assumes that the user has an MD-SOAR account with "administrator"
-privilege.
+privileges.
 
 The test plan steps are specified using URLs for the Kubernetes "test"
 namespace, as that seems to be the most useful. Unless otherwise specified,
@@ -92,7 +92,7 @@ displayed. At the bottom of the page verify that there is a section:
 
 * "Authorization groups you belong to"
 
-Verify that the "Authorization groups you belong to includes "Administrator"
+Verify that the "Authorization groups you belong to" includes "Administrator"
 (there may be other entries in these groups).
 
 ### 5) Community Creation
@@ -113,6 +113,9 @@ displayed.
 then left-click the "Save" button. A notification will display indicating that
 the community was successfully added. The "SSDR Test Community" page will be
 displayed.
+
+5.4) On the "SSDR Test Community" page, verify that in the "Browse" bar the
+"Subcommunities and Collections" tab is selected by default.
 
 ### 6) Collection Creation
 

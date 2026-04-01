@@ -52,6 +52,8 @@ The MD-SOAR home page will be displayed.
   "Maryland Shared Open Access Repository Home"
 * The appropriate SSDR environment banner is displayed.
 * There is an “Institutions in MD-SOAR” section
+* There is an "Accessibility" link in the navigation bar, that links to the
+  "MD-SOAR Accessibility Information" page
 
 ### 3) Institution Pages
 

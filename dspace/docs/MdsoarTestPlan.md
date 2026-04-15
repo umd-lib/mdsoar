@@ -249,7 +249,7 @@ link. The “SSDR Test Collection” page will be shown. Verify that there is an
 
 11.1) In a web browser, go to
 
-<https://mdsoar-test.lib.umd.edu/oai/request?verb=Identify>
+<https://api.mdsoar-test.lib.umd.edu/server/oai/request?verb=Identify>
 
 and verify that a “DSpace OAI-PMH Data Provider” page with repository
 information is displayed.
@@ -261,7 +261,7 @@ information is displayed.
 
 12.1) In a web browser, go to
 
-<https://mdsoar-test.lib.umd.edu/open-search/discover?query=author:smith>
+<https://api.mdsoar-test.lib.umd.edu/server/opensearch/search?query=author:smith>
 
 and verify that an XML file can be downloaded, and contains item information.
 

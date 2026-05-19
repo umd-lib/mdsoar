@@ -1,6 +1,6 @@
 # Maryland Shared Open Access Repository (MD-SOAR)
 
-Home: <http://mdsoar.org/>
+Home: <https://mdsoar.org/>
 
 ## Documentation
 

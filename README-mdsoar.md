@@ -1,6 +1,6 @@
 # Maryland Shared Open Access Repository (MD-SOAR)
 
-Home: <http://mdsoar.lib.umd.edu/>
+Home: <http://mdsoar.org/>
 
 ## Documentation
 
@@ -140,8 +140,8 @@ The following customizations *do not* need to be commented:
   tabs in the modified DSpace file being automatically converted to spaces by
   VS Code, or an end-of-file line.
 
-The main goal is to make it immediately when performing DSpace version upgrades
-whether a change in a file is due to an explicit UMD customization.
+The main goal is to make it immediately known when performing DSpace version 
+upgrades whether a change in a file is due to an explicit UMD customization.
 
 ## License
 

@@ -49,10 +49,10 @@ Confluence for information about setting up a MacBook to use the Kubernetes
    where \<MDSOAR_TAG> is the Docker image tag to associate with the
    Docker images. This will typically be the Git tag for the MD-SOAR version,
    or some other identifier, such as a Git commit hash. For example, using the
-   Git tag of "8.2-mdsoar-0":
+   Git tag of "8.4-mdsoar-0":
 
     ```bash
-    $ export MDSOAR_TAG=8.2-mdsoar-0
+    $ export MDSOAR_TAG=8.4-mdsoar-0
     ```
 
 4) Set up a "MDSOAR_DIR" environment variable referring to the current
@@ -140,7 +140,7 @@ The following customizations *do not* need to be commented:
   tabs in the modified DSpace file being automatically converted to spaces by
   VS Code, or an end-of-file line.
 
-The main goal is to make it immediately known when performing DSpace version 
+The main goal is to make it immediately known when performing DSpace version
 upgrades whether a change in a file is due to an explicit UMD customization.
 
 ## License

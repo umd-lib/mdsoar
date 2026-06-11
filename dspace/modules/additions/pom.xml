@@ -17,7 +17,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>modules</artifactId>
-      <version>8.2-mdsoar-3-SNAPSHOT</version>
+      <version>8.4-mdsoar-0-SNAPSHOT</version>
       <relativePath>..</relativePath>
    </parent>
 
@@ -295,5 +295,4 @@
       </dependency>
 
    </dependencies>
-
 </project>

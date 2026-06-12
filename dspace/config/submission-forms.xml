@@ -39,7 +39,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <repeatable>true</repeatable>
+                    <repeatable>false</repeatable>
                     <label>Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a description for the file</hint>
@@ -522,7 +522,7 @@
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Date of Issue</label>
-                    <style>col-sm-4</style>
+                    <style>col-md-4</style>
                     <input-type>date</input-type>
                     <hint>Please give the date of previous publication or public distribution.
                         You can leave out the day and/or month if they aren't applicable.
@@ -536,7 +536,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Publisher</label>
-                    <style>col-sm-8</style>
+                    <style>col-md-8</style>
                     <input-type>onebox</input-type>
                     <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
                     <required></required>
@@ -1100,7 +1100,7 @@
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Date of Issue</label>
-                    <style>col-sm-4</style>
+                    <style>col-md-4</style>
                     <input-type>date</input-type>
                     <hint>Please give the date of previous publication or public distribution.
                         You can leave out the day
@@ -1116,7 +1116,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Publisher</label>
-                    <style>col-sm-8</style>
+                    <style>col-md-8</style>
                     <input-type>onebox</input-type>
                     <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
                     <required></required>
@@ -1754,8 +1754,8 @@
 
         </value-pairs>
 
-        <!-- Openaire document types
-             https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html
+        <!-- OpenAIRE document types
+             https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/4.0.1/field_publicationtype.html
              Based on COAR Vocabularies -> Controlled Vocabulary for Resource Type Genres (Version 2.0):
              http://vocabularies.coar-repositories.org/documentation/resource_types/
         -->

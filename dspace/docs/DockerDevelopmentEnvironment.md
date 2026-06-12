@@ -58,7 +58,7 @@ the main branch for MD-SOAR development.
 
 5) Follow the instructions at
    [dspace/docs/MdsoarDBRestore.md](MdsoarDBRestore.md)
-   to populate the Postgres database with a DSpace 7 database dump from
+   to populate the Postgres database with a DSpace database dump from
    Kubernetes.
 
 6) Build the application and client Docker images:

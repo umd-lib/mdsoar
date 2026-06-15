@@ -292,7 +292,16 @@ we do not want it included in search results.
 
 <https://api.mdsoar-test.lib.umd.edu/robots.txt>
 
-and verify that the "robots.txt" file disallows all crawling.
+Verify the contents of a "robots.txt" file is displayed, and contains the
+following uncommented line (among many others):
+
+```text
+Disallow: /browse/*
+```
+
+**Note:** On MD-SOAR QA, the “robots.txt” file disallows all crawling, as it is
+available on the public internet (to allow access by non-UMD stakeholders), and
+we do not want it included in search results.
 
 ### 14) sitemap.xml
 

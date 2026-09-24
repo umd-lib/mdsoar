@@ -49,10 +49,10 @@ Confluence for information about setting up a MacBook to use the Kubernetes
    where \<MDSOAR_TAG> is the Docker image tag to associate with the
    Docker images. This will typically be the Git tag for the MD-SOAR version,
    or some other identifier, such as a Git commit hash. For example, using the
-   Git tag of "8.4-mdsoar-0":
+   Git tag of "9.4-mdsoar-0":
 
     ```bash
-    $ export MDSOAR_TAG=8.4-mdsoar-0
+    $ export MDSOAR_TAG=9.4-mdsoar-0
     ```
 
 4) Set up a "MDSOAR_DIR" environment variable referring to the current
@@ -82,28 +82,7 @@ Confluence for information about setting up a MacBook to use the Kubernetes
     $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -f Dockerfile -t docker.lib.umd.edu/mdsoar:$MDSOAR_TAG .
     ```
 
-8) Create the "docker.lib.umd.edu/dspace-postgres", which is a Postgres image
-   with "pgcrypto" module:
-
-    **Note:** The "Dockerfile" for the "dspace-postgres" image specifies
-    only the major Postgres version as the base image. This allows Postgres
-    minor version updates to be retrieved automatically. It may not be
-    necessary to create new "dspace-postgres" image versions for every MD-SOAR
-    patch or hotfix version increment.
-
-    ```bash
-    $ cd $MDSOAR_DIR/dspace/src/main/docker/dspace-postgres-pgcrypto
-
-    $ docker buildx build --platform linux/amd64 --builder=kube --push --no-cache -f Dockerfile -t docker.lib.umd.edu/mdsoar-postgres:$MDSOAR_TAG .
-    ```
-
-9) Create the "docker.lib.umd.edu/mdsoar-solr":
-
-    **Note:** The "Dockerfile" for the "mdsoar-solr" image specifies only the
-    major Solr version as the base image. This allows Solr minor version updates
-    to be retrieved automatically. It may not be necessary to create new
-    "mdsoar-solr" image versions for every MD-SOAR patch or hotfix version
-    increment.
+8) Create the "docker.lib.umd.edu/mdsoar-solr":
 
     ```bash
     $ cd $MDSOAR_DIR/dspace/solr
@@ -115,6 +94,8 @@ Confluence for information about setting up a MacBook to use the Kubernetes
 
 * [MdsoarCustomizations](/dspace/docs/MdsoarCustomizations.md) - Summary of
   MD-SOAR customizations to base DSpace functionality
+* [MdsoarTestPlan](dspace/docs/MdsoarTestPlan.md) - Covers some
+  manual tests for customized features and deployment configurations.
 * [docs](/dspace/docs) - additional documentation
 
 ## Customization Markings
@@ -140,7 +121,7 @@ The following customizations *do not* need to be commented:
   tabs in the modified DSpace file being automatically converted to spaces by
   VS Code, or an end-of-file line.
 
-The main goal is to make it immediately known when performing DSpace version
+The main goal is to make it immediately obvious when performing DSpace version
 upgrades whether a change in a file is due to an explicit UMD customization.
 
 ## License

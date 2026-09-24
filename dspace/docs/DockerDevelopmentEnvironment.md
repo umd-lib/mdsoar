@@ -1,7 +1,7 @@
 # Docker Development Environment
 
 This document contains instructions for building a local development instance
-of a DSpace 8-based MD-SOAR using Docker.
+of MD-SOAR using Docker.
 
 ## Development Setup
 
@@ -10,19 +10,16 @@ the main branch for MD-SOAR development.
 
 1) Clone the Git repository and switch to the directory:
 
-    ```bash
+    ```zsh
     $ git clone -b mdsoar-main git@github.com:umd-lib/mdsoar.git mdsoar
     $ cd mdsoar
     ```
 
 2) Optional: Build the dependent images.
 
-    ```bash
+    ```zsh
     $ docker build -f Dockerfile.dependencies -t docker.lib.umd.edu/mdsoar-dependencies-9_x:latest .
     $ docker build -f Dockerfile.ant -t docker.lib.umd.edu/mdsoar-ant:latest .
-    $ cd dspace/src/main/docker/dspace-postgres-pgcrypto
-    $ docker build -t docker.lib.umd.edu/mdsoar-postgres:latest .
-    $ cd -
     ```
 
 3) Create the local configuration file
@@ -225,8 +222,7 @@ RUN apt-get update && \
       libgetopt-complete-perl \
       libconfig-properties-perl \
     && apt-get purge -y --auto-remove \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkfifo /var/spool/postfix/public/pickup
+    && rm -rf /var/lib/apt/lists/*
 # End Dependencies for email functionality
 ```
 

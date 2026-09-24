@@ -24,7 +24,7 @@ as having two minting sources could potentially generate overlapping numbers.
 Since both DRUM and MD-SOAR use the same DOI prefix ("10.13016") in production,
 using the stock DSpace functionality is not possible. Instead, DOIs are minted
 as random 8 character codes in the format "XXXX-XXXX" (4 alphanumeric
-characters, a hypen, then 4 more alphanumeric characters). This eliminates the
+characters, a hyphen, then 4 more alphanumeric characters). This eliminates the
 requirement to have a single minting source.
 
 The generation of random DOIs is controlled by the "identifier.doi.mintRandom"

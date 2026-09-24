@@ -1,6 +1,6 @@
 # MD-SOAR Database Restore
 
-**Note:** The following steps describe retrieving a MD-SOAR DSpace database
+**Note:** The following steps describe retrieving an MD-SOAR DSpace database
 snapshot from Kubernetes for use with MD-SOAR for local development.
 
 1) Switch to the Kubernetes namespace from which the database snapshot
@@ -11,11 +11,11 @@ snapshot from Kubernetes for use with MD-SOAR for local development.
    $ kubectl config use-context test
    ```
 
-2) Run the following command to run "pg_dump" in the "drum-db-0" Kubernetes pod,
+2) Run the following command to run "pg_dump" in the "mdsoar-db-0" Kubernetes pod,
    placing the database dump in the `postgres-init` subdirectory:
 
     ```bash
-    $ kubectl exec drum-db-0 -- pg_dump -O -U drum -d drum > postgres-init/drum.sql
+    $ kubectl exec mdsoar-db-0 -- pg_dump -O -U mdsoar -d mdsoar > postgres-init/mdsoar.sql
     ```
 
 3) (Optional) This step can be skipped, if you are following the instructions in

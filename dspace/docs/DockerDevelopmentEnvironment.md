@@ -1,7 +1,7 @@
 # Docker Development Environment
 
 This document contains instructions for building a local development instance
-of a DSpace 8-based MD-SOAR using Docker.
+of MD-SOAR using Docker.
 
 ## Development Setup
 
@@ -10,19 +10,16 @@ the main branch for MD-SOAR development.
 
 1) Clone the Git repository and switch to the directory:
 
-    ```bash
+    ```zsh
     $ git clone -b mdsoar-main git@github.com:umd-lib/mdsoar.git mdsoar
     $ cd mdsoar
     ```
 
 2) Optional: Build the dependent images.
 
-    ```bash
-    $ docker build -f Dockerfile.dependencies -t docker.lib.umd.edu/mdsoar-dependencies-8_x:latest .
+    ```zsh
+    $ docker build -f Dockerfile.dependencies -t docker.lib.umd.edu/mdsoar-dependencies-9_x:latest .
     $ docker build -f Dockerfile.ant -t docker.lib.umd.edu/mdsoar-ant:latest .
-    $ cd dspace/src/main/docker/dspace-postgres-pgcrypto
-    $ docker build -t docker.lib.umd.edu/mdsoar-postgres:latest .
-    $ cd -
     ```
 
 3) Create the local configuration file
@@ -75,7 +72,7 @@ the main branch for MD-SOAR development.
 7) Start all the containers
 
     ```zsh
-    $ docker compose -p d8 up
+    $ docker compose -p d9 up
     ```
 
     Once the REST API starts, it should be accessible at
@@ -90,10 +87,10 @@ customized Java classes.
 
 ```zsh
 # Base build
-$ docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:8_x-dev-base .
+$ docker build -f Dockerfile.dev-base -t docker.lib.umd.edu/mdsoar:9_x-dev-base .
 
 # Overlay modules build
-$ docker build -f Dockerfile.dev-additions -t docker.lib.umd.edu/mdsoar:8_x-dev .
+$ docker build -f Dockerfile.dev-additions -t docker.lib.umd.edu/mdsoar:9_x-dev .
 ```
 
 Also, we can start the "dspace" container and the dependencies ("dspacedb"
@@ -102,10 +99,10 @@ container to be started/stopped individually.
 
 ```zsh
 # Start the db and solr container in detached mode
-$ docker compose -p d8 up -d dspacedb dspacesolr
+$ docker compose -p d9 up -d dspacedb dspacesolr
 
 # Start the dspace container
-$ docker compose -p d8 up dspace
+$ docker compose -p d9 up dspace
 ```
 
 Once the REST API starts, it should be accessible at
@@ -145,13 +142,13 @@ To start debugging,
 
 ```zsh
 # To stop all the containers
-$ docker compose -p d8 stop
+$ docker compose -p d9 stop
 
 # To stop just the dspace container
-$ docker compose -p d8 stop dspace
+$ docker compose -p d9 stop dspace
 
 # To restart just the dspace container
-$ docker compose -p d8 restart dspace
+$ docker compose -p d9 restart dspace
 
 # To attach to the dspace container
 $ docker exec -it dspace bash
@@ -160,9 +157,9 @@ $ docker exec -it dspace bash
 ## Create an administrator user
 
 ```zsh
-$ docker compose -p d8 -f docker-compose-cli.yml run dspace-cli create-administrator
+$ docker compose -p d9 -f docker-compose-cli.yml run dspace-cli create-administrator
 $ docker exec -it dspace /dspace/bin/dspace create-administrator
-Creating d8_dspace-cli_run ... done
+Creating d9_dspace-cli_run ... done
 Creating an initial administrator account
 E-mail address: <EMAIL_ADDRESS>
 First name: <FIRST_NAME>
@@ -225,8 +222,7 @@ RUN apt-get update && \
       libgetopt-complete-perl \
       libconfig-properties-perl \
     && apt-get purge -y --auto-remove \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkfifo /var/spool/postfix/public/pickup
+    && rm -rf /var/lib/apt/lists/*
 # End Dependencies for email functionality
 ```
 
@@ -268,7 +264,7 @@ mail.server.port = 1025
 With the above changes, the MailHog application can be run using:
 
 ```zsh
-$ docker compose -p d8 up mailhog
+$ docker compose -p d9 up mailhog
 ```
 
 The MailHog application will be accessible at <http://localhost:8025/>.

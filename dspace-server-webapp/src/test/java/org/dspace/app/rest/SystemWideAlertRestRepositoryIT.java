@@ -19,38 +19,37 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.time.DateUtils;
 import org.dspace.alerts.AllowSessionsEnum;
 import org.dspace.alerts.SystemWideAlert;
 import org.dspace.app.rest.model.SystemWideAlertRest;
 import org.dspace.app.rest.test.AbstractControllerIntegrationTest;
 import org.dspace.builder.SystemWideAlertBuilder;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Test class to test the operations in the SystemWideAlertRestRepository
  */
 public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrationTest {
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
+    @Autowired
+    private ObjectMapper mapper;
+
     @Test
     public void findAllTest() throws Exception {
         // Create two alert entries in the db to fully test the findAll method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime date = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
-                                                                 .withCountdownDate(dateToNearestSecond)
+                                                                 .withCountdownDate(date)
                                                                  .isActive(true)
                                                                  .build();
 
@@ -71,7 +70,7 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
                                    hasJsonPath("$.alertId", is(systemWideAlert1.getID())),
                                    hasJsonPath("$.message", is(systemWideAlert1.getMessage())),
                                    hasJsonPath("$.allowSessions", is(systemWideAlert1.getAllowSessions().getValue())),
-                                   hasJsonPath("$.countdownTo", dateMatcher(dateToNearestSecond)),
+                                   hasJsonPath("$.countdownTo", dateMatcher(date)),
                                    hasJsonPath("$.active", is(systemWideAlert1.isActive()))
                            ),
                            allOf(
@@ -89,7 +88,7 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
         // Create two alert entries in the db to fully test the findAll method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date countdownDate = new Date();
+        ZonedDateTime countdownDate = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -115,7 +114,7 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
         // Create two alert entries in the db to fully test the findAll method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date countdownDate = new Date();
+        ZonedDateTime countdownDate = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -137,15 +136,12 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
     }
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void findOneTest() throws Exception {
         // Create two alert entries in the db to fully test the findOne method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -181,15 +177,12 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
     }
 
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void findOneUnauthorizedTest() throws Exception {
         // Create two alert entries in the db to fully test the findOne method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -227,15 +220,12 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
     }
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void findOneForbiddenTest() throws Exception {
         // Create two alert entries in the db to fully test the findOne method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -275,15 +265,12 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
     }
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void findAllActiveTest() throws Exception {
         // Create three alert entries in the db to fully test the findActive search method
         // Note: It is not possible to create two alerts through the REST API
         context.turnOffAuthorisationSystem();
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
         SystemWideAlert systemWideAlert1 = SystemWideAlertBuilder.createSystemWideAlert(context, "Test alert 1")
                                                                  .withAllowSessions(
                                                                          AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY)
@@ -328,20 +315,15 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
     }
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void createTest() throws Exception {
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
 
         SystemWideAlertRest systemWideAlertRest = new SystemWideAlertRest();
         systemWideAlertRest.setMessage("Alert test message");
         systemWideAlertRest.setCountdownTo(dateToNearestSecond);
         systemWideAlertRest.setAllowSessions(AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY.getValue());
         systemWideAlertRest.setActive(true);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         String authToken = getAuthToken(admin.getEmail(), password);
 
@@ -386,11 +368,9 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
         SystemWideAlertRest systemWideAlertRest = new SystemWideAlertRest();
         systemWideAlertRest.setMessage("Alert test message");
-        systemWideAlertRest.setCountdownTo(new Date());
+        systemWideAlertRest.setCountdownTo(ZonedDateTime.now(ZoneOffset.UTC));
         systemWideAlertRest.setAllowSessions(AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY.getValue());
         systemWideAlertRest.setActive(true);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         String authToken = getAuthToken(eperson.getEmail(), password);
 
@@ -406,11 +386,9 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
         SystemWideAlertRest systemWideAlertRest = new SystemWideAlertRest();
         systemWideAlertRest.setMessage("Alert test message");
-        systemWideAlertRest.setCountdownTo(new Date());
+        systemWideAlertRest.setCountdownTo(ZonedDateTime.now(ZoneOffset.UTC));
         systemWideAlertRest.setAllowSessions(AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY.getValue());
         systemWideAlertRest.setActive(true);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         getClient().perform(post("/api/system/systemwidealerts/")
                                     .content(mapper.writeValueAsBytes(systemWideAlertRest))
@@ -435,11 +413,9 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
         SystemWideAlertRest systemWideAlertRest = new SystemWideAlertRest();
         systemWideAlertRest.setMessage("Alert test message");
-        systemWideAlertRest.setCountdownTo(new Date());
+        systemWideAlertRest.setCountdownTo(ZonedDateTime.now(ZoneOffset.UTC));
         systemWideAlertRest.setAllowSessions(AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY.getValue());
         systemWideAlertRest.setActive(true);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         String authToken = getAuthToken(admin.getEmail(), password);
 
@@ -450,9 +426,6 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
 
     }
 
-    // UMD Customization
-    @Ignore("UMD Customization - Test fails in stock DSpace 7.5")
-    // End UMD Customization
     @Test
     public void putTest() throws Exception {
         context.turnOffAuthorisationSystem();
@@ -464,7 +437,7 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
                                                                 .build();
         context.restoreAuthSystemState();
 
-        Date dateToNearestSecond = DateUtils.round(new Date(), Calendar.SECOND);
+        ZonedDateTime dateToNearestSecond = ZonedDateTime.now(ZoneOffset.UTC);
 
         SystemWideAlertRest systemWideAlertRest = new SystemWideAlertRest();
         systemWideAlertRest.setAlertId(systemWideAlert.getID());
@@ -472,8 +445,6 @@ public class SystemWideAlertRestRepositoryIT extends AbstractControllerIntegrati
         systemWideAlertRest.setCountdownTo(dateToNearestSecond);
         systemWideAlertRest.setAllowSessions(AllowSessionsEnum.ALLOW_CURRENT_SESSIONS_ONLY.getValue());
         systemWideAlertRest.setActive(true);
-
-        ObjectMapper mapper = new ObjectMapper();
 
         String authToken = getAuthToken(admin.getEmail(), password);
 

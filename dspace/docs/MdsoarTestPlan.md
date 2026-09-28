@@ -99,12 +99,12 @@ Verify that the "Authorization groups you belong to" includes "Administrator"
 
 ### 5) Community Creation
 
-5.1) From the administrative sidebar, select "New | Community". The
-"New community" modal dialog will be displayed.
+5.1) From the administrative sidebar, select "New | Community".
+The "New community" modal dialog will be displayed.
 
 5.2) In the "New community" modal dialog, left-click the
-"Create a new top-level community" button. The "Create a Community" page will be
-displayed.
+"Create a new top-level community" button. The "Create a Community" page will
+be displayed.
 
 5.3) On the "Create a Community" page, fill out the following fields:
 
@@ -121,11 +121,12 @@ displayed.
 
 ### 6) Collection Creation
 
-6.1) From the administrative sidebar, select "New | Collection". The
-"New collection" modal dialog will be displayed.
+6.1) From the administrative sidebar, select "New | Collection".
+The "New collection" modal dialog will be displayed.
 
-6.2) In the "New collection" modal dialog, left-click the "SSDR Test Community"
-entry. The "Create a Collection" page will be displayed.
+6.2) In the "New collection" modal dialog, left-click the
+"SSDR Test Community" entry. The "Create a Collection" page will
+be displayed.
 
 6.3) On the "Create a Collection" page, fill out the following fields:
 
@@ -139,11 +140,11 @@ displayed.
 
 ### 7) Item Submission
 
-7.1) From the administrative sidebar, select "New | Item". The "New item" modal
-dialog will be displayed.
+7.1) From the administrative sidebar, select "New | Item".
+The "New item" modal dialog will be displayed.
 
-7.2) In the "New item" modal dialog, left-click the "SSDR Test Collection"
-entry. The "Edit Submission" page will be displayed.
+7.2) In the "New item" modal dialog, left-click the
+"SSDR Test Collection" entry. The "Edit Submission" page will be displayed.
 
 7.3) Upload a PDF file to the page by dragging and dropping it onto the page.
 
@@ -162,9 +163,10 @@ shown (but do not select either of them):
 * Creative Commons
 
 In the "Deposit license" section, left-click the "I confirm the license above"
-checkbox, and then left-click the "Deposit" button. A notification will be
-displayed indicating that the item was successfully deposited. The
-"Your submissions" page will be displayed.
+checkbox, and then left-click the "Deposit" button.
+
+A notification will be displayed indicating that the item was successfully
+deposited. The "Your submissions" page will be displayed.
 
 7.5) On the "Your submissions" page, verify that the item has been added as one
 of the submissions. Left-click the "View" button for the submitted item. The
@@ -292,16 +294,7 @@ we do not want it included in search results.
 
 <https://api.mdsoar-test.lib.umd.edu/robots.txt>
 
-Verify the contents of a "robots.txt" file is displayed, and contains the
-following uncommented line (among many others):
-
-```text
-Disallow: /browse/*
-```
-
-**Note:** On MD-SOAR QA, the “robots.txt” file disallows all crawling, as it is
-available on the public internet (to allow access by non-UMD stakeholders), and
-we do not want it included in search results.
+and verify that the "robots.txt" file disallows all crawling.
 
 ### 14) sitemap.xml
 

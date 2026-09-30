@@ -294,7 +294,14 @@ we do not want it included in search results.
 
 <https://api.mdsoar-test.lib.umd.edu/robots.txt>
 
-and verify that the "robots.txt" file disallows all crawling.
+and verify that the contents are the same as the "frontend" robots.txt from the
+previous step.
+
+**Note:** On MD-SOAR QA, the “robots.txt” file disallows all crawling, as
+it is available on the public internet. In other namespaces, including
+production, the backend uses the same "robots.txt" as the frontend to ensure
+that JavaScript-enabled crawlers that respect "robots.txt" (such as GoogleBot)
+can access backend resources (see LIBCIR-487).
 
 ### 14) sitemap.xml
 

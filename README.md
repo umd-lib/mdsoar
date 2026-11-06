@@ -49,10 +49,10 @@ Confluence for information about setting up a MacBook to use the Kubernetes
    where \<MDSOAR_TAG> is the Docker image tag to associate with the
    Docker images. This will typically be the Git tag for the MD-SOAR version,
    or some other identifier, such as a Git commit hash. For example, using the
-   Git tag of "9.4-mdsoar-0":
+   Git tag of "9.4-mdsoar-0.1":
 
     ```bash
-    $ export MDSOAR_TAG=9.4-mdsoar-0
+    $ export MDSOAR_TAG=9.4-mdsoar-0.1
     ```
 
 4) Set up a "MDSOAR_DIR" environment variable referring to the current
